@@ -1,0 +1,10 @@
+{
+  "images": {
+    "cover": "/src/assets/images/site-cover.svg"
+  },
+  "icons": {
+    "brand": "/src/assets/icons/react.svg"
+  },
+  "fonts": {}
+}
+
