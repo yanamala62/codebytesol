@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
-import { FadeIn, StaggerChildren } from '../../components/animations/FadeIn';
+import { FadeIn } from '../../components/animations/FadeIn';
 import helpHero from '../../assets/bg/download (3).jpg';
 import { 
   Wrench, 

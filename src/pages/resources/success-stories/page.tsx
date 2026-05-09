@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
-import { FadeIn, StaggerChildren } from '../../../components/animations/FadeIn';
+import { FadeIn } from '../../../components/animations/FadeIn';
 import successHero from '../../../assets/bg/download (1).jpg';
-import { CheckCircle2, Cpu, BarChart3, Mail, ArrowRight, Layout, Zap } from 'lucide-react';
+import { CheckCircle2, Cpu, BarChart3, Mail, Layout, Zap } from 'lucide-react';
 
 const successStories = [
   {

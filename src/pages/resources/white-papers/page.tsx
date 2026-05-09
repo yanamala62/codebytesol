@@ -3,7 +3,7 @@ import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 import { FadeIn, StaggerChildren } from '../../../components/animations/FadeIn';
 import wpHero from '../../../assets/bg/download (2).jpg';
-import { FileText, Download, CheckCircle2, Mail, ChevronDown, ChevronUp, Clock, BookOpen } from 'lucide-react';
+import { Download, CheckCircle2, Mail, ChevronDown, ChevronUp, Clock, BookOpen } from 'lucide-react';
 
 const whitePapers = [
   {

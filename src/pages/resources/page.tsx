@@ -2,7 +2,7 @@ import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import { FadeIn, StaggerChildren } from '../../components/animations/FadeIn';
 import resourcesHero from '../../assets/bg/download (4).jpg';
-import { Trophy, Article, FileText, PlayCircle, ArrowRight } from 'lucide-react';
+import { Trophy, Newspaper, FileText, PlayCircle, ArrowRight } from 'lucide-react';
 
 const resourceCategories = [
   {
@@ -17,7 +17,7 @@ const resourceCategories = [
     id: 'blogs',
     title: 'Expert Blogs',
     desc: 'Latest insights, engineering trends, and thought leadership from our experts.',
-    icon: <Article className="w-8 h-8 text-accent-500" />,
+    icon: <Newspaper className="w-8 h-8 text-accent-500" />,
     link: '/resources/blogs',
     color: 'accent'
   },
@@ -125,7 +125,7 @@ export default function ResourcesPage() {
                </div>
                <div className="w-full md:w-1/3 aspect-square glass rounded-3xl border-white/5 flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-accent-500/20" />
-                  <Article className="w-32 h-32 text-white/20" />
+                  <Newspaper className="w-32 h-32 text-white/20" />
                </div>
             </div>
           </FadeIn>

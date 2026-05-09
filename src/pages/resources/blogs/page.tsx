@@ -3,7 +3,7 @@ import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 import { FadeIn, StaggerChildren } from '../../../components/animations/FadeIn';
 import blogHero from '../../../assets/bg/download.jpg';
-import { Calendar, Clock, User, ArrowRight, Search } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, Search } from 'lucide-react';
 
 const categories = ['All', 'AI & ML', 'Cloud Computing', 'Data Analytics', 'Digital Transformation', 'Industry Insights'];
 

@@ -2,7 +2,7 @@ import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import { FadeIn, StaggerChildren } from '../../components/animations/FadeIn';
 import careersHero from '../../assets/bg/download (1).jpg';
-import { Briefcase, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { MapPin, Clock, ArrowRight } from 'lucide-react';
 
 export default function CareersPage() {
   const jobs = [
