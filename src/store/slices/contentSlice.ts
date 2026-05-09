@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { ContentData } from '../../types';
-import { fetchSitePayload } from '../../api/contentApi';
+import rawContent from '../../data/content.json';
+
+const content = rawContent as ContentData;
 
 type Status = 'idle' | 'loading' | 'succeeded' | 'failed';
 
@@ -11,14 +13,19 @@ interface ContentState {
 }
 
 const initialState: ContentState = {
-  data: null,
+  data: content, // Initialize with data directly if possible, or via thunk
   status: 'idle',
   error: null,
 };
 
 export const loadContent = createAsyncThunk<ContentData>(
   'content/loadAll',
-  async () => fetchSitePayload()
+  async () => {
+    // Simulate async load if needed, or just return the imported content
+    return new Promise((resolve) => {
+      setTimeout(() => resolve(content), 100);
+    });
+  }
 );
 
 const contentSlice = createSlice({
