@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
+import { FadeIn, StaggerChildren } from '../../../components/animations/FadeIn';
+import blogHero from '../../../assets/bg/download.jpg';
+import { Calendar, Clock, User, ArrowRight, Search } from 'lucide-react';
 
 const categories = ['All', 'AI & ML', 'Cloud Computing', 'Data Analytics', 'Digital Transformation', 'Industry Insights'];
 
@@ -123,125 +126,154 @@ export default function BlogsPage() {
     : blogs.filter(blog => blog.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-bg-primary text-text-primary">
       <Header />
       
-      {/* Hero Section with Background Image */}
-      <section className="relative pt-32 pb-24 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 w-full h-full">
+      {/* Hero Section */}
+      <section className="relative pt-48 pb-24 px-6 overflow-hidden">
+        <div className="absolute inset-0 z-0">
           <img
-            src="/images/blogs-hero-workspace-modern-v3-789--2533e9e01446.jpg"
+            src={blogHero}
             alt="Blogs Hero"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover opacity-20 grayscale"
           />
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary"></div>
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Expert Insights & <span className="bg-gradient-to-r from-[var(--color-primary-500)] to-[var(--color-accent-500)] bg-clip-text text-transparent">Blogs</span>
-          </h1>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-            Stay ahead with the latest trends, best practices, and thought leadership in AI, digital transformation, and enterprise technology
-          </p>
+        <div className="container-xl mx-auto relative z-10 text-center">
+          <FadeIn direction="up">
+            <h1 className="text-display-xl md:text-display-2xl font-display font-bold text-white mb-8 tracking-tighter leading-none">
+              Expert <span className="gradient-text">Insights.</span>
+            </h1>
+            <p className="text-2xl text-text-muted max-w-3xl mx-auto font-medium leading-relaxed">
+              Stay ahead with the latest trends, best practices, and thought leadership in AI, digital transformation, and enterprise technology.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
-      {/* Category Filter */}
-      <section className="py-12 bg-gray-50 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-wrap gap-3 justify-center">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
-                  selectedCategory === category
-                    ? 'bg-teal-500 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+      {/* Category Filter & Search */}
+      <section className="py-12 bg-bg-primary border-y border-white/5 sticky top-[72px] z-20 backdrop-blur-xl bg-bg-primary/80">
+        <div className="container-xl mx-auto px-6">
+          <div className="flex flex-col lg:flex-row gap-8 items-center justify-between">
+            <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all whitespace-nowrap border ${
+                    selectedCategory === category
+                      ? 'bg-primary-500 border-primary-500 text-white shadow-glow-sm'
+                      : 'bg-white/5 border-white/10 text-text-muted hover:bg-white/10 hover:border-white/20'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+            
+            <div className="relative w-full lg:w-96">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-faint" />
+              <input 
+                type="text" 
+                placeholder="Search articles..." 
+                className="w-full h-12 pl-12 pr-4 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary-500 transition-colors"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Blog Grid */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="py-24 bg-bg-primary">
+        <div className="container-xl mx-auto px-6">
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredBlogs.map((blog) => (
-              <article
-                key={blog.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer"
-              >
-                <div className="w-full h-56 overflow-hidden">
-                  <img
-                    src={blog.image}
-                    alt={blog.title}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs font-medium">
-                      {blog.category}
-                    </span>
-                    <span className="text-xs text-gray-500">{blog.readTime}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">
-                    {blog.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4 line-clamp-3">
-                    {blog.excerpt}
-                  </p>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-semibold">
-                      {blog.author.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-gray-900">{blog.author}</p>
-                      <p className="text-xs text-gray-500">{blog.role}</p>
+              <FadeIn key={blog.id} direction="up">
+                <article
+                  className="glass rounded-3xl overflow-hidden border-white/5 hover:border-primary-500/30 transition-all duration-500 group flex flex-col h-full"
+                >
+                  <div className="relative w-full h-64 overflow-hidden">
+                    <img
+                      src={blog.image}
+                      alt={blog.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-4 py-1.5 bg-bg-primary/80 backdrop-blur-md text-primary-400 rounded-lg text-xs font-bold uppercase tracking-widest border border-white/10">
+                        {blog.category}
+                      </span>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                    <span className="text-sm text-gray-500">{blog.date}</span>
-                    <button className="text-teal-600 font-semibold text-sm hover:text-teal-700 flex items-center gap-1 whitespace-nowrap">
-                      Read More
-                      <i className="ri-arrow-right-line"></i>
-                    </button>
+                  
+                  <div className="p-8 flex flex-col flex-1">
+                    <div className="flex items-center gap-4 mb-4 text-xs font-mono text-text-faint uppercase tracking-widest">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-primary-500" />
+                        {blog.date}
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-primary-500" />
+                        {blog.readTime}
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-2xl font-display font-bold text-white mb-4 group-hover:text-primary-400 transition-colors leading-tight">
+                      {blog.title}
+                    </h3>
+                    
+                    <p className="text-text-muted mb-8 line-clamp-3 font-medium leading-relaxed">
+                      {blog.excerpt}
+                    </p>
+                    
+                    <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 p-[1px]">
+                          <div className="w-full h-full rounded-full bg-bg-primary flex items-center justify-center text-white font-bold text-sm">
+                            {blog.author.charAt(0)}
+                          </div>
+                        </div>
+                        <div>
+                          <p className="text-sm font-bold text-white">{blog.author}</p>
+                          <p className="text-[10px] text-text-faint font-mono uppercase tracking-widest">{blog.role}</p>
+                        </div>
+                      </div>
+                      <button className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-primary-500 transition-colors group/btn">
+                        <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </article>
+                </article>
+              </FadeIn>
             ))}
-          </div>
+          </StaggerChildren>
         </div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Never Miss an Update
-          </h2>
-          <p className="text-lg text-gray-600 mb-8">
-            Subscribe to our newsletter and get the latest insights delivered to your inbox.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-xl mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-6 py-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
-            />
-            <button className="px-8 py-4 bg-teal-500 text-white rounded-lg font-semibold hover:bg-teal-600 transition-colors whitespace-nowrap">
-              Subscribe
-            </button>
-          </div>
+      {/* Newsletter Section */}
+      <section className="py-24 bg-bg-primary border-t border-white/5">
+        <div className="container-xl mx-auto px-6">
+          <FadeIn direction="up">
+            <div className="bg-gradient-to-br from-bg-primary to-primary-900/10 rounded-[3rem] p-12 md:p-20 text-center border border-white/5 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 blur-[100px] -z-10" />
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 tracking-tight">
+                Insights Delivered.
+              </h2>
+              <p className="text-xl text-text-muted mb-10 max-w-2xl mx-auto font-medium">
+                Subscribe to receive our latest engineering breakthroughs and AI strategy direct to your inbox.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-xl mx-auto">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 h-16 px-6 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-primary-500 transition-colors"
+                />
+                <button className="h-16 px-10 bg-gradient-aurora text-white font-bold rounded-xl hover:scale-[1.02] transition-transform shadow-glow-md">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 

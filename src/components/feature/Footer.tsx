@@ -42,7 +42,7 @@ export default function Footer() {
              <div className="flex items-center group transition-transform duration-300 hover:scale-105 mb-8 cursor-pointer">
                 <img src={codebytesolLogo} alt="Codebytesol Logo" className="h-12 w-auto" />
                 <span className="ml-3 text-2xl font-display font-bold tracking-tighter text-white">
-                    Codebytesol<span className="text-primary-500">.</span>
+                    Codebytesol
                 </span>
              </div>
             

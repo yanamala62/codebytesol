@@ -1,231 +1,282 @@
 import React from 'react';
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
+import { FadeIn, StaggerChildren } from '../../components/animations/FadeIn';
+import helpHero from '../../assets/bg/download (3).jpg';
+import { 
+  Wrench, 
+  Play, 
+  TrendingUp, 
+  Rocket, 
+  Clock, 
+  Users, 
+  Brain, 
+  Layers, 
+  Search, 
+  ListChecks, 
+  PenTool, 
+  Hammer, 
+  ArrowRight 
+} from 'lucide-react';
 
 const HowWeHelpPage: React.FC = () => {
-    return (
-        <div className="min-h-screen w-full bg-slate-50 flex flex-col font-sans">
-            <Header />
+  return (
+    <div className="min-h-screen w-full bg-bg-primary text-text-primary flex flex-col">
+      <Header />
 
-            <main className="flex-1 mt-[72px]">
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative pt-48 pb-24 px-6 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img
+              src={helpHero}
+              alt="How We Help"
+              className="w-full h-full object-cover opacity-20 grayscale"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary"></div>
+          </div>
 
-                {/* ===================== SECTION 1 ===================== */}
-                <div className="flex flex-col lg:flex-row border-b border-gray-100">
+          <div className="container-xl mx-auto relative z-10 text-center">
+            <FadeIn direction="up">
+              <h1 className="text-display-xl md:text-display-2xl font-display font-bold text-white mb-8 tracking-tighter leading-none">
+                Engineering <span className="gradient-text">Value.</span>
+              </h1>
+              <p className="text-2xl text-text-muted max-w-3xl mx-auto font-medium leading-relaxed">
+                A structured, transparent approach to delivering AI-driven excellence and digital transformation for the modern enterprise.
+              </p>
+            </FadeIn>
+          </div>
+        </section>
 
-                    {/* LEFT — What We Do (65%) */}
-                    <section className="w-full lg:w-[65%] bg-white px-5 sm:px-6 py-6 border-r border-gray-100 rounded-br-xl">
-                        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 tracking-tight">
-                            What We Do
-                        </h1>
-
-                        <div className="space-y-6">
-                            {[
-                                {
-                                    title: 'Build',
-                                    items: ['App Development', 'UI / UX', 'Integration', 'Data Engineering', 'AI / ML'],
-                                },
-                                {
-                                    title: 'Run',
-                                    items: ['Testing', 'QA Automation', 'Cloud Operations', 'Monitoring', 'Process Automation'],
-                                },
-                                {
-                                    title: 'Scale',
-                                    items: ['Cloud Migration', 'BI & Analytics', 'AI Automation', 'Modernization', 'Architecture Advisory'],
-                                },
-                            ].map((section, index, arr) => (
-                                <div key={section.title} className="flex gap-4">
-
-                                    {/* LEFT — connector */}
-                                    <div className="flex flex-col items-center">
-                                        <div className="w-6 h-6 rounded-full bg-[var(--color-primary-500)]/10 flex items-center justify-center text-[var(--color-primary-500)]">
-                                            <i className="ri-arrow-right-line text-sm" />
-                                        </div>
-
-                                        {index !== arr.length - 1 && (
-                                            <div className="w-px flex-1 bg-slate-200 mt-1" />
-                                        )}
-                                    </div>
-
-                                    {/* RIGHT — content */}
-                                    <div className="flex-1">
-                                        <h2 className="text-sm sm:text-base font-semibold text-gray-700 uppercase tracking-wide mb-3">
-                                            {section.title}
-                                        </h2>
-
-                                        <div className="flex flex-wrap gap-2">
-                                            {section.items.map((item) => (
-                                                <span
-                                                    key={item}
-                                                    className="px-3 py-1.5 text-xs sm:text-sm font-medium text-gray-800 bg-slate-100 rounded-full
-                                                               hover:bg-[var(--color-primary-500)]/10 hover:text-[var(--color-primary-500)] transition-colors"
-                                                >
-                                                    {item}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-
-                    {/* RIGHT — Engagement Models (35%) */}
-                    <section className="w-full lg:w-[35%] bg-gradient-to-br from-[var(--color-primary-500)] to-[var(--color-accent-500)] px-5 sm:px-6 py-6 lg:rounded-bl-xl">
-                        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-5">
-                            Engagement Models
-                        </h2>
-
-                        <div className="space-y-4">
-                            {[
-                                {
-                                    title: 'PoC / MVP',
-                                    desc: 'Rapid prototyping (2–6 weeks) to validate business value and feasibility.',
-                                    icon: 'ri-flask-line',
-                                },
-                                {
-                                    title: 'Fixed Price / T&M',
-                                    desc: 'Flexible delivery for fixed scope or ongoing development.',
-                                    icon: 'ri-time-line',
-                                },
-                                {
-                                    title: 'Staff Augmentation',
-                                    desc: 'Instant access to specialized AI, data, and app engineers.',
-                                    icon: 'ri-group-line',
-                                },
-                            ].map((model) => (
-                                <div
-                                    key={model.title}
-                                    className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition"
+        {/* Section 1: Capabilities */}
+        <section className="py-24 bg-bg-primary border-y border-white/5">
+          <div className="container-xl mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+              
+              {/* Left — What We Do */}
+              <div className="lg:col-span-7">
+                <FadeIn direction="right">
+                  <h2 className="text-4xl font-display font-bold text-white mb-12 tracking-tight">Our Core Capabilities</h2>
+                  <div className="space-y-12">
+                    {[
+                      {
+                        title: 'Build',
+                        icon: <Wrench className="w-6 h-6 text-primary-500" />,
+                        items: ['App Development', 'UI / UX', 'Integration', 'Data Engineering', 'AI / ML'],
+                        desc: 'Developing high-performance digital products from the ground up.'
+                      },
+                      {
+                        title: 'Run',
+                        icon: <Play className="w-6 h-6 text-primary-500" />,
+                        items: ['Testing', 'QA Automation', 'Cloud Operations', 'Monitoring', 'Process Automation'],
+                        desc: 'Ensuring seamless operations and uncompromising quality.'
+                      },
+                      {
+                        title: 'Scale',
+                        icon: <TrendingUp className="w-6 h-6 text-primary-500" />,
+                        items: ['Cloud Migration', 'BI & Analytics', 'AI Automation', 'Modernization', 'Architecture Advisory'],
+                        desc: 'Expanding your reach through intelligent optimization.'
+                      },
+                    ].map((section) => (
+                      <div key={section.title} className="group">
+                        <div className="flex items-start gap-6">
+                          <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center border border-white/10 group-hover:border-primary-500/30 transition-all">
+                            {section.icon}
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-widest text-sm font-mono opacity-60">
+                              {section.title}
+                            </h3>
+                            <p className="text-text-muted mb-4 font-medium">{section.desc}</p>
+                            <div className="flex flex-wrap gap-2">
+                              {section.items.map((item) => (
+                                <span
+                                  key={item}
+                                  className="px-4 py-2 text-sm font-medium text-text-muted glass rounded-full border-white/5 hover:border-primary-500/30 hover:text-white transition-all cursor-default"
                                 >
-                                    <div className="flex items-center gap-3 mb-1">
-                                        <i className={`${model.icon} text-[var(--color-primary-500)]`} />
-                                        <h3 className="text-sm font-semibold text-gray-900">
-                                            {model.title}
-                                        </h3>
-                                    </div>
-                                    <p className="text-xs text-gray-600 leading-relaxed">
-                                        {model.desc}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-                </div>
-
-                {/* ===================== SECTION 2 ===================== */}
-                <div className="flex flex-col lg:flex-row border-b border-gray-100">
-
-                    {/* LEFT — Why ForgeByte (35%) */}
-                    <section className="w-full lg:w-[35%] bg-gradient-to-br from-[var(--color-primary-500)] to-[var(--color-accent-500)] px-5 sm:px-6 py-8 border-r border-gray-100 lg:rounded-tr-xl">
-                        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
-                            Why ForgeByte
-                        </h2>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 bg-white p-4 rounded-lg">
-                            {[
-                                { icon: 'ri-brain-line', label: 'AI-First Engineering' },
-                                { icon: 'ri-stack-line', label: 'Structured Delivery' },
-                                { icon: 'ri-rocket-line', label: 'Faster Deployment' },
-                                { icon: 'ri-shake-hands-line', label: 'Long-Term Partnership' },
-                            ].map((pillar) => (
-                                <div key={pillar.label} className="flex items-center gap-2 text-gray-900">
-                                    <i className={`${pillar.icon} text-[var(--color-primary-500)]`} />
-                                    <span className="text-sm font-semibold">
-                                        {pillar.label}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-4">
-                            {[
-                                { num: '23+', label: 'AI Engineers' },
-                                { num: '50+', label: 'Data Engineers' },
-                                { num: '30+', label: 'App Engineers' },
-                                { num: '25+', label: 'QA Specialists' },
-                                { num: '50+', label: 'Projects Delivered' },
-                                { num: '9+', label: 'Industries' },
-                            ].map((metric) => (
-                                <div key={metric.label}>
-                                    <div className="text-lg font-semibold text-white">
-                                        {metric.num}
-                                    </div>
-                                    <div className="text-[11px] text-white/80 uppercase tracking-wide">
-                                        {metric.label}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-
-                    {/* RIGHT — How We Engage (65%) */}
-                    <section className="w-full lg:w-[65%] bg-white px-5 sm:px-6 py-8 rounded-tl-xl">
-                        <div className="mb-8">
-                            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
-                                How We Engage
-                            </h2>
-                            <p className="text-sm text-gray-600">
-                                A structured, transparent approach to delivering value from day one.
-                            </p>
-                        </div>
-
-                        <div className="relative">
-                            <div className="hidden md:block absolute top-[26px] left-0 right-0 h-[2px] bg-slate-200" />
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 relative z-10">
-                                {[
-                                    {
-                                        title: 'Identify',
-                                        icon: 'ri-search-eye-line',
-                                        desc: 'Analyze workflows, pain points, and manual processes',
-                                    },
-                                    {
-                                        title: 'Assess',
-                                        icon: 'ri-file-list-3-line',
-                                        desc: 'Evaluate data readiness, integration, and ROI potential',
-                                    },
-                                    {
-                                        title: 'Define',
-                                        icon: 'ri-pencil-ruler-2-line',
-                                        desc: 'Select high-value Engineering, Automation or AI opportunity',
-                                    },
-                                    {
-                                        title: 'Build',
-                                        icon: 'ri-hammer-line',
-                                        desc: 'Develop production-grade, scalable architecture',
-                                    },
-                                    {
-                                        title: 'Deploy',
-                                        icon: 'ri-rocket-2-line',
-                                        desc: 'Deploy securely and optimize continuously',
-                                    },
-                                ].map((step) => (
-                                    <div
-                                        key={step.title}
-                                        className="flex flex-col items-center text-center max-w-[220px] mx-auto"
-                                    >
-                                        <div className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[var(--color-primary-500)] mb-2">
-                                            <i className={step.icon} />
-                                        </div>
-
-                                        <span className="text-md font-semibold mb-1">
-                                            {step.title}
-                                        </span>
-
-                                        <p className="text-sm text-gray-500 leading-relaxed">
-                                            {step.desc}
-                                        </p>
-                                    </div>
-                                ))}
+                                  {item}
+                                </span>
+                              ))}
                             </div>
+                          </div>
                         </div>
-                    </section>
-                </div>
-            </main>
+                      </div>
+                    ))}
+                  </div>
+                </FadeIn>
+              </div>
 
-            <Footer />
-        </div>
-    );
+              {/* Right — Engagement Models */}
+              <div className="lg:col-span-5">
+                <FadeIn direction="left">
+                  <div className="bg-gradient-to-br from-primary-900/20 to-accent-900/20 rounded-[2.5rem] p-10 border border-white/10 relative overflow-hidden">
+                    <h2 className="text-3xl font-display font-bold text-white mb-8">Engagement Models</h2>
+                    <div className="space-y-6">
+                      {[
+                        {
+                          title: 'PoC / MVP',
+                          desc: 'Rapid prototyping (2–6 weeks) to validate business value and feasibility.',
+                          icon: <Rocket className="w-5 h-5 text-primary-400" />,
+                        },
+                        {
+                          title: 'Fixed Price / T&M',
+                          desc: 'Flexible delivery for fixed scope or ongoing development.',
+                          icon: <Clock className="w-5 h-5 text-primary-400" />,
+                        },
+                        {
+                          title: 'Staff Augmentation',
+                          desc: 'Instant access to specialized AI, data, and app engineers.',
+                          icon: <Users className="w-5 h-5 text-primary-400" />,
+                        },
+                      ].map((model) => (
+                        <div
+                          key={model.title}
+                          className="glass p-6 rounded-2xl border-white/5 hover:border-white/10 transition-all group"
+                        >
+                          <div className="flex items-center gap-4 mb-3">
+                            <div className="p-2 rounded-lg bg-white/5 group-hover:bg-primary-500/20 transition-colors">
+                              {model.icon}
+                            </div>
+                            <h3 className="text-lg font-bold text-white">
+                              {model.title}
+                            </h3>
+                          </div>
+                          <p className="text-text-muted leading-relaxed font-medium">
+                            {model.desc}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </FadeIn>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 2: Why Codebytesol */}
+        <section className="py-24 bg-bg-primary relative overflow-hidden">
+          <div className="container-xl mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+              
+              {/* Left — Why Codebytesol */}
+              <div className="lg:col-span-5 order-2 lg:order-1">
+                <FadeIn direction="right">
+                  <div className="bg-gradient-to-br from-accent-900/20 to-primary-900/20 rounded-[2.5rem] p-10 border border-white/10">
+                    <h2 className="text-4xl font-display font-bold text-white mb-8 tracking-tight">
+                      Why Codebytesol
+                    </h2>
+                    
+                    <div className="grid grid-cols-1 gap-4 mb-10">
+                      {[
+                        { icon: <Brain className="w-5 h-5 text-primary-400" />, label: 'AI-First Engineering' },
+                        { icon: <Layers className="w-5 h-5 text-primary-400" />, label: 'Structured Delivery' },
+                        { icon: <Rocket className="w-5 h-5 text-primary-400" />, label: 'Faster Deployment' },
+                        { icon: <Users className="w-5 h-5 text-primary-400" />, label: 'Long-Term Partnership' },
+                      ].map((pillar) => (
+                        <div key={pillar.label} className="flex items-center gap-4 glass p-4 rounded-xl border-white/5">
+                          {pillar.icon}
+                          <span className="text-white font-bold tracking-tight">
+                            {pillar.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
+                      {[
+                        { num: '23+', label: 'AI Engineers' },
+                        { num: '50+', label: 'Data Engineers' },
+                        { num: '50+', label: 'Projects Delivered' },
+                        { num: '9+', label: 'Industries' },
+                      ].map((metric) => (
+                        <div key={metric.label}>
+                          <div className="text-3xl font-display font-bold text-white mb-1">
+                            {metric.num}
+                          </div>
+                          <div className="text-xs font-mono text-text-faint uppercase tracking-widest">
+                            {metric.label}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </FadeIn>
+              </div>
+
+              {/* Right — How We Engage */}
+              <div className="lg:col-span-7 order-1 lg:order-2">
+                <FadeIn direction="left">
+                  <div className="mb-12">
+                    <h2 className="text-4xl font-display font-bold text-white mb-4 tracking-tight">
+                      How We Engage
+                    </h2>
+                    <p className="text-xl text-text-muted max-w-2xl font-medium">
+                      A structured, transparent approach to delivering value from day one.
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    {[
+                      {
+                        title: 'Identify',
+                        icon: <Search className="w-6 h-6" />,
+                        desc: 'Analyze workflows, pain points, and manual processes',
+                      },
+                      {
+                        title: 'Assess',
+                        icon: <ListChecks className="w-6 h-6" />,
+                        desc: 'Evaluate data readiness, integration, and ROI potential',
+                      },
+                      {
+                        title: 'Define',
+                        icon: <PenTool className="w-6 h-6" />,
+                        desc: 'Select high-value Engineering, Automation or AI opportunity',
+                      },
+                      {
+                        title: 'Build',
+                        icon: <Hammer className="w-6 h-6" />,
+                        desc: 'Develop production-grade, scalable architecture',
+                      },
+                      {
+                        title: 'Deploy',
+                        icon: <Rocket className="w-6 h-6" />,
+                        desc: 'Deploy securely and optimize continuously',
+                      },
+                    ].map((step, idx) => (
+                      <div
+                        key={step.title}
+                        className="flex items-center gap-6 glass p-6 rounded-2xl border-white/5 relative group"
+                      >
+                        <div className="absolute left-12 top-full h-4 w-px bg-white/10 last:hidden" />
+                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-primary-500 group-hover:bg-primary-500/10 transition-colors">
+                          {step.icon}
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-3 mb-1">
+                            <span className="text-xs font-mono text-primary-500 font-bold">0{idx + 1}</span>
+                            <h3 className="text-xl font-bold text-white tracking-tight">
+                              {step.title}
+                            </h3>
+                          </div>
+                          <p className="text-text-muted font-medium">
+                            {step.desc}
+                          </p>
+                        </div>
+                        <ArrowRight className="w-5 h-5 ml-auto text-text-faint opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </div>
+                    ))}
+                  </div>
+                </FadeIn>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  );
 };
 
 export default HowWeHelpPage;

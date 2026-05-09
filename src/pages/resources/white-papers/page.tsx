@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
+import { FadeIn, StaggerChildren } from '../../../components/animations/FadeIn';
+import wpHero from '../../../assets/bg/download (2).jpg';
+import { FileText, Download, CheckCircle2, Mail, ChevronDown, ChevronUp, Clock, BookOpen } from 'lucide-react';
 
 const whitePapers = [
   {
@@ -123,117 +126,137 @@ export default function WhitePapersPage() {
   const [selectedPaper, setSelectedPaper] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-bg-primary text-text-primary">
       <Header />
       
-      {/* Hero Section with Background Image */}
-      <section className="relative pt-32 pb-24 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 w-full h-full">
+      {/* Hero Section */}
+      <section className="relative pt-48 pb-24 px-6 overflow-hidden">
+        <div className="absolute inset-0 z-0">
           <img
-            src="/images/whitepapers-hero-research-v1-789--fda9debe575a.jpg"
+            src={wpHero}
             alt="White Papers Hero"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover opacity-20 grayscale"
           />
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary"></div>
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Research & <span className="bg-gradient-to-r from-[var(--color-primary-500)] to-[var(--color-accent-500)] bg-clip-text text-transparent">White Papers</span>
-          </h1>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-            In-depth research, technical insights, and comprehensive guides on AI, cloud computing, and digital transformation
-          </p>
+        <div className="container-xl mx-auto relative z-10 text-center">
+          <FadeIn direction="up">
+            <h1 className="text-display-xl md:text-display-2xl font-display font-bold text-white mb-8 tracking-tighter leading-none">
+              Technical <span className="gradient-text">Research.</span>
+            </h1>
+            <p className="text-2xl text-text-muted max-w-3xl mx-auto font-medium leading-relaxed">
+              In-depth analysis, strategic frameworks, and comprehensive guides on AI, cloud computing, and digital transformation.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
       {/* White Papers Grid */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="py-24 bg-bg-primary">
+        <div className="container-xl mx-auto px-6">
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {whitePapers.map((paper) => (
-              <div
-                key={paper.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
-              >
-                <div className="w-full h-64 overflow-hidden bg-gray-100">
-                  <img
-                    src={paper.image}
-                    alt={paper.title}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs font-medium">
-                      {paper.category}
-                    </span>
-                    <span className="text-xs text-gray-500">{paper.pages} pages</span>
+              <FadeIn key={paper.id} direction="up">
+                <div
+                  className="glass rounded-3xl overflow-hidden border-white/5 hover:border-primary-500/30 transition-all duration-500 group flex flex-col h-full"
+                >
+                  <div className="relative w-full h-64 overflow-hidden">
+                    <img
+                      src={paper.image}
+                      alt={paper.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-4 py-1.5 bg-bg-primary/80 backdrop-blur-md text-primary-400 rounded-lg text-xs font-bold uppercase tracking-widest border border-white/10">
+                        {paper.category}
+                      </span>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {paper.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-4 italic">
-                    {paper.subtitle}
-                  </p>
-                  <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                    {paper.description}
-                  </p>
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                    <span className="text-xs text-gray-500">{paper.publishDate}</span>
-                    <button
-                      onClick={() => setSelectedPaper(selectedPaper === paper.id ? null : paper.id)}
-                      className="text-teal-600 font-semibold text-sm hover:text-teal-700 flex items-center gap-1 whitespace-nowrap cursor-pointer"
-                    >
-                      {selectedPaper === paper.id ? 'Hide Details' : 'View Details'}
-                      <i className={`ri-arrow-${selectedPaper === paper.id ? 'up' : 'down'}-line`}></i>
-                    </button>
-                  </div>
-                </div>
+                  
+                  <div className="p-8 flex flex-col flex-1">
+                    <div className="flex items-center gap-4 mb-4 text-xs font-mono text-text-faint uppercase tracking-widest">
+                      <div className="flex items-center gap-2">
+                        <BookOpen className="w-4 h-4 text-primary-500" />
+                        {paper.pages} Pages
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-primary-500" />
+                        {paper.publishDate}
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-2xl font-display font-bold text-white mb-2 tracking-tight group-hover:text-primary-400 transition-colors">
+                      {paper.title}
+                    </h3>
+                    <p className="text-sm text-primary-500/80 font-bold mb-4 uppercase tracking-wider">
+                      {paper.subtitle}
+                    </p>
+                    <p className="text-text-muted mb-8 line-clamp-3 font-medium leading-relaxed">
+                      {paper.description}
+                    </p>
+                    
+                    <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between">
+                      <span className="text-xs font-mono text-text-faint uppercase tracking-widest">{paper.downloadSize} PDF</span>
+                      <button
+                        onClick={() => setSelectedPaper(selectedPaper === paper.id ? null : paper.id)}
+                        className="text-white font-bold text-sm hover:text-primary-400 flex items-center gap-2 transition-colors"
+                      >
+                        {selectedPaper === paper.id ? 'Hide Details' : 'View Details'}
+                        {selectedPaper === paper.id ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      </button>
+                    </div>
 
-                {/* Expanded Details */}
-                {selectedPaper === paper.id && (
-                  <div className="px-6 pb-6 border-t border-gray-100 pt-6">
-                    <h4 className="font-bold text-gray-900 mb-3">Key Topics Covered:</h4>
-                    <ul className="space-y-2 mb-6">
-                      {paper.keyTopics.map((topic, index) => (
-                        <li key={index} className="flex items-start gap-2 text-sm text-gray-700">
-                          <i className="ri-checkbox-circle-fill text-teal-500 flex-shrink-0 mt-0.5"></i>
-                          <span>{topic}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <button className="w-full px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-lg font-semibold hover:from-teal-600 hover:to-cyan-600 transition-all flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer">
-                      <i className="ri-download-line text-lg"></i>
-                      Download ({paper.downloadSize})
-                    </button>
+                    {/* Expanded Details */}
+                    {selectedPaper === paper.id && (
+                      <div className="mt-8 pt-8 border-t border-white/5 animate-in fade-in slide-in-from-top-4 duration-300">
+                        <h4 className="font-bold text-white mb-4 flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-primary-500" />
+                          Key Topics Covered:
+                        </h4>
+                        <ul className="space-y-3 mb-8">
+                          {paper.keyTopics.map((topic, index) => (
+                            <li key={index} className="flex items-start gap-3 text-sm text-text-muted font-medium">
+                              <div className="w-1.5 h-1.5 rounded-full bg-primary-500 mt-1.5 flex-shrink-0" />
+                              <span>{topic}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <button className="w-full h-14 bg-gradient-aurora text-white rounded-xl font-bold flex items-center justify-center gap-3 hover:scale-[1.02] transition-transform shadow-glow-sm">
+                          <Download className="w-5 h-5" />
+                          Download Resource
+                        </button>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
+                </div>
+              </FadeIn>
             ))}
-          </div>
+          </StaggerChildren>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Need Custom Research?
-          </h2>
-          <p className="text-lg text-gray-600 mb-8">
-            Our research team can develop custom white papers and technical reports tailored to your specific industry and challenges.
-          </p>
-          <a
-            href="mailto:info@forgebyte.ai"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-teal-500 text-white rounded-lg font-semibold hover:bg-teal-600 transition-colors whitespace-nowrap cursor-pointer"
-          >
-            <i className="ri-mail-line text-xl"></i>
-            Request Custom Research
-          </a>
+      <section className="py-24 bg-bg-primary border-t border-white/5">
+        <div className="container-xl mx-auto px-6">
+          <FadeIn direction="up">
+            <div className="bg-gradient-to-br from-bg-primary to-accent-900/10 rounded-[3rem] p-12 md:p-20 text-center border border-white/5 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-accent-500/5 blur-[100px] -z-10" />
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 tracking-tight">
+                Need Custom Research?
+              </h2>
+              <p className="text-xl text-text-muted mb-10 max-w-2xl mx-auto font-medium">
+                Our research team can develop custom technical reports and industry frameworks tailored to your specific enterprise challenges.
+              </p>
+              <a
+                href="mailto:Assist@codebytesol.ai"
+                className="inline-flex items-center gap-4 px-10 py-5 bg-gradient-aurora text-white rounded-xl font-bold text-lg hover:scale-[1.02] transition-transform shadow-glow-md"
+              >
+                <Mail className="w-6 h-6" />
+                Request Custom Strategy
+              </a>
+            </div>
+          </FadeIn>
         </div>
       </section>
 

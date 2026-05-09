@@ -116,6 +116,21 @@ export default function DynamicContentPage({ pageId }: DynamicContentPageProps) 
                  </StaggerChildren>
               </div>
            </div>
+
+           {/* Performance Stats */}
+           <div className="mt-32 pt-20 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+              {[
+                { label: 'System Uptime', val: '99.99%' },
+                { label: 'Security Grade', val: 'AAA' },
+                { label: 'Global Regions', val: '30+' },
+                { label: 'Daily Visitors', val: '1000+' }
+              ].map((stat, i) => (
+                <FadeIn key={i} direction="up" delay={0.4 + i * 0.1}>
+                   <p className="text-[10px] font-mono text-text-faint uppercase tracking-[0.3em] mb-3 font-bold">{stat.label}</p>
+                   <p className="text-4xl font-display font-bold text-white">{stat.val}</p>
+                </FadeIn>
+              ))}
+           </div>
         </div>
       </section>
 
