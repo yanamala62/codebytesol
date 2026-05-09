@@ -21,7 +21,7 @@ export default function MobileAccordion({
     <div>
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between text-base font-medium text-gray-700 hover:text-[#00C896] transition-colors duration-300 cursor-pointer py-2"
+        className="w-full flex items-center justify-between text-base font-medium text-gray-700 hover:text-[var(--color-primary-500)] transition-colors duration-300 cursor-pointer py-2"
       >
         {label}
         <i className={`ri-arrow-down-s-line transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
@@ -34,7 +34,7 @@ export default function MobileAccordion({
               key={index}
               to={item.link}
               onClick={onClose}
-              className="flex items-center gap-3 py-2 text-sm text-gray-600 hover:text-[#00C896] transition-colors duration-300 cursor-pointer"
+              className="flex items-center gap-3 py-2 text-sm text-gray-600 hover:text-[var(--color-primary-500)] transition-colors duration-300 cursor-pointer"
             >
               <i className={`${item.icon} text-lg`} />
               <span>{item.title}</span>

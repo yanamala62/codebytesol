@@ -142,7 +142,7 @@ export default function WhitePapersPage() {
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Research & <span className="bg-gradient-to-r from-[#00C896] to-[#00D9FF] bg-clip-text text-transparent">White Papers</span>
+            Research & <span className="bg-gradient-to-r from-[var(--color-primary-500)] to-[var(--color-accent-500)] bg-clip-text text-transparent">White Papers</span>
           </h1>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto">
             In-depth research, technical insights, and comprehensive guides on AI, cloud computing, and digital transformation

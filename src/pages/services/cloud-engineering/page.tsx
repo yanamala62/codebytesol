@@ -69,7 +69,7 @@ export default function CloudEngineering() {
 
 
   const getCardClasses = () => {
-    return 'bg-white border border-gray-200 rounded-xl p-8 hover:border-[#00C896] hover:shadow-lg transition-all duration-500 transform opacity-100 translate-x-0 scale-100 flex flex-col h-full';
+    return 'bg-white border border-gray-200 rounded-xl p-8 hover:border-[var(--color-primary-500)] hover:shadow-lg transition-all duration-500 transform opacity-100 translate-x-0 scale-100 flex flex-col h-full';
   };
 
 
@@ -95,14 +95,14 @@ export default function CloudEngineering() {
               <span className="text-sm font-medium text-white">Cloud Engineering</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Architect Cloud Solutions That <span className="bg-gradient-to-r from-[#00C896] to-[#00D9FF] bg-clip-text text-transparent">Scale & Secure</span>
+              Architect Cloud Solutions That <span className="bg-gradient-to-r from-[var(--color-primary-500)] to-[var(--color-accent-500)] bg-clip-text text-transparent">Scale & Secure</span>
             </h1>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
               Design, build, and optimize cloud infrastructure that powers your digital transformation with reliability and efficiency.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#00C896] text-white rounded-lg font-medium hover:bg-[#00B085] transition-colors duration-300 whitespace-nowrap cursor-pointer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[var(--color-primary-500)] text-white rounded-lg font-medium hover:bg-[#00B085] transition-colors duration-300 whitespace-nowrap cursor-pointer"
             >
               Explore Cloud Solutions
               <i className="ri-arrow-right-line"></i>
@@ -116,7 +116,7 @@ export default function CloudEngineering() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="text-center mb-6">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Our <span className="bg-gradient-to-r from-[#00C896] to-[#00D9FF] bg-clip-text text-transparent">Cloud Services</span>
+              Our <span className="bg-gradient-to-r from-[var(--color-primary-500)] to-[var(--color-accent-500)] bg-clip-text text-transparent">Cloud Services</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Comprehensive cloud engineering solutions for modern enterprises
@@ -130,8 +130,8 @@ export default function CloudEngineering() {
                 className={getCardClasses()}
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[#00C896]/10 to-[#00D9FF]/10 rounded-lg flex-shrink-0">
-                    <i className={`${service.icon} text-xl text-[#00C896]`}></i>
+                  <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[var(--color-primary-500)]/10 to-[var(--color-accent-500)]/10 rounded-lg flex-shrink-0">
+                    <i className={`${service.icon} text-xl text-[var(--color-primary-500)]`}></i>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 leading-tight">
                     {service.title}
@@ -140,7 +140,7 @@ export default function CloudEngineering() {
                 <ul className="text-gray-600 space-y-3 flex-grow">
                   {service.points.map((point, idx) => (
                     <li key={idx} className="flex gap-2">
-                      <span className="text-[#00C896] mt-1.5">•</span>
+                      <span className="text-[var(--color-primary-500)] mt-1.5">•</span>
                       <span className="leading-relaxed">{point}</span>
                     </li>
                   ))}
@@ -156,7 +156,7 @@ export default function CloudEngineering() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Enterprise Ready <span className="bg-gradient-to-r from-[#00C896] to-[#00D9FF] bg-clip-text text-transparent">Cloud Services</span>
+              Enterprise Ready <span className="bg-gradient-to-r from-[var(--color-primary-500)] to-[var(--color-accent-500)] bg-clip-text text-transparent">Cloud Services</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-4xl mx-auto">
               ForgeByte follows a tool-agnostic, AI-infused cloud approach, powered by our proprietary FB Cloud Framework, enabling secure planning, cost governance, modernization, and resilient cloud operations across multi-cloud environments.
@@ -167,7 +167,7 @@ export default function CloudEngineering() {
             {cloudFrameworks.map((framework, index) => (
               <div
                 key={index}
-                className="bg-white border border-gray-200 rounded-xl p-8 hover:border-[#00C896] hover:shadow-lg transition-all duration-300"
+                className="bg-white border border-gray-200 rounded-xl p-8 hover:border-[var(--color-primary-500)] hover:shadow-lg transition-all duration-300"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-6 border-b border-gray-100 pb-4">
                   {framework.category}
@@ -189,7 +189,7 @@ export default function CloudEngineering() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-[#00C896] to-[#00D9FF]">
+      <section className="py-16 bg-gradient-to-br from-[var(--color-primary-500)] to-[var(--color-accent-500)]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
             Ready to Modernize Your Infrastructure?
@@ -199,7 +199,7 @@ export default function CloudEngineering() {
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#00C896] rounded-lg font-medium hover:bg-gray-50 transition-colors duration-300 whitespace-nowrap cursor-pointer"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[var(--color-primary-500)] rounded-lg font-medium hover:bg-gray-50 transition-colors duration-300 whitespace-nowrap cursor-pointer"
           >
             Start Your Cloud Journey
             <i className="ri-arrow-right-line"></i>

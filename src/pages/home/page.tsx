@@ -10,7 +10,7 @@ import CTASection from './components/CTASection';
 
 export default function HomePage() {
   return (
-    <div className="w-full min-h-screen flex flex-col bg-white">
+    <div className="w-full min-h-screen flex flex-col bg-bg-primary">
       <Header />
       <main className="flex-1 w-full">
         <Hero />

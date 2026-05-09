@@ -37,7 +37,7 @@ const HowWeHelpPage: React.FC = () => {
 
                                     {/* LEFT — connector */}
                                     <div className="flex flex-col items-center">
-                                        <div className="w-6 h-6 rounded-full bg-[#00C896]/10 flex items-center justify-center text-[#00C896]">
+                                        <div className="w-6 h-6 rounded-full bg-[var(--color-primary-500)]/10 flex items-center justify-center text-[var(--color-primary-500)]">
                                             <i className="ri-arrow-right-line text-sm" />
                                         </div>
 
@@ -57,7 +57,7 @@ const HowWeHelpPage: React.FC = () => {
                                                 <span
                                                     key={item}
                                                     className="px-3 py-1.5 text-xs sm:text-sm font-medium text-gray-800 bg-slate-100 rounded-full
-                                                               hover:bg-[#00C896]/10 hover:text-[#00C896] transition-colors"
+                                                               hover:bg-[var(--color-primary-500)]/10 hover:text-[var(--color-primary-500)] transition-colors"
                                                 >
                                                     {item}
                                                 </span>
@@ -70,7 +70,7 @@ const HowWeHelpPage: React.FC = () => {
                     </section>
 
                     {/* RIGHT — Engagement Models (35%) */}
-                    <section className="w-full lg:w-[35%] bg-gradient-to-br from-[#00C896] to-[#00D9FF] px-5 sm:px-6 py-6 lg:rounded-bl-xl">
+                    <section className="w-full lg:w-[35%] bg-gradient-to-br from-[var(--color-primary-500)] to-[var(--color-accent-500)] px-5 sm:px-6 py-6 lg:rounded-bl-xl">
                         <h2 className="text-2xl sm:text-3xl font-bold text-white mb-5">
                             Engagement Models
                         </h2>
@@ -98,7 +98,7 @@ const HowWeHelpPage: React.FC = () => {
                                     className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition"
                                 >
                                     <div className="flex items-center gap-3 mb-1">
-                                        <i className={`${model.icon} text-[#00C896]`} />
+                                        <i className={`${model.icon} text-[var(--color-primary-500)]`} />
                                         <h3 className="text-sm font-semibold text-gray-900">
                                             {model.title}
                                         </h3>
@@ -116,7 +116,7 @@ const HowWeHelpPage: React.FC = () => {
                 <div className="flex flex-col lg:flex-row border-b border-gray-100">
 
                     {/* LEFT — Why ForgeByte (35%) */}
-                    <section className="w-full lg:w-[35%] bg-gradient-to-br from-[#00C896] to-[#00D9FF] px-5 sm:px-6 py-8 border-r border-gray-100 lg:rounded-tr-xl">
+                    <section className="w-full lg:w-[35%] bg-gradient-to-br from-[var(--color-primary-500)] to-[var(--color-accent-500)] px-5 sm:px-6 py-8 border-r border-gray-100 lg:rounded-tr-xl">
                         <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
                             Why ForgeByte
                         </h2>
@@ -129,7 +129,7 @@ const HowWeHelpPage: React.FC = () => {
                                 { icon: 'ri-shake-hands-line', label: 'Long-Term Partnership' },
                             ].map((pillar) => (
                                 <div key={pillar.label} className="flex items-center gap-2 text-gray-900">
-                                    <i className={`${pillar.icon} text-[#00C896]`} />
+                                    <i className={`${pillar.icon} text-[var(--color-primary-500)]`} />
                                     <span className="text-sm font-semibold">
                                         {pillar.label}
                                     </span>
@@ -204,7 +204,7 @@ const HowWeHelpPage: React.FC = () => {
                                         key={step.title}
                                         className="flex flex-col items-center text-center max-w-[220px] mx-auto"
                                     >
-                                        <div className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[#00C896] mb-2">
+                                        <div className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[var(--color-primary-500)] mb-2">
                                             <i className={step.icon} />
                                         </div>
 

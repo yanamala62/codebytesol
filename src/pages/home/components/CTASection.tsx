@@ -1,34 +1,47 @@
-import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../../store/hooks';
+import { MagneticButton } from '../../../components/primitives/Button';
+import { FadeIn } from '../../../components/animations/FadeIn';
+import { ArrowRight } from 'lucide-react';
+import ctaBg from '../../../assets/bg/download (4).jpg';
 
 export default function CTASection() {
   const cta = useAppSelector((s) => s.content.data?.cta);
 
   return (
-    <section id="contact" className="w-full py-16 bg-gradient-to-br from-[#00C896] to-[#00D9FF] relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+    <section id="contact" className="w-full py-32 bg-bg-primary relative overflow-hidden border-t border-white/5">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+         <img src={ctaBg} className="w-full h-full object-cover opacity-10" alt="Background" />
+         <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/80 to-bg-primary" />
       </div>
-      <div className="relative z-10 w-full px-6 lg:px-16 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+
+      <div className="relative z-10 container-xl mx-auto px-6 text-center">
+        <FadeIn direction="up">
+          <h2 className="text-display-xl font-display font-bold text-white mb-8 leading-tight max-w-4xl mx-auto tracking-tighter">
             {cta?.title ?? "Ready to Build What's Next?"}
           </h2>
-          <p className="text-xl text-white/90 mb-10 leading-relaxed">
-            {cta?.description ?? 'Empower your business with next-generation engineering and AI-driven transformation.'}
+          <p className="text-xl text-text-muted mb-16 max-w-2xl mx-auto leading-relaxed font-medium">
+            Join 200+ global enterprises transforming their operations with our elite AI and software engineering services.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to={cta?.primaryButton.href ?? '/contact'}
-              className="px-8 py-4 bg-white text-[#00C896] rounded-lg hover:shadow-xl transition-all duration-200 text-base font-semibold whitespace-nowrap">
-              {cta?.primaryButton.label ?? 'Get in Touch'}
-            </Link>
-            <Link to={cta?.secondaryButton.href ?? '/resources'}
-              className="px-8 py-4 border-2 border-white text-white rounded-lg hover:bg-white/10 transition-all duration-200 text-base font-semibold whitespace-nowrap">
-              {cta?.secondaryButton.label ?? 'Explore Resources'}
-            </Link>
+          
+          <div className="flex justify-center">
+            <MagneticButton 
+              variant="primary" 
+              size="lg" 
+              className="h-20 px-16 text-xl"
+              onClick={() => window.location.href = '/contact'}
+            >
+              <div className="flex items-center gap-4">
+                Consult with our Experts
+                <ArrowRight className="w-6 h-6" />
+              </div>
+            </MagneticButton>
           </div>
-        </div>
+        </FadeIn>
       </div>
+      
+      {/* Decorative lines */}
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" />
     </section>
   );
 }

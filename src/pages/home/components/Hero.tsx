@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../../store/hooks';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { FadeIn, StaggerChildren } from '../../../components/animations/FadeIn';
+import heroBg from '../../../assets/bg/download.jpg';
 
 export default function Hero() {
   const [currentPhrase, setCurrentPhrase] = useState(0);
   const hero = useAppSelector((s) => s.content.data?.hero);
+  const { scrollY } = useScroll();
+  
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const scale = useTransform(scrollY, [0, 300], [1, 0.8]);
 
   const phrases = hero?.phrases ?? ['AI-driven Digital Experiences', 'Scalable Engineering', 'Data-Led Decision Making'];
 
@@ -14,55 +21,80 @@ export default function Hero() {
   }, [phrases.length]);
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-[72px]">
-      {/* Video background */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
-        <video autoPlay muted loop playsInline className="absolute pointer-events-none w-full h-full object-cover">
-          <source src="/assets/hero-background-animation.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-white/80" />
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-bg-primary">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img src={heroBg} className="w-full h-full object-cover opacity-30" alt="Background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full px-6 lg:px-16 py-20 text-center">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-12 leading-tight">
-            <span className="text-black">{hero?.title ?? 'Innovation Meets'}</span>
-            <br />
-            <span className="bg-gradient-to-r from-[#00C896] to-[#00D9FF] bg-clip-text text-transparent">
-              {hero?.highlight ?? 'Intelligence'}
-            </span>
-          </h1>
-
-          <div className="text-[21px] md:text-[25px] lg:text-[31px] text-black mb-12 font-light leading-relaxed flex flex-col md:flex-row items-center justify-center">
-            <span className="font-bold">Transforming enterprises with&nbsp;</span>
-            <div className="relative inline-flex items-baseline mt-2 md:mt-0 justify-center">
-              <span className="invisible whitespace-nowrap">{phrases[0]}</span>
-              {phrases.map((phrase, i) => (
-                <span
-                  key={i}
-                  className={`absolute top-0 left-0 right-0 text-center md:text-left whitespace-nowrap transition-all duration-700 ease-in-out bg-gradient-to-r from-[#00C896] to-[#00D9FF] bg-clip-text text-transparent font-semibold ${
-                    i === currentPhrase ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
-                  }`}
-                >
-                  {phrase}
-                </span>
-              ))}
+      <motion.div 
+        style={{ y: y1, opacity, scale }}
+        className="relative z-10 w-full px-6 container-2xl mx-auto text-center pt-20"
+      >
+        <StaggerChildren>
+          {/* Eyebrow */}
+          <FadeIn direction="up">
+            <div className="flex items-center justify-center gap-2 mb-8">
+              <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
+              <span className="text-sm font-mono uppercase tracking-[0.3em] text-primary-300">
+                Official Corporate Presence
+              </span>
             </div>
-          </div>
+          </FadeIn>
 
-          <p className="text-base md:text-lg text-black mb-12 max-w-4xl mx-auto leading-relaxed">
-            {hero?.description ?? ''}
-          </p>
+          {/* Headline */}
+          <FadeIn direction="up" delay={0.2}>
+            <h1 className="text-display-xl md:text-display-2xl font-display font-bold leading-[0.9] mb-8 tracking-tighter text-white">
+              Innovation Meets <br />
+              <span className="gradient-text">Intelligence</span>
+            </h1>
+          </FadeIn>
 
-          <Link
-            to={hero?.cta.href ?? '/contact'}
-            className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#00C896] to-[#00D9FF] text-white rounded-lg hover:shadow-xl hover:shadow-[#00C896]/40 transition-all duration-200 text-base font-semibold"
-          >
-            {hero?.cta.label ?? 'Start Your Digital Transformation'}
-          </Link>
+          {/* Rotating Phrases */}
+          <FadeIn direction="up" delay={0.4}>
+            <div className="h-12 relative flex items-center justify-center mb-8 overflow-hidden">
+               <AnimatePresence mode="wait">
+                  <motion.p
+                    key={currentPhrase}
+                    initial={{ y: 40, opacity: 0, rotateX: -90 }}
+                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                    exit={{ y: -40, opacity: 0, rotateX: 90 }}
+                    transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+                    className="text-2xl md:text-4xl font-light text-text-muted absolute"
+                  >
+                    Engineered for <span className="text-white font-medium">{phrases[currentPhrase]}</span>
+                  </motion.p>
+               </AnimatePresence>
+            </div>
+          </FadeIn>
+
+          {/* Description */}
+          <FadeIn direction="up" delay={0.6}>
+            <p className="text-xl text-text-muted mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
+              {hero?.description ?? ''}
+            </p>
+          </FadeIn>
+        </StaggerChildren>
+      </motion.div>
+
+      {/* Scroll Indicator */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      >
+        <span className="text-[10px] font-mono uppercase tracking-widest text-text-faint">Discover Services</span>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-primary-500 to-transparent relative overflow-hidden">
+          <motion.div 
+            animate={{ y: [0, 48] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-full h-1/2 bg-white absolute top-0"
+          />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

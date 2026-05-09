@@ -7,7 +7,7 @@
       "Scalable Engineering",
       "Data-Led Decision Making"
     ],
-    "description": "Accelerate transformation with Bytecode-AI—AI solutions engineered for Smarter Work, Adaptive Process, and Optimized Digital Operations. Bytecode-AI is where pure ideas evolve into intelligent digital experiences, crafted with discipline, precision, and the power of modern engineering.",
+    "description": "Accelerate transformation with Codebytesol—AI solutions engineered for Smarter Work, Adaptive Process, and Optimized Digital Operations. Codebytesol is where pure ideas evolve into intelligent digital experiences, crafted with discipline, precision, and the power of modern engineering.",
     "cta": { "label": "Start Your Digital Transformation", "href": "/contact" }
   },
   "services": [
@@ -128,8 +128,8 @@
   ],
   "socialLinks": [
     { "name": "LinkedIn", "icon": "ri-linkedin-fill", "url": "https://www.linkedin.com/company/bytecode-ai/posts/?feedView=all" },
-    { "name": "YouTube", "icon": "ri-youtube-fill", "url": "https://www.youtube.com/@Bytecode-AISoftwareService" },
-    { "name": "X", "icon": "ri-twitter-x-fill", "url": "https://x.com/Bytecode-AI_TP" },
+    { "name": "YouTube", "icon": "ri-youtube-fill", "url": "https://www.youtube.com/@CodebytesolSoftwareService" },
+    { "name": "X", "icon": "ri-twitter-x-fill", "url": "https://x.com/Codebytesol_TP" },
     { "name": "Instagram", "icon": "ri-instagram-fill", "url": "#" }
   ],
   "locations": [

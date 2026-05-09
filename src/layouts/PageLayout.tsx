@@ -12,11 +12,11 @@ interface PageLayoutProps {
  * Used by every non-home page.
  */
 export default function PageLayout({ children, title }: PageLayoutProps) {
-  if (title) document.title = `${title} | Bytecode-AI`;
+  if (title) document.title = `${title} | Codebytesol`;
   return (
-    <div className="w-full min-h-screen flex flex-col bg-white">
+    <div className="w-full min-h-screen flex flex-col bg-bg-primary text-text-primary">
       <Header />
-      <main className="flex-1 w-full pt-[72px]">{children}</main>
+      <main className="flex-1 w-full pt-[80px]">{children}</main>
       <Footer />
     </div>
   );

@@ -1,68 +1,41 @@
-import { useEffect, useRef } from 'react';
 import { useAppSelector } from '../../../store/hooks';
-
-interface ScrollTrackProps {
-  images: string[];
-  direction: 'ltr' | 'rtl';
-}
-
-function ScrollTrack({ images, direction }: ScrollTrackProps) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = ref.current;
-    if (!container) return;
-    let pos = direction === 'rtl' ? container.scrollWidth / 2 : 0;
-    container.scrollLeft = pos;
-    let frameId: number;
-    const animate = () => {
-      if (!container) return;
-      if (direction === 'rtl') {
-        pos -= 0.5;
-        if (pos <= 0) pos = container.scrollWidth / 2;
-      } else {
-        pos += 0.5;
-        if (pos >= container.scrollWidth / 2) pos = 0;
-      }
-      container.scrollLeft = pos;
-      frameId = requestAnimationFrame(animate);
-    };
-    frameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frameId);
-  }, [direction]);
-
-  const doubled = [...images, ...images];
-
-  return (
-    <div className="relative overflow-hidden">
-      <div ref={ref} className="flex items-center gap-6 overflow-hidden whitespace-nowrap" style={{ scrollBehavior: 'auto' }}>
-        {doubled.map((file, i) => (
-          <div key={i} className="flex-shrink-0 px-2">
-            <img src={encodeURI(`/assets/${file}`)} alt={`Partner ${i}`}
-              className="h-14 md:h-16 lg:h-20 w-28 md:w-32 lg:w-36 object-contain mix-blend-multiply" />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+import { FadeIn } from '../../../components/animations/FadeIn';
 
 export default function Trust() {
   const trustImages = useAppSelector((s) => s.content.data?.trustImages ?? []);
-  const mid = Math.ceil(trustImages.length / 2);
-
+  
+  // Display logos in an official-looking grid rather than a marquee for better corporate feel
   return (
-    <section className="w-full py-20 bg-gray-50">
-      <div className="w-full px-6 lg:px-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-            Trusted by{' '}
-            <span className="bg-gradient-to-r from-[#00C896] to-[#00D9FF] bg-clip-text text-transparent">Industry Leaders</span>
-          </h2>
-        </div>
-        <div className="space-y-8">
-          <ScrollTrack images={trustImages.slice(0, mid)} direction="rtl" />
-          <ScrollTrack images={trustImages.slice(mid)}    direction="ltr" />
+    <section className="w-full py-32 bg-bg-primary overflow-hidden border-y border-white/5">
+      <div className="container-2xl mx-auto px-6">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+          
+          <div className="lg:w-1/3 text-center lg:text-left">
+            <FadeIn direction="right">
+              <p className="text-xs font-mono uppercase tracking-[0.3em] text-primary-500 mb-6">Trusted Worldwide</p>
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
+                Elite teams <br/> depend on us.
+              </h2>
+              <p className="text-lg text-text-muted max-w-md mx-auto lg:mx-0">
+                Powering digital transformation for global industry leaders across 30 countries.
+              </p>
+            </FadeIn>
+          </div>
+
+          <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-8">
+            {trustImages.slice(0, 8).map((logo, i) => (
+              <FadeIn key={i} direction="up" delay={i * 0.05}>
+                <div className="glass h-24 flex items-center justify-center p-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 group">
+                  <img 
+                    src={encodeURI(`/assets/${logo}`)} 
+                    alt="Partner" 
+                    className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>

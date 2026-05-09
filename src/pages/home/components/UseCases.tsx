@@ -1,88 +1,111 @@
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { setUseCasesIndex } from '../../../store/slices/uiSlice';
-import type { UseCase } from '../../../types';
-
-interface SlideProps { useCase: UseCase; isActive: boolean; onClick?: () => void; }
-
-function UseCaseSlide({ useCase, isActive, onClick }: SlideProps) {
-  return (
-    <div
-      className={`bg-gray-50 rounded-xl overflow-hidden border border-gray-200 transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-60 cursor-pointer hover:opacity-80'}`}
-      style={{ height: '320px' }}
-      onClick={onClick}
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
-        <div className="w-full h-40 lg:h-full">
-          <img src={useCase.image} alt={useCase.title} className="w-full h-full object-cover object-top" />
-        </div>
-        <div className="flex flex-col justify-center p-6">
-          <span className="inline-block px-3 py-1.5 bg-gradient-to-r from-[#00C896]/10 to-[#00D9FF]/10 text-[#00C896] rounded-full text-xs font-semibold mb-2 w-fit">
-            {useCase.industry}
-          </span>
-          <h3 className="font-bold text-gray-900 mb-2 text-lg">{useCase.title}</h3>
-          <p className="text-gray-600 mb-3 text-sm leading-relaxed">{useCase.description}</p>
-          {isActive && (
-            <a href={useCase.link} onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#00C896] to-[#00D9FF] text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 w-fit text-sm">
-              Know More <i className="ri-arrow-right-line" />
-            </a>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
+import { useState } from 'react';
+import { useAppSelector } from '../../../store/hooks';
+import { motion } from 'framer-motion';
+import { FadeIn } from '../../../components/animations/FadeIn';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { cn } from '../../../lib/cn';
 
 export default function UseCases() {
-  const dispatch = useAppDispatch();
   const useCases = useAppSelector((s) => s.content.data?.useCases ?? []);
-  const current  = useAppSelector((s) => s.ui.useCasesIndex);
+  const [currentIndex, setIndex] = useState(0);
+
+  const next = () => {
+    if (currentIndex < useCases.length - 1) {
+      setIndex(currentIndex + 1);
+    }
+  };
+
+  const prev = () => {
+    if (currentIndex > 0) {
+      setIndex(currentIndex - 1);
+    }
+  };
 
   if (!useCases.length) return null;
 
-  const total   = useCases.length;
-  const prev    = (current - 1 + total) % total;
-  const next    = (current + 1) % total;
-  const go      = (i: number) => dispatch(setUseCasesIndex(i));
-
   return (
-    <section id="industries" className="w-full py-24 bg-white">
-      <div className="w-full px-6 lg:px-16">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Industry <span className="bg-gradient-to-r from-[#00C896] to-[#00D9FF] bg-clip-text text-transparent">Use Cases</span>
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">Real-world AI implementations across diverse industries</p>
-        </div>
+    <section className="w-full py-32 bg-bg-secondary overflow-hidden relative">
+      <div className="container-2xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+          <FadeIn direction="up">
+            <h2 className="text-display-xl font-display font-bold text-white mb-6 leading-tight">
+              Impact in <span className="gradient-text">Action.</span>
+            </h2>
+            <p className="text-xl text-text-muted max-w-2xl leading-relaxed">
+              Real-world results delivered through elite engineering and AI-native thinking.
+            </p>
+          </FadeIn>
 
-        <div className="relative px-16">
-          <div className="grid grid-cols-12 gap-6 items-center" style={{ height: '320px' }}>
-            <div className="col-span-2 hidden lg:block h-full">
-              <UseCaseSlide useCase={useCases[prev]} isActive={false} onClick={() => go(prev)} />
-            </div>
-            <div className="col-span-12 lg:col-span-8 h-full">
-              <UseCaseSlide useCase={useCases[current]} isActive />
-            </div>
-            <div className="col-span-2 hidden lg:block h-full">
-              <UseCaseSlide useCase={useCases[next]} isActive={false} onClick={() => go(next)} />
-            </div>
+          <div className="flex gap-4">
+            <button 
+              onClick={prev}
+              disabled={currentIndex === 0}
+              className="w-14 h-14 rounded-full glass border border-white/10 flex items-center justify-center text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button 
+              onClick={next}
+              disabled={currentIndex === useCases.length - 1}
+              className="w-14 h-14 rounded-full glass border border-white/10 flex items-center justify-center text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
           </div>
-
-          <button onClick={() => go(prev)}
-            className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white text-[#00C896] rounded-full hover:bg-[#00C896] hover:text-white transition-all duration-200 shadow-lg border border-gray-200 z-10">
-            <i className="ri-arrow-left-line text-xl" />
-          </button>
-          <button onClick={() => go(next)}
-            className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white text-[#00C896] rounded-full hover:bg-[#00C896] hover:text-white transition-all duration-200 shadow-lg border border-gray-200 z-10">
-            <i className="ri-arrow-right-line text-xl" />
-          </button>
         </div>
 
-        <div className="flex justify-center gap-2 mt-8">
-          {useCases.map((_, i) => (
-            <button key={i} onClick={() => go(i)}
-              className={`h-2.5 rounded-full transition-all duration-200 ${i === current ? 'bg-[#00C896] w-8' : 'bg-gray-300 hover:bg-gray-400 w-2.5'}`} />
-          ))}
+        <div className="relative">
+          <motion.div 
+            animate={{ x: `-${currentIndex * 80}%` }}
+            transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+            className="flex gap-8"
+          >
+            {useCases.map((useCase, index) => (
+              <div 
+                key={index}
+                className={cn(
+                  "relative w-[85vw] md:w-[70vw] lg:w-[40vw] flex-shrink-0 aspect-[4/3] md:aspect-video rounded-3xl overflow-hidden group transition-all duration-700",
+                  currentIndex === index ? "opacity-100 scale-100 shadow-glow-md" : "opacity-40 scale-95"
+                )}
+              >
+                {/* Background Image with Overlay */}
+                <div className="absolute inset-0 z-0">
+                   <img 
+                    src={`https://images.unsplash.com/photo-${['1451187580459-43490279c0fa', '1518770660439-4636190af475', '1550751827-4bd374c3f58b', '1460925895917-afdab827c52f'][index % 4]}?auto=format&fit=crop&q=80&w=1200`} 
+                    alt={useCase.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/40 to-transparent" />
+                </div>
+
+                {/* Content */}
+                <div className="absolute inset-0 z-10 p-8 md:p-12 flex flex-col justify-end">
+                   <span className="inline-block px-4 py-1.5 glass text-primary-300 rounded-full text-[10px] font-mono uppercase tracking-[0.2em] mb-6 w-fit border border-white/10">
+                    {useCase.industry}
+                   </span>
+                   <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-4 leading-tight">
+                    {useCase.title}
+                   </h3>
+                   <p className="text-lg text-text-muted mb-8 line-clamp-2 max-w-lg leading-relaxed">
+                    {useCase.description}
+                   </p>
+                </div>
+
+                {/* Index Number */}
+                <div className="absolute top-8 right-8 z-10 font-display text-5xl font-black text-white/5">
+                  0{index + 1}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="mt-20 w-full h-[2px] bg-white/5 relative overflow-hidden rounded-full">
+           <motion.div 
+             animate={{ width: `${((currentIndex + 1) / useCases.length) * 100}%` }}
+             className="absolute top-0 left-0 h-full bg-primary-500"
+           />
         </div>
       </div>
     </section>

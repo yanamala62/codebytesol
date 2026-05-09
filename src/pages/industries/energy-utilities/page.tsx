@@ -1,22 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react'; // fixed
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 import { Link } from 'react-router-dom';
 
 const EnergyUtilitiesPage = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
     const sectionsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
-  useEffect(() => {
-  }, []);
 
   const setSectionRef = (index: number) => (el: HTMLDivElement | null) => {
     sectionsRef.current[index] = el;
@@ -28,7 +18,7 @@ const EnergyUtilitiesPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header isScrolled={isScrolled} />
+      <Header />
 
       {/* Hero Section */}
       <section
@@ -55,7 +45,7 @@ const EnergyUtilitiesPage = () => {
             Transforming energy and utilities through intelligent, secure, and data-driven digital platforms
           </p>
           <div className="flex flex-wrap gap-4">
-            <Link to="/contact" className="px-8 py-4 bg-[#00C896] text-white font-semibold rounded-lg hover:bg-[#00B386] transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap cursor-pointer">
+            <Link to="/contact" className="px-8 py-4 bg-[var(--color-primary-500)] text-white font-semibold rounded-lg hover:bg-[#00B386] transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap cursor-pointer">
               Request Energy Brief
             </Link>
             <Link to="/contact" className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg border-2 border-white hover:bg-white/90 transition-all duration-300 whitespace-nowrap cursor-pointer">
@@ -76,7 +66,7 @@ const EnergyUtilitiesPage = () => {
             Powering resilient, intelligent, and sustainable digital energy ecosystems globally
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-br from-[#E8F8F5] to-white border border-[#00C896]/20 rounded-xl p-8">
+            <div className="bg-gradient-to-br from-[#E8F8F5] to-white border border-[var(--color-primary-500)]/20 rounded-xl p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Mission</h3>
               <p className="text-gray-700 leading-relaxed text-center">
                 ForgeByte delivers secure, scalable, intelligent digital energy solutions to improve outcomes.<br />
@@ -84,7 +74,7 @@ const EnergyUtilitiesPage = () => {
                 <span className="block">✓ Customer service and sustainability goals</span>
               </p>
             </div>
-            <div className="bg-gradient-to-br from-[#E8F8F5] to-white border border-[#00C896]/20 rounded-xl p-8">
+            <div className="bg-gradient-to-br from-[#E8F8F5] to-white border border-[var(--color-primary-500)]/20 rounded-xl p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Digital Energy Enablement</h3>
               <p className="text-gray-700 leading-relaxed text-center">
                 ForgeByte enables utilities to build and scale modern digital energy platforms.<br />
@@ -92,7 +82,7 @@ const EnergyUtilitiesPage = () => {
                 <span className="block">✓ Omnichannel customer engagement</span>
               </p>
             </div>
-            <div className="bg-gradient-to-br from-[#E8F8F5] to-white border border-[#00C896]/20 rounded-xl p-8">
+            <div className="bg-gradient-to-br from-[#E8F8F5] to-white border border-[var(--color-primary-500)]/20 rounded-xl p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Trust, Compliance &<br />Interoperability</h3>
               <p className="text-gray-700 leading-relaxed text-center">
                 ForgeByte ensures secure, interoperable, and regulation-ready utility ecosystems.<br />
@@ -125,26 +115,26 @@ const EnergyUtilitiesPage = () => {
             {/* AI & Intelligent Energy Management */}
             <div className="bg-white rounded-lg p-5 border border-gray-200">
               <div className="flex items-center gap-4 mb-3">
-                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[#00C896]/10 to-[#00D9FF]/10 rounded-lg flex-shrink-0">
-                  <i className="ri-brain-line text-xl text-[#00C896]"></i>
+                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[var(--color-primary-500)]/10 to-[var(--color-accent-500)]/10 rounded-lg flex-shrink-0">
+                  <i className="ri-brain-line text-xl text-[var(--color-primary-500)]"></i>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">AI & Intelligent Energy Management</h3>
               </div>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Predictive maintenance and asset performance optimization</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>AI-driven demand forecasting</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Smarter grid management and energy distribution</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Real-time insights for operational and sustainability decisions</span>
                 </li>
               </ul>
@@ -154,26 +144,26 @@ const EnergyUtilitiesPage = () => {
             {/* Automation & Operational Optimization */}
             <div className="bg-white rounded-lg p-5 border border-gray-200">
               <div className="flex items-center gap-4 mb-3">
-                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[#00C896]/10 to-[#00D9FF]/10 rounded-lg flex-shrink-0">
-                  <i className="ri-settings-3-line text-xl text-[#00C896]"></i>
+                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[var(--color-primary-500)]/10 to-[var(--color-accent-500)]/10 rounded-lg flex-shrink-0">
+                  <i className="ri-settings-3-line text-xl text-[var(--color-primary-500)]"></i>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Automation & Operational Optimization</h3>
               </div>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>IoT and edge-enabled monitoring automation</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Meter reading, billing, and compliance workflow automation</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Reduced downtime and operational costs</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Faster decision-making and improved field operations</span>
                 </li>
               </ul>
@@ -183,26 +173,26 @@ const EnergyUtilitiesPage = () => {
             {/* System Modernization & Integration */}
             <div className="bg-white rounded-lg p-5 border border-gray-200">
               <div className="flex items-center gap-4 mb-3">
-                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[#00C896]/10 to-[#00D9FF]/10 rounded-lg flex-shrink-0">
-                  <i className="ri-database-2-line text-xl text-[#00C896]"></i>
+                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[var(--color-primary-500)]/10 to-[var(--color-accent-500)]/10 rounded-lg flex-shrink-0">
+                  <i className="ri-database-2-line text-xl text-[var(--color-primary-500)]"></i>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">System Modernization & Integration</h3>
               </div>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>SCADA, ERP, CRM, and field-service system integration</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Cloud modernization and big data analytics</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Scalable, secure, high-performance architectures</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Seamless data flow across distributed energy resources</span>
                 </li>
               </ul>
@@ -212,26 +202,26 @@ const EnergyUtilitiesPage = () => {
             {/* Cloud, Data & Security */}
             <div className="bg-white rounded-lg p-5 border border-gray-200">
               <div className="flex items-center gap-4 mb-3">
-                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[#00C896]/10 to-[#00D9FF]/10 rounded-lg flex-shrink-0">
-                  <i className="ri-cloud-line text-xl text-[#00C896]"></i>
+                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[var(--color-primary-500)]/10 to-[var(--color-accent-500)]/10 rounded-lg flex-shrink-0">
+                  <i className="ri-cloud-line text-xl text-[var(--color-primary-500)]"></i>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Cloud, Data & Security</h3>
               </div>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Cloud-native and resilient energy platforms</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Strong data governance and compliance frameworks</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Continuous monitoring and risk management</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>High availability, performance, and operational reliability</span>
                 </li>
               </ul>
@@ -241,26 +231,26 @@ const EnergyUtilitiesPage = () => {
             {/* Future-Ready Energy Operations */}
             <div className="bg-white rounded-lg p-5 border border-gray-200">
               <div className="flex items-center gap-4 mb-3">
-                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[#00C896]/10 to-[#00D9FF]/10 rounded-lg flex-shrink-0">
-                  <i className="ri-flashlight-line text-xl text-[#00C896]"></i>
+                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[var(--color-primary-500)]/10 to-[var(--color-accent-500)]/10 rounded-lg flex-shrink-0">
+                  <i className="ri-flashlight-line text-xl text-[var(--color-primary-500)]"></i>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Future-Ready Energy Operations</h3>
               </div>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>AI-driven predictive maintenance and demand forecasting</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Faster, more accurate energy management decisions</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Scalable, interoperable, and resilient energy systems</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Ready for continuous innovation and sustainability initiatives</span>
                 </li>
               </ul>
@@ -270,22 +260,22 @@ const EnergyUtilitiesPage = () => {
             {/* Market-Observed Outcomes in Travel & Logistics */}
             <div className="bg-white rounded-lg p-5 border border-gray-200">
               <div className="flex items-center gap-4 mb-3">
-                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[#00C896]/10 to-[#00D9FF]/10 rounded-lg flex-shrink-0">
-                  <i className="ri-trophy-line text-xl text-[#00C896]"></i>
+                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[var(--color-primary-500)]/10 to-[var(--color-accent-500)]/10 rounded-lg flex-shrink-0">
+                  <i className="ri-trophy-line text-xl text-[var(--color-primary-500)]"></i>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Market-Observed Outcomes in Travel & Logistics in Energy & Utilities</h3>
               </div>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Up to 30% increase in asset uptime with predictive maintenance</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>20-25% improvement in grid efficiency through AI and analytics</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00C896] mt-1">•</span>
+                  <span className="text-[var(--color-primary-500)] mt-1">•</span>
                   <span>Reduced operational costs and downtime with intelligent automation</span>
                 </li>
               </ul>
@@ -309,23 +299,23 @@ const EnergyUtilitiesPage = () => {
           </p>
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8">
-              <i className="ri-lightbulb-flash-line text-5xl text-[#00C896] mb-4"></i>
+              <i className="ri-lightbulb-flash-line text-5xl text-[var(--color-primary-500)] mb-4"></i>
               <h3 className="text-xl font-bold text-white mb-2">Smart Engineering</h3>
               <p className="text-gray-300">Scalable AI-driven and custom energy platform application development services</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8">
-              <i className="ri-bar-chart-grouped-line text-5xl text-[#00C896] mb-4"></i>
+              <i className="ri-bar-chart-grouped-line text-5xl text-[var(--color-primary-500)] mb-4"></i>
               <h3 className="text-xl font-bold text-white mb-2">Data Excellence</h3>
               <p className="text-gray-300">Secure data modernization, analytics, and operational insights for utilities</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8">
-              <i className="ri-shield-check-line text-5xl text-[#00C896] mb-4"></i>
+              <i className="ri-shield-check-line text-5xl text-[var(--color-primary-500)] mb-4"></i>
               <h3 className="text-xl font-bold text-white mb-2">Operational Integrity</h3>
               <p className="text-gray-300">Core system integration with rigorous reliability and compliance assurance</p>
             </div>
           </div>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/contact" className="px-8 py-4 bg-[#00C896] text-white font-semibold rounded-lg hover:bg-[#00B386] transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap cursor-pointer">
+            <Link to="/contact" className="px-8 py-4 bg-[var(--color-primary-500)] text-white font-semibold rounded-lg hover:bg-[#00B386] transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap cursor-pointer">
               Schedule Consultation
             </Link>
             <Link to="/contact" className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 whitespace-nowrap cursor-pointer">

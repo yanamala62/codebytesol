@@ -6,25 +6,34 @@ import {
   setActiveDropdown,
 } from '../../store/slices/uiSlice';
 import MegaMenu from '../ui/MegaMenu';
-import MobileAccordion from '../ui/MobileAccordion';
-import bytecodeLogo from '../../assets/bytecode.png';
+import { Button, MagneticButton } from '../primitives/Button';
+import { ChevronDown, Menu, X, PlayCircle, Sun, Moon } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from 'next-themes';
+import { cn } from '../../lib/cn';
+import codebytesolLogo from '../../assets/logo.png';
 
-interface HeaderProps {
-  isScrolled?: boolean;
-}
-
-export default function Header({ isScrolled }: HeaderProps) {
+export default function Header() {
   const dispatch = useAppDispatch();
   const { isMobileMenuOpen, activeDropdown } = useAppSelector((s) => s.ui);
   const content = useAppSelector((s) => s.content.data);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  // Guard while content loads
+  useEffect(() => {
+    setMounted(true);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const services   = content?.services   ?? [];
   const industries = content?.industries ?? [];
   const resources  = content?.resources  ?? [];
   const company    = content?.company    ?? [];
 
-  // Map to NavItem shape expected by MegaMenu
   const toNavItem = (item: { icon: string; title: string; navDesc?: string; desc?: string; link: string }) => ({
     icon: item.icon,
     title: item.title,
@@ -40,97 +49,158 @@ export default function Header({ isScrolled }: HeaderProps) {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 bg-white ${isScrolled ? 'shadow-lg' : 'shadow-md'}`}>
-      <div className="w-full px-6 py-4">
+    <header 
+      className={cn(
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+        isScrolled 
+          ? 'bg-bg-primary/80 backdrop-blur-xl border-b border-white/5 py-3' 
+          : 'bg-transparent py-6'
+      )}
+    >
+      <div className="container-2xl mx-auto px-6">
         <div className="flex items-center justify-between">
 
           {/* Logo */}
           <Link
             to="/"
             onClick={() => { window.scrollTo(0, 0); dispatch(closeMobileMenu()); }}
-            className="flex items-center cursor-pointer hover:opacity-80 transition-opacity duration-200"
+            className="flex items-center group transition-transform duration-300 hover:scale-105"
           >
-            <img src={bytecodeLogo} alt="Bytecode-AI Logo" className="h-10 w-auto" />
+             <img src={codebytesolLogo} alt="Codebytesol Logo" className="h-8 md:h-10 w-auto" />
+             <span className="ml-2 text-xl font-display font-bold tracking-tighter text-white">
+                Codebytesol
+             </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-1">
             {navGroups.map(({ key, label, items, width }) => (
               <div
                 key={key}
-                className="relative"
+                className="relative group"
                 onMouseEnter={() => dispatch(setActiveDropdown(key))}
                 onMouseLeave={() => dispatch(setActiveDropdown(null))}
               >
-                <button className="text-base font-medium text-gray-700 hover:text-[#00C896] transition-colors duration-300 flex items-center gap-1">
+                <button className="px-5 py-2 text-sm font-medium text-text-muted hover:text-white transition-colors flex items-center gap-1">
                   {label}
-                  <i className={`ri-arrow-down-s-line transition-transform duration-300 ${activeDropdown === key ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={cn(
+                    "w-4 h-4 transition-transform duration-300 opacity-50 group-hover:opacity-100",
+                    activeDropdown === key && "rotate-180"
+                  )} />
                 </button>
-                <MegaMenu items={items} isOpen={activeDropdown === key} width={width} />
+                
+                <AnimatePresence>
+                  {activeDropdown === key && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                      className="absolute top-full left-1/2 -translate-x-1/2 pt-4"
+                    >
+                      <MegaMenu items={items} width={width} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             ))}
           </nav>
 
-          {/* Live Demos */}
-          <div className="hidden lg:flex items-center">
-            <Link to="/live-demos" className="text-base font-semibold text-gray-700 hover:text-[#00C896] transition-colors duration-300 flex items-center gap-2 group">
-              <i className="ri-play-circle-line text-2xl text-[#00C896] group-hover:scale-110 transition-transform duration-300" />
-              Live Demos
-            </Link>
-          </div>
+          <div className="hidden lg:flex items-center gap-6">
+            {/* Theme Toggle */}
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="w-10 h-10 flex items-center justify-center glass rounded-full hover:bg-white/10 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {mounted && (theme === 'dark' ? <Sun className="w-5 h-5 text-primary-500" /> : <Moon className="w-5 h-5 text-primary-500" />)}
+            </button>
 
-          {/* CTA */}
-          <div className="hidden lg:flex items-center">
-            <Link to="https://ai-starter-kit.bytecode-ai.ai/" className="relative px-6 py-2.5 text-base font-semibold text-white rounded-lg overflow-hidden group whitespace-nowrap">
-              <div className="absolute inset-0 bg-[#00C896]" />
-              <div className="absolute inset-0 bg-[#00C896] opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
-              <span className="relative z-10">Access AI Starter Kit</span>
-            </Link>
+            <MagneticButton 
+              variant="primary" 
+              size="sm"
+              onClick={() => window.location.href = "/contact"}
+            >
+              Start Transformation
+            </MagneticButton>
           </div>
 
           {/* Mobile hamburger */}
           <button
             onClick={() => dispatch(toggleMobileMenu())}
-            className="lg:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-[#00C896] transition-colors duration-300"
+            className="lg:hidden w-10 h-10 flex items-center justify-center text-white glass"
           >
-            <i className={`text-2xl ${isMobileMenuOpen ? 'ri-close-line' : 'ri-menu-line'}`} />
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
       {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden w-full bg-white shadow-lg border-t border-gray-100">
-          <nav className="flex flex-col p-6 space-y-4">
-            {navGroups.map(({ key, label, items }) => (
-              <MobileAccordion
-                key={key}
-                label={label}
-                items={items}
-                isOpen={activeDropdown === key}
-                onToggle={() => dispatch(setActiveDropdown(activeDropdown === key ? null : key))}
-                onClose={() => dispatch(closeMobileMenu())}
-              />
-            ))}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="fixed inset-0 z-40 lg:hidden bg-bg-primary/98 backdrop-blur-2xl p-8 pt-28 flex flex-col"
+          >
+            <div className="flex flex-col gap-8 flex-1 overflow-y-auto pb-10">
+              {navGroups.map(({ key, label }) => (
+                <motion.button 
+                  key={key} 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="text-4xl font-display font-bold text-left text-white hover:text-primary-500 transition-colors"
+                >
+                  {label}
+                </motion.button>
+              ))}
+              
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="flex flex-col gap-6 mt-4 pt-8 border-t border-white/10"
+              >
+                <Link to="/contact" onClick={() => dispatch(closeMobileMenu())} className="text-xl font-medium text-text-muted flex items-center gap-3">
+                  <PlayCircle className="w-6 h-6 text-primary-500" />
+                  Get in Touch
+                </Link>
+                
+                <div className="flex items-center justify-between glass p-4 rounded-2xl border border-white/10">
+                   <span className="text-sm font-medium text-text-muted uppercase tracking-widest">Theme</span>
+                   <button
+                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                    className="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl text-primary-500"
+                  >
+                    {mounted && (theme === 'dark' ? <Sun /> : <Moon />)}
+                  </button>
+                </div>
+              </motion.div>
+            </div>
 
-            <Link
-              to="/live-demos"
-              onClick={() => dispatch(closeMobileMenu())}
-              className="flex items-center gap-2 py-2 text-base font-medium text-gray-700 hover:text-[#00C896] transition-colors duration-300"
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="mt-auto"
             >
-              <i className="ri-play-circle-line text-xl text-[#00C896]" />
-              Live Demos
-            </Link>
-
-            <Link
-              to="https://ai-starter-kit.bytecode-ai.ai/"
-              className="block w-full px-6 py-3 text-center text-base font-semibold text-white rounded-lg bg-[#00C896] hover:shadow-xl transition-all duration-300 whitespace-nowrap"
-            >
-              Access AI Starter Kit
-            </Link>
-          </nav>
-        </div>
-      )}
+              <Button 
+                variant="primary" 
+                size="lg" 
+                className="w-full h-16 text-lg"
+                onClick={() => {
+                  window.open("/contact", "_blank");
+                  dispatch(closeMobileMenu());
+                }}
+              >
+                Start Transformation
+              </Button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

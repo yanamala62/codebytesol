@@ -142,7 +142,7 @@ export default function BlogsPage() {
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Expert Insights & <span className="bg-gradient-to-r from-[#00C896] to-[#00D9FF] bg-clip-text text-transparent">Blogs</span>
+            Expert Insights & <span className="bg-gradient-to-r from-[var(--color-primary-500)] to-[var(--color-accent-500)] bg-clip-text text-transparent">Blogs</span>
           </h1>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto">
             Stay ahead with the latest trends, best practices, and thought leadership in AI, digital transformation, and enterprise technology
