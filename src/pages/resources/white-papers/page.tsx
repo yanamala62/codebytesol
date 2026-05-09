@@ -135,7 +135,7 @@ export default function WhitePapersPage() {
           <img
             src={wpHero}
             alt="White Papers Hero"
-            className="w-full h-full object-cover opacity-20 grayscale"
+            className="w-full h-full object-cover opacity-50"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary"></div>
         </div>

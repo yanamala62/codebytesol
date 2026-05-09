@@ -24,8 +24,8 @@ export default function Hero() {
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-bg-primary">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img src={heroBg} className="w-full h-full object-cover opacity-30" alt="Background" />
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary" />
+        <img src={heroBg} className="w-full h-full object-cover opacity-80 brightness-110" alt="Background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/30 via-bg-primary/60 to-bg-primary" />
       </div>
 
       {/* Content */}

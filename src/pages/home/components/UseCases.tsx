@@ -71,11 +71,11 @@ export default function UseCases() {
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 z-0">
                    <img 
-                    src={`https://images.unsplash.com/photo-${['1451187580459-43490279c0fa', '1518770660439-4636190af475', '1550751827-4bd374c3f58b', '1460925895917-afdab827c52f'][index % 4]}?auto=format&fit=crop&q=80&w=1200`} 
+                    src={useCase.image} 
                     alt={useCase.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 brightness-110"
                    />
-                   <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/40 to-transparent" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/20 to-transparent" />
                 </div>
 
                 {/* Content */}

@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../store/hooks';
 import { Link } from 'react-router-dom';
-import codebytesolLogo from '../../assets/logo.png';
+import codeByteSolLogo from '../../assets/logo.jpg';
 
 interface FooterColumn {
   title: string;
@@ -40,14 +40,19 @@ export default function Footer() {
           {/* Brand Column - wider */}
           <div className="lg:col-span-2">
              <div className="flex items-center group transition-transform duration-300 hover:scale-105 mb-8 cursor-pointer">
-                <img src={codebytesolLogo} alt="Codebytesol Logo" className="h-12 w-auto" />
-                <span className="ml-3 text-2xl font-display font-bold tracking-tighter text-white">
-                    Codebytesol
-                </span>
+                <img src={codeByteSolLogo} alt="CodeByteSol Logo" className="h-12 w-auto" />
+                <div className="ml-3 flex flex-col justify-center">
+                   <span className="text-2xl font-display font-bold tracking-tighter text-white leading-none">
+                       CodeByteSol
+                   </span>
+                   <span className="text-[12px] font-mono text-primary-400 uppercase tracking-[0.2em] mt-1.5 font-bold">
+                       Innovation Meets Intelligence
+                   </span>
+                </div>
              </div>
             
             <p className="text-text-muted text-base leading-relaxed mb-10 max-w-sm">
-              Codebytesol is an elite digital transformation agency engineered for enterprise-grade 
+              CodeByteSol is an elite digital transformation agency engineered for enterprise-grade 
               AI solutions and optimized software operations.
             </p>
 
@@ -93,10 +98,10 @@ export default function Footer() {
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-12">
             <p className="text-text-faint text-xs font-mono uppercase tracking-[0.2em]">
-              &copy; 2026 Codebytesol. Official Service Provider.
+              &copy; 2026 CodeByteSol. Official Service Provider.
             </p>
             <div className="flex items-center gap-6">
-               <img src="/assets/1dab2f4c2cd4.png" alt="Certification" className="h-6 w-auto opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" />
+               <img src="/assets/1dab2f4c2cd4.png" alt="Certification" className="h-6 w-auto opacity-60 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" />
                <span className="text-[10px] font-mono text-text-faint uppercase tracking-widest border-l border-white/10 pl-6">Elite Verified</span>
             </div>
           </div>

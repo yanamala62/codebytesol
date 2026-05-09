@@ -15,7 +15,7 @@ export default function PressPage() {
           <img
             src={pressHero}
             alt="Press Contact"
-            className="w-full h-full object-cover opacity-20 grayscale"
+            className="w-full h-full object-cover opacity-50"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary"></div>
         </div>
@@ -26,7 +26,7 @@ export default function PressPage() {
               Press <span className="gradient-text">Contact</span>
             </h1>
             <p className="text-2xl text-text-muted max-w-3xl mx-auto font-medium leading-relaxed">
-              For media inquiries, press releases, and partnership opportunities with Codebytesol
+              For media inquiries, press releases, and partnership opportunities with CodeByteSol
             </p>
           </FadeIn>
         </div>
@@ -48,18 +48,18 @@ export default function PressPage() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary-400 transition-colors">
-                      Codebytesol Unveils Its New Identity: A Complete Revamp & Rebrand
+                      CodeByteSol Unveils Its New Identity: A Complete Revamp & Rebrand
                     </h3>
                     <p className="text-sm font-mono text-text-faint uppercase tracking-widest mb-6">Press Release</p>
                     <div className="space-y-4 text-text-muted leading-relaxed text-lg">
                       <p>
-                        We are excited to announce our transformation from Test Perform Technologies to Codebytesol—a brand built for the future of intelligent engineering.
+                        We are excited to announce our transformation from Test Perform Technologies to CodeByteSol—a brand built for the future of intelligent engineering.
                       </p>
                       <p>
                         This rebranding reflects our evolution from a specialized testing company into a full-scale digital innovation partner, delivering AI-driven solutions, data engineering, automation, cloud modernization, and trustworthy intelligent systems.
                       </p>
                       <p>
-                        Codebytesol represents our commitment to innovation, trust engineering, and continuous evolution, ensuring we stay ahead of the technology curve while empowering our clients to do the same.
+                        CodeByteSol represents our commitment to innovation, trust engineering, and continuous evolution, ensuring we stay ahead of the technology curve while empowering our clients to do the same.
                       </p>
                     </div>
                   </div>
@@ -76,15 +76,15 @@ export default function PressPage() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary-400 transition-colors">
-                      Codebytesol Recognized as a Great Place to Work®
+                      CodeByteSol Recognized as a Great Place to Work®
                     </h3>
                     <p className="text-sm font-mono text-text-faint uppercase tracking-widest mb-6">Press Release</p>
                     <div className="space-y-4 text-text-muted leading-relaxed text-lg">
                       <p>
-                        We are proud to share that Codebytesol has been officially certified as a Great Place to Work®.
+                        We are proud to share that CodeByteSol has been officially certified as a Great Place to Work®.
                       </p>
                       <p>
-                        This recognition highlights our commitment to building a culture driven by trust, collaboration, diversity of thought, and people-first values. At Codebytesol, we believe innovation thrives where people feel valued, supported, and inspired.
+                        This recognition highlights our commitment to building a culture driven by trust, collaboration, diversity of thought, and people-first values. At CodeByteSol, we believe innovation thrives where people feel valued, supported, and inspired.
                       </p>
                       <p>
                         This certification is a testament to our team's passion, our leadership's vision, and the environment we collectively cultivate—one where learning, growth, and excellence are part of everyday life.

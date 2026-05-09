@@ -12,7 +12,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { cn } from '../../lib/cn';
-import codebytesolLogo from '../../assets/logo.png';
+import codeByteSolLogo from '../../assets/logo.jpg';
 
 export default function Header() {
   const dispatch = useAppDispatch();
@@ -66,10 +66,15 @@ export default function Header() {
             onClick={() => { window.scrollTo(0, 0); dispatch(closeMobileMenu()); }}
             className="flex items-center group transition-transform duration-300 hover:scale-105"
           >
-             <img src={codebytesolLogo} alt="Codebytesol Logo" className="h-8 md:h-10 w-auto" />
-             <span className="ml-2 text-xl font-display font-bold tracking-tighter text-white">
-                Codebytesol
-             </span>
+             <img src={codeByteSolLogo} alt="CodeByteSol Logo" className="h-10 md:h-12 w-auto" />
+             <div className="ml-3 flex flex-col justify-center">
+                <span className="text-xl md:text-2xl font-display font-bold tracking-tighter text-white leading-none">
+                    CodeByteSol
+                </span>
+                <span className="text-[12px] font-mono text-primary-400 uppercase tracking-[0.2em] mt-1.5 font-bold">
+                    Innovation Meets Intelligence
+                </span>
+             </div>
           </Link>
 
           {/* Desktop nav */}

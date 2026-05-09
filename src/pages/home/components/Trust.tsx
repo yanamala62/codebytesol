@@ -25,11 +25,11 @@ export default function Trust() {
           <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-8">
             {trustImages.slice(0, 8).map((logo, i) => (
               <FadeIn key={i} direction="up" delay={i * 0.05}>
-                <div className="glass h-24 flex items-center justify-center p-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 group">
+                <div className="glass h-24 flex items-center justify-center p-6 opacity-70 hover:opacity-100 transition-all duration-500 group">
                   <img 
                     src={encodeURI(`/assets/${logo}`)} 
                     alt="Partner" 
-                    className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-500"
+                    className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-500 brightness-110"
                   />
                 </div>
               </FadeIn>

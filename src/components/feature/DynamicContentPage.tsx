@@ -42,7 +42,7 @@ export default function DynamicContentPage({ pageId }: DynamicContentPageProps) 
         <div className="absolute inset-0 z-0">
           <img 
             src={new URL(`../../assets/bg/${getContextualBg(pageId)}`, import.meta.url).href}
-            className="w-full h-full object-cover opacity-10 grayscale"
+            className="w-full h-full object-cover opacity-40"
             alt={title}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary" />

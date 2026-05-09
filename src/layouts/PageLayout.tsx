@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import Header from '../components/feature/Header';
 import Footer from '../components/feature/Footer';
 
@@ -12,7 +12,10 @@ interface PageLayoutProps {
  * Used by every non-home page.
  */
 export default function PageLayout({ children, title }: PageLayoutProps) {
-  if (title) document.title = `${title} | Codebytesol`;
+  useEffect(() => {
+    if (title) document.title = `${title} | CodeByteSol`;
+  }, [title]);
+
   return (
     <div className="w-full min-h-screen flex flex-col bg-bg-primary text-text-primary">
       <Header />

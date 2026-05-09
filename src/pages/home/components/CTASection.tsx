@@ -11,7 +11,7 @@ export default function CTASection() {
     <section id="contact" className="w-full py-32 bg-bg-primary relative overflow-hidden border-t border-white/5">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-         <img src={ctaBg} className="w-full h-full object-cover opacity-10" alt="Background" />
+         <img src={ctaBg} className="w-full h-full object-cover opacity-40" alt="Background" />
          <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/80 to-bg-primary" />
       </div>
 

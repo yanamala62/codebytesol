@@ -57,7 +57,7 @@ export default function WhyWorkWithUs() {
     <section ref={containerRef} className="w-full bg-bg-secondary py-24 relative overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-         <img src={whyBg} className="w-full h-full object-cover opacity-10 grayscale" alt="Background" />
+         <img src={whyBg} className="w-full h-full object-cover opacity-40" alt="Background" />
          <div className="absolute inset-0 bg-bg-secondary/90" />
       </div>
 
@@ -67,7 +67,7 @@ export default function WhyWorkWithUs() {
           {/* Left Side */}
           <div className="lg:w-5/12">
             <FadeIn direction="right">
-              <p className="text-xs font-mono uppercase tracking-[0.3em] text-primary-500 mb-6 font-bold">Codebytesol Standards</p>
+              <p className="text-xs font-mono uppercase tracking-[0.3em] text-primary-500 mb-6 font-bold">CodeByteSol Standards</p>
               <h2 ref={leftTextRef} className="text-display-xl font-display font-bold text-white mb-8 leading-none min-h-[120px]">
                 The Advantage.
               </h2>

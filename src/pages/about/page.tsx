@@ -21,8 +21,8 @@ export default function AboutPage() {
         <div className="absolute inset-0 z-0">
           <img
             src={aboutHero}
-            alt="About Codebytesol"
-            className="w-full h-full object-cover opacity-20 grayscale"
+            alt="About CodeByteSol"
+            className="w-full h-full object-cover opacity-50"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary"></div>
         </div>
@@ -30,7 +30,7 @@ export default function AboutPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <FadeIn direction="up">
             <h1 className="text-display-xl md:text-display-2xl font-display font-bold text-white mb-8 tracking-tighter leading-[0.9]">
-              About <span className="gradient-text">Codebytesol</span>
+              About <span className="gradient-text">CodeByteSol</span>
             </h1>
             <p className="text-2xl text-text-muted max-w-3xl mx-auto font-medium leading-relaxed">
               Where innovation meets intelligence. Engineering the future of AI-driven digital transformation.
@@ -49,7 +49,7 @@ export default function AboutPage() {
               </h2>
               <div className="max-w-4xl mx-auto space-y-8 text-xl text-text-muted leading-relaxed font-medium">
                 <p>
-                  Codebytesol stands at the intersection of AI, automation, and digital evolution, empowering organizations to transform with precision, clarity, and next-generation technology. We are not just adapting to the future — we are engineering it.
+                  CodeByteSol stands at the intersection of AI, automation, and digital evolution, empowering organizations to transform with precision, clarity, and next-generation technology. We are not just adapting to the future — we are engineering it.
                 </p>
                 <p>
                   We believe that true innovation happens when AI works with humans, not around them. Our Human-in-the-Loop philosophy ensures that every automated decision is guided, validated, and refined by real expertise—creating AI that thinks fast but behaves responsibly.
@@ -82,7 +82,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-3xl font-display font-bold text-white mb-6 tracking-tight">Our Mission</h3>
                 <p className="text-lg text-text-muted leading-relaxed font-medium">
-                  To transform businesses through technology. To engineer intelligent, future-ready solutions powered by AI and emerging technologies, ensuring both our clients and Codebytesol grow, evolve, and advance together.
+                  To transform businesses through technology. To engineer intelligent, future-ready solutions powered by AI and emerging technologies, ensuring both our clients and CodeByteSol grow, evolve, and advance together.
                 </p>
               </div>
             </FadeIn>
@@ -95,7 +95,7 @@ export default function AboutPage() {
               
               <h3 className="text-4xl md:text-5xl font-display font-bold text-white mb-8 text-center tracking-tighter">Our Culture</h3>
               <p className="text-xl text-text-muted mb-16 text-center max-w-3xl mx-auto font-medium leading-relaxed">
-                Codebytesol is powered by people who dream boldly, think differently, and execute fearlessly.
+                CodeByteSol is powered by people who dream boldly, think differently, and execute fearlessly.
               </p>
               <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
                 {cultureValues.map((value, index) => (

@@ -1,58 +1,7 @@
-export interface RouteItem {
-  path: string;
-  pageKey: string;
-}
-
-export interface NavLinkItem {
-  path: string;
-  label: string;
-}
-
-export interface NavGroup {
-  id: string;
-  label: string;
-  links: NavLinkItem[];
-}
-
-export interface PageSection {
-  id: string;
-  heading: string;
-  paragraphs: string[];
-  assetKey?: string;
-}
-
-export interface PageData {
-  key: string;
-  title: string;
-  subtitle: string;
-  sections: PageSection[];
-}
-
-export interface FooterData {
-  brand: string;
-  copyright: string;
-}
-
 export interface SiteMeta {
   appTitle: string;
   loadingLabel: string;
   missingPageLabel: string;
-}
-
-export interface SiteData {
-  meta: SiteMeta;
-  routes: RouteItem[];
-  navigation: NavGroup[];
-  pages: Record<string, PageData>;
-  footer: FooterData;
-  assets: Record<string, string>;
-}
-
-export interface NavItem {
-  icon: string;
-  title: string;
-  desc: string;
-  link: string;
 }
 
 export interface HeroData {
@@ -159,9 +108,4 @@ export interface ContentData {
   footerLinks: FooterLinks;
   cta: CTAData;
   meta?: SiteMeta;
-  routes?: RouteItem[];
-  navigation?: NavGroup[];
-  pages?: Record<string, PageData>;
-  footer?: FooterData;
-  assets?: Record<string, string>;
 }

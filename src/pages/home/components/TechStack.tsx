@@ -9,7 +9,7 @@ export default function TechStack() {
     <section id="tech-stack" className="w-full py-24 bg-bg-primary overflow-hidden relative border-b border-white/5">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-         <img src={techBg} className="w-full h-full object-cover opacity-5 grayscale" alt="Background" />
+         <img src={techBg} className="w-full h-full object-cover opacity-30" alt="Background" />
          <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/80 to-bg-primary" />
       </div>
 

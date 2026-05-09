@@ -12,7 +12,7 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="relative pt-48 pb-24 px-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src={contactHero} className="w-full h-full object-cover opacity-20 grayscale" alt="Contact" />
+          <img src={contactHero} className="w-full h-full object-cover opacity-50" alt="Contact" />
           <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary" />
         </div>
         <div className="container-xl mx-auto relative z-10 text-center">

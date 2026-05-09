@@ -31,7 +31,7 @@ const HowWeHelpPage: React.FC = () => {
             <img
               src={helpHero}
               alt="How We Help"
-              className="w-full h-full object-cover opacity-20 grayscale"
+              className="w-full h-full object-cover opacity-50"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary"></div>
           </div>
@@ -154,17 +154,17 @@ const HowWeHelpPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Section 2: Why Codebytesol */}
+        {/* Section 2: Why CodeByteSol */}
         <section className="py-24 bg-bg-primary relative overflow-hidden">
           <div className="container-xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
               
-              {/* Left — Why Codebytesol */}
+              {/* Left — Why CodeByteSol */}
               <div className="lg:col-span-5 order-2 lg:order-1">
                 <FadeIn direction="right">
                   <div className="bg-gradient-to-br from-accent-900/20 to-primary-900/20 rounded-[2.5rem] p-10 border border-white/10">
                     <h2 className="text-4xl font-display font-bold text-white mb-8 tracking-tight">
-                      Why Codebytesol
+                      Why CodeByteSol
                     </h2>
                     
                     <div className="grid grid-cols-1 gap-4 mb-10">
