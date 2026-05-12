@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 import { FadeIn, StaggerChildren } from '../../../components/animations/FadeIn';
-import blogHero from '../../../assets/bg/download.jpg';
 import { Calendar, Clock, ArrowRight, Search } from 'lucide-react';
+import { Button } from '../../../components/primitives/Button';
 
 const categories = ['All', 'AI & ML', 'Cloud Computing', 'Data Analytics', 'Digital Transformation', 'Industry Insights'];
 
@@ -17,7 +17,7 @@ const blogs = [
     date: 'March 15, 2024',
     readTime: '8 min read',
     excerpt: 'Explore the emerging AI trends that will reshape enterprise operations in 2025, from autonomous agents to multimodal AI systems.',
-    image: '/images/blog-ai-future-001--1017f2b2660e.jpg',
+    image: '/source_images/services/service_ai.png',
     tags: ['AI Strategy', 'Enterprise AI', 'Future Trends']
   },
   {
@@ -29,7 +29,7 @@ const blogs = [
     date: 'March 12, 2024',
     readTime: '12 min read',
     excerpt: 'A comprehensive guide to designing and implementing production-ready ML pipelines that scale with your business needs.',
-    image: '/images/blog-ml-pipeline-002--80f4854982e9.jpg',
+    image: '/source_images/services/service_data.png',
     tags: ['MLOps', 'Data Engineering', 'Best Practices']
   },
   {
@@ -41,7 +41,7 @@ const blogs = [
     date: 'March 10, 2024',
     readTime: '10 min read',
     excerpt: 'Learn proven strategies for migrating legacy systems to the cloud while minimizing risk and maximizing ROI.',
-    image: '/images/blog-cloud-migration-003--182d57c6dd70.jpg',
+    image: '/source_images/services/service_cloud.png',
     tags: ['Cloud Migration', 'Enterprise Architecture', 'Digital Transformation']
   },
   {
@@ -53,7 +53,7 @@ const blogs = [
     date: 'March 8, 2024',
     readTime: '9 min read',
     excerpt: 'Discover how to transition from traditional batch processing to real-time stream analytics for instant business insights.',
-    image: '/images/blog-realtime-analytics-004--9d62e0f4fb59.jpg',
+    image: '/source_images/services/service_data.png',
     tags: ['Stream Processing', 'Real-Time Analytics', 'Big Data']
   },
   {
@@ -65,7 +65,7 @@ const blogs = [
     date: 'March 5, 2024',
     readTime: '11 min read',
     excerpt: 'A practical guide to implementing zero trust security principles in modern cloud infrastructure.',
-    image: '/images/blog-zero-trust-005--dce57ab46a33.jpg',
+    image: '/source_images/services/service_cloud.png',
     tags: ['Cloud Security', 'Zero Trust', 'Cybersecurity']
   },
   {
@@ -77,7 +77,7 @@ const blogs = [
     date: 'March 3, 2024',
     readTime: '7 min read',
     excerpt: 'Learn how to measure and maximize the return on investment from your digital transformation initiatives.',
-    image: '/images/blog-digital-roi-006--b14008de1755.jpg',
+    image: '/source_images/home_hero.png',
     tags: ['ROI', 'Digital Strategy', 'Business Value']
   },
   {
@@ -89,7 +89,7 @@ const blogs = [
     date: 'March 1, 2024',
     readTime: '10 min read',
     excerpt: 'Exploring how generative AI is transforming healthcare delivery while addressing ethical and regulatory challenges.',
-    image: '/images/blog-healthcare-ai-007--0f6b99561e2e.jpg',
+    image: '/source_images/industries/ind_healthcare.png',
     tags: ['Healthcare AI', 'Generative AI', 'Medical Technology']
   },
   {
@@ -101,7 +101,7 @@ const blogs = [
     date: 'February 28, 2024',
     readTime: '13 min read',
     excerpt: 'Establish robust data governance practices that enable AI innovation while ensuring compliance and data quality.',
-    image: '/images/blog-data-governance-008--23b7e0ef47a0.jpg',
+    image: '/source_images/services/service_data.png',
     tags: ['Data Governance', 'Compliance', 'AI Ethics']
   },
   {
@@ -113,7 +113,7 @@ const blogs = [
     date: 'February 25, 2024',
     readTime: '14 min read',
     excerpt: 'Real-world insights and best practices from managing large-scale Kubernetes deployments in production.',
-    image: '/images/blog-kubernetes-009--5f6798050f30.jpg',
+    image: '/source_images/services/service_cloud.png',
     tags: ['Kubernetes', 'DevOps', 'Container Orchestration']
   }
 ];
@@ -130,22 +130,24 @@ export default function BlogsPage() {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative pt-48 pb-24 px-6 overflow-hidden">
+      <section className="relative pt-48 pb-32 px-6 overflow-hidden bg-gray-900 min-h-[60vh] flex items-center">
         <div className="absolute inset-0 z-0">
-          <img
-            src={blogHero}
-            alt="Blogs Hero"
-            className="w-full h-full object-cover opacity-50"
+          <img 
+            src="/source_images/resources/res_blog.png" 
+            alt="Blogs Background" 
+            className="w-full h-full object-cover opacity-80"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-gray-900/60" />
         </div>
 
-        <div className="container-xl mx-auto relative z-10 text-center">
+        <div className="container-xl mx-auto relative z-10">
           <FadeIn direction="up">
-            <h1 className="text-display-xl md:text-display-2xl font-display font-bold text-white mb-8 tracking-tighter leading-none">
-              Expert <span className="gradient-text">Insights.</span>
+            <h1 className="text-6xl md:text-[120px] font-black text-white mb-10 leading-[0.85] tracking-tighter uppercase italic">
+              Expert <br />
+              <span className="text-primary-500">Insights.</span>
             </h1>
-            <p className="text-2xl text-text-muted max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-xl md:text-3xl text-gray-200 max-w-3xl leading-relaxed font-medium drop-shadow-md">
               Stay ahead with the latest trends, best practices, and thought leadership in AI, digital transformation, and enterprise technology.
             </p>
           </FadeIn>
@@ -153,7 +155,7 @@ export default function BlogsPage() {
       </section>
 
       {/* Category Filter & Search */}
-      <section className="py-12 bg-bg-primary border-y border-white/5 sticky top-[72px] z-20 backdrop-blur-xl bg-bg-primary/80">
+      <section className="py-8 bg-white border-y border-border sticky top-[72px] z-20 backdrop-blur-md bg-white/80">
         <div className="container-xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-8 items-center justify-between">
             <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
@@ -161,10 +163,10 @@ export default function BlogsPage() {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all whitespace-nowrap border ${
+                  className={`px-5 py-2 rounded-xl text-sm font-bold transition-all whitespace-nowrap border ${
                     selectedCategory === category
-                      ? 'bg-primary-500 border-primary-500 text-white shadow-glow-sm'
-                      : 'bg-white/5 border-white/10 text-text-muted hover:bg-white/10 hover:border-white/20'
+                      ? 'bg-primary-500 border-primary-500 text-white shadow-sm'
+                      : 'bg-gray-50 border-border text-text-muted hover:bg-white hover:border-primary-500 hover:text-primary-500'
                   }`}
                 >
                   {category}
@@ -177,7 +179,7 @@ export default function BlogsPage() {
               <input 
                 type="text" 
                 placeholder="Search articles..." 
-                className="w-full h-12 pl-12 pr-4 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary-500 transition-colors"
+                className="w-full h-11 pl-12 pr-4 bg-gray-50 border border-border rounded-xl text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
               />
             </div>
           </div>
@@ -185,29 +187,29 @@ export default function BlogsPage() {
       </section>
 
       {/* Blog Grid */}
-      <section className="py-24 bg-bg-primary">
+      <section className="py-24 bg-white">
         <div className="container-xl mx-auto px-6">
           <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredBlogs.map((blog) => (
               <FadeIn key={blog.id} direction="up">
                 <article
-                  className="glass rounded-3xl overflow-hidden border-white/5 hover:border-primary-500/30 transition-all duration-500 group flex flex-col h-full"
+                  className="bg-white rounded-3xl overflow-hidden border border-border hover:border-primary-500 hover:shadow-soft transition-all duration-500 group flex flex-col h-full"
                 >
                   <div className="relative w-full h-64 overflow-hidden">
                     <img
                       src={blog.image}
                       alt={blog.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="px-4 py-1.5 bg-bg-primary/80 backdrop-blur-md text-primary-400 rounded-lg text-xs font-bold uppercase tracking-widest border border-white/10">
+                      <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-600 rounded-lg text-[10px] font-bold uppercase tracking-widest border border-border shadow-sm">
                         {blog.category}
                       </span>
                     </div>
                   </div>
                   
                   <div className="p-8 flex flex-col flex-1">
-                    <div className="flex items-center gap-4 mb-4 text-xs font-mono text-text-faint uppercase tracking-widest">
+                    <div className="flex items-center gap-4 mb-4 text-[10px] font-bold text-text-faint uppercase tracking-widest">
                       <div className="flex items-center gap-2">
                         <Calendar className="w-4 h-4 text-primary-500" />
                         {blog.date}
@@ -218,28 +220,26 @@ export default function BlogsPage() {
                       </div>
                     </div>
                     
-                    <h3 className="text-2xl font-display font-bold text-white mb-4 group-hover:text-primary-400 transition-colors leading-tight">
+                    <h3 className="text-xl font-bold text-text-primary mb-4 group-hover:text-primary-500 transition-colors leading-tight tracking-tight">
                       {blog.title}
                     </h3>
                     
-                    <p className="text-text-muted mb-8 line-clamp-3 font-medium leading-relaxed">
+                    <p className="text-text-muted mb-8 line-clamp-3 font-medium leading-relaxed text-sm">
                       {blog.excerpt}
                     </p>
                     
-                    <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between">
+                    <div className="mt-auto pt-6 border-t border-border flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 p-[1px]">
-                          <div className="w-full h-full rounded-full bg-bg-primary flex items-center justify-center text-white font-bold text-sm">
-                            {blog.author.charAt(0)}
-                          </div>
+                        <div className="w-10 h-10 rounded-full bg-primary-50 flex items-center justify-center border border-primary-100 text-primary-500 font-bold text-sm">
+                          {blog.author.charAt(0)}
                         </div>
                         <div>
-                          <p className="text-sm font-bold text-white">{blog.author}</p>
-                          <p className="text-[10px] text-text-faint font-mono uppercase tracking-widest">{blog.role}</p>
+                          <p className="text-sm font-bold text-text-primary leading-tight">{blog.author}</p>
+                          <p className="text-[10px] text-text-faint font-bold uppercase tracking-widest">{blog.role}</p>
                         </div>
                       </div>
-                      <button className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-primary-500 transition-colors group/btn">
-                        <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                      <button className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-text-primary border border-border hover:bg-primary-500 hover:text-white hover:border-primary-500 transition-all duration-300 group/btn shadow-sm">
+                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
                       </button>
                     </div>
                   </div>
@@ -251,26 +251,27 @@ export default function BlogsPage() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-24 bg-bg-primary border-t border-white/5">
+      <section className="py-24 bg-gray-50 border-t border-border">
         <div className="container-xl mx-auto px-6">
           <FadeIn direction="up">
-            <div className="bg-gradient-to-br from-bg-primary to-primary-900/10 rounded-[3rem] p-12 md:p-20 text-center border border-white/5 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 blur-[100px] -z-10" />
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 tracking-tight">
+            <div className="bg-white rounded-[3rem] p-12 md:p-20 text-center border border-border relative overflow-hidden shadow-sm">
+              <div className="absolute top-0 right-0 w-1/3 h-full bg-primary-50/50 blur-[120px] rounded-full translate-x-1/2" />
+              
+              <h2 className="text-3xl md:text-5xl font-bold text-text-primary mb-6 tracking-tight relative z-10">
                 Insights Delivered.
               </h2>
-              <p className="text-xl text-text-muted mb-10 max-w-2xl mx-auto font-medium">
+              <p className="text-lg md:text-xl text-text-muted mb-10 max-w-2xl mx-auto font-medium relative z-10">
                 Subscribe to receive our latest engineering breakthroughs and AI strategy direct to your inbox.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-xl mx-auto">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-xl mx-auto relative z-10">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 h-16 px-6 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-primary-500 transition-colors"
+                  className="flex-1 h-14 px-6 rounded-xl bg-gray-50 border border-border text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                 />
-                <button className="h-16 px-10 bg-gradient-aurora text-white font-bold rounded-xl hover:scale-[1.02] transition-transform shadow-glow-md">
+                <Button className="h-14 px-10 rounded-xl">
                   Subscribe
-                </button>
+                </Button>
               </div>
             </div>
           </FadeIn>

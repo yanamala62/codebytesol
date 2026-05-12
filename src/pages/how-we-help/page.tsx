@@ -2,7 +2,6 @@ import React from 'react';
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import { FadeIn } from '../../components/animations/FadeIn';
-import helpHero from '../../assets/bg/download (3).jpg';
 import { 
   Wrench, 
   Play, 
@@ -26,22 +25,24 @@ const HowWeHelpPage: React.FC = () => {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative pt-48 pb-24 px-6 overflow-hidden">
+        <section className="relative pt-48 pb-32 px-6 overflow-hidden bg-gray-900 min-h-[60vh] flex items-center">
           <div className="absolute inset-0 z-0">
-            <img
-              src={helpHero}
-              alt="How We Help"
-              className="w-full h-full object-cover opacity-50"
+            <img 
+              src="/source_images/company/com_help.png" 
+              alt="How We Help Background" 
+              className="w-full h-full object-cover opacity-80"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-gray-900/60" />
           </div>
 
-          <div className="container-xl mx-auto relative z-10 text-center">
+          <div className="container-xl mx-auto relative z-10">
             <FadeIn direction="up">
-              <h1 className="text-display-xl md:text-display-2xl font-display font-bold text-white mb-8 tracking-tighter leading-none">
-                Engineering <span className="gradient-text">Value.</span>
+              <h1 className="text-6xl md:text-[120px] font-black text-white mb-10 leading-[0.85] tracking-tighter uppercase italic">
+                Engineering <br />
+                <span className="text-primary-500">Value.</span>
               </h1>
-              <p className="text-2xl text-text-muted max-w-3xl mx-auto font-medium leading-relaxed">
+              <p className="text-xl md:text-3xl text-gray-200 max-w-3xl leading-relaxed font-medium drop-shadow-md">
                 A structured, transparent approach to delivering AI-driven excellence and digital transformation for the modern enterprise.
               </p>
             </FadeIn>
@@ -49,14 +50,14 @@ const HowWeHelpPage: React.FC = () => {
         </section>
 
         {/* Section 1: Capabilities */}
-        <section className="py-24 bg-bg-primary border-y border-white/5">
+        <section className="py-24 bg-white border-y border-border">
           <div className="container-xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
               
               {/* Left — What We Do */}
               <div className="lg:col-span-7">
                 <FadeIn direction="right">
-                  <h2 className="text-4xl font-display font-bold text-white mb-12 tracking-tight">Our Core Capabilities</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-12 tracking-tight">Our Core Capabilities</h2>
                   <div className="space-y-12">
                     {[
                       {
@@ -80,19 +81,19 @@ const HowWeHelpPage: React.FC = () => {
                     ].map((section) => (
                       <div key={section.title} className="group">
                         <div className="flex items-start gap-6">
-                          <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center border border-white/10 group-hover:border-primary-500/30 transition-all">
+                          <div className="w-14 h-14 rounded-2xl bg-primary-50 flex items-center justify-center border border-primary-100 group-hover:bg-primary-500 group-hover:text-white transition-all duration-300">
                             {section.icon}
                           </div>
                           <div className="flex-1">
-                            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-widest text-sm font-mono opacity-60">
+                            <h3 className="text-xl font-bold text-primary-500 mb-2 uppercase tracking-widest text-xs">
                               {section.title}
                             </h3>
-                            <p className="text-text-muted mb-4 font-medium">{section.desc}</p>
+                            <p className="text-text-muted mb-4 font-medium leading-relaxed">{section.desc}</p>
                             <div className="flex flex-wrap gap-2">
                               {section.items.map((item) => (
                                 <span
                                   key={item}
-                                  className="px-4 py-2 text-sm font-medium text-text-muted glass rounded-full border-white/5 hover:border-primary-500/30 hover:text-white transition-all cursor-default"
+                                  className="px-4 py-2 text-sm font-semibold text-text-muted bg-gray-50 rounded-full border border-border hover:border-primary-500 hover:bg-white hover:text-primary-500 transition-all cursor-default"
                                 >
                                   {item}
                                 </span>
@@ -109,35 +110,35 @@ const HowWeHelpPage: React.FC = () => {
               {/* Right — Engagement Models */}
               <div className="lg:col-span-5">
                 <FadeIn direction="left">
-                  <div className="bg-gradient-to-br from-primary-900/20 to-accent-900/20 rounded-[2.5rem] p-10 border border-white/10 relative overflow-hidden">
-                    <h2 className="text-3xl font-display font-bold text-white mb-8">Engagement Models</h2>
-                    <div className="space-y-6">
+                  <div className="bg-gray-50 rounded-[2.5rem] p-10 border border-border relative overflow-hidden">
+                    <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-8 tracking-tight">Engagement Models</h2>
+                    <div className="space-y-4">
                       {[
                         {
                           title: 'PoC / MVP',
                           desc: 'Rapid prototyping (2–6 weeks) to validate business value and feasibility.',
-                          icon: <Rocket className="w-5 h-5 text-primary-400" />,
+                          icon: <Rocket className="w-5 h-5 text-primary-500" />,
                         },
                         {
                           title: 'Fixed Price / T&M',
                           desc: 'Flexible delivery for fixed scope or ongoing development.',
-                          icon: <Clock className="w-5 h-5 text-primary-400" />,
+                          icon: <Clock className="w-5 h-5 text-primary-500" />,
                         },
                         {
                           title: 'Staff Augmentation',
                           desc: 'Instant access to specialized AI, data, and app engineers.',
-                          icon: <Users className="w-5 h-5 text-primary-400" />,
+                          icon: <Users className="w-5 h-5 text-primary-500" />,
                         },
                       ].map((model) => (
                         <div
                           key={model.title}
-                          className="glass p-6 rounded-2xl border-white/5 hover:border-white/10 transition-all group"
+                          className="bg-white p-6 rounded-2xl border border-border hover:border-primary-500 hover:shadow-sm transition-all duration-300 group"
                         >
                           <div className="flex items-center gap-4 mb-3">
-                            <div className="p-2 rounded-lg bg-white/5 group-hover:bg-primary-500/20 transition-colors">
+                            <div className="p-2 rounded-lg bg-primary-50 group-hover:bg-primary-500 group-hover:text-white transition-colors duration-300">
                               {model.icon}
                             </div>
-                            <h3 className="text-lg font-bold text-white">
+                            <h3 className="text-lg font-bold text-text-primary">
                               {model.title}
                             </h3>
                           </div>
@@ -162,28 +163,28 @@ const HowWeHelpPage: React.FC = () => {
               {/* Left — Why CodeByteSol */}
               <div className="lg:col-span-5 order-2 lg:order-1">
                 <FadeIn direction="right">
-                  <div className="bg-gradient-to-br from-accent-900/20 to-primary-900/20 rounded-[2.5rem] p-10 border border-white/10">
-                    <h2 className="text-4xl font-display font-bold text-white mb-8 tracking-tight">
+                  <div className="bg-white rounded-[2.5rem] p-10 border border-border shadow-sm">
+                    <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-8 tracking-tight">
                       Why CodeByteSol
                     </h2>
                     
                     <div className="grid grid-cols-1 gap-4 mb-10">
                       {[
-                        { icon: <Brain className="w-5 h-5 text-primary-400" />, label: 'AI-First Engineering' },
-                        { icon: <Layers className="w-5 h-5 text-primary-400" />, label: 'Structured Delivery' },
-                        { icon: <Rocket className="w-5 h-5 text-primary-400" />, label: 'Faster Deployment' },
-                        { icon: <Users className="w-5 h-5 text-primary-400" />, label: 'Long-Term Partnership' },
+                        { icon: <Brain className="w-5 h-5 text-primary-500" />, label: 'AI-First Engineering' },
+                        { icon: <Layers className="w-5 h-5 text-primary-500" />, label: 'Structured Delivery' },
+                        { icon: <Rocket className="w-5 h-5 text-primary-500" />, label: 'Faster Deployment' },
+                        { icon: <Users className="w-5 h-5 text-primary-500" />, label: 'Long-Term Partnership' },
                       ].map((pillar) => (
-                        <div key={pillar.label} className="flex items-center gap-4 glass p-4 rounded-xl border-white/5">
+                        <div key={pillar.label} className="flex items-center gap-4 bg-gray-50 p-4 rounded-xl border border-border group hover:bg-white hover:border-primary-500 transition-all duration-300">
                           {pillar.icon}
-                          <span className="text-white font-bold tracking-tight">
+                          <span className="text-text-primary font-bold tracking-tight">
                             {pillar.label}
                           </span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
+                    <div className="grid grid-cols-2 gap-8 pt-8 border-t border-border">
                       {[
                         { num: '23+', label: 'AI Engineers' },
                         { num: '50+', label: 'Data Engineers' },
@@ -191,10 +192,10 @@ const HowWeHelpPage: React.FC = () => {
                         { num: '9+', label: 'Industries' },
                       ].map((metric) => (
                         <div key={metric.label}>
-                          <div className="text-3xl font-display font-bold text-white mb-1">
+                          <div className="text-3xl font-bold text-primary-500 mb-1">
                             {metric.num}
                           </div>
-                          <div className="text-xs font-mono text-text-faint uppercase tracking-widest">
+                          <div className="text-[10px] font-bold text-text-faint uppercase tracking-widest">
                             {metric.label}
                           </div>
                         </div>
@@ -208,10 +209,10 @@ const HowWeHelpPage: React.FC = () => {
               <div className="lg:col-span-7 order-1 lg:order-2">
                 <FadeIn direction="left">
                   <div className="mb-12">
-                    <h2 className="text-4xl font-display font-bold text-white mb-4 tracking-tight">
+                    <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4 tracking-tight">
                       How We Engage
                     </h2>
-                    <p className="text-xl text-text-muted max-w-2xl font-medium">
+                    <p className="text-lg md:text-xl text-text-muted max-w-2xl font-medium leading-relaxed">
                       A structured, transparent approach to delivering value from day one.
                     </p>
                   </div>
@@ -246,16 +247,16 @@ const HowWeHelpPage: React.FC = () => {
                     ].map((step, idx) => (
                       <div
                         key={step.title}
-                        className="flex items-center gap-6 glass p-6 rounded-2xl border-white/5 relative group"
+                        className="flex items-center gap-6 bg-white p-6 rounded-2xl border border-border relative group hover:border-primary-500 hover:shadow-soft transition-all duration-300"
                       >
-                        <div className="absolute left-12 top-full h-4 w-px bg-white/10 last:hidden" />
-                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-primary-500 group-hover:bg-primary-500/10 transition-colors">
+                        <div className="absolute left-12 top-full h-4 w-px bg-border last:hidden" />
+                        <div className="w-14 h-14 rounded-2xl bg-primary-50 border border-primary-100 flex items-center justify-center text-primary-500 group-hover:bg-primary-500 group-hover:text-white transition-all duration-300">
                           {step.icon}
                         </div>
                         <div>
                           <div className="flex items-center gap-3 mb-1">
-                            <span className="text-xs font-mono text-primary-500 font-bold">0{idx + 1}</span>
-                            <h3 className="text-xl font-bold text-white tracking-tight">
+                            <span className="text-xs font-bold text-primary-500">0{idx + 1}</span>
+                            <h3 className="text-xl font-bold text-text-primary tracking-tight">
                               {step.title}
                             </h3>
                           </div>
@@ -263,7 +264,7 @@ const HowWeHelpPage: React.FC = () => {
                             {step.desc}
                           </p>
                         </div>
-                        <ArrowRight className="w-5 h-5 ml-auto text-text-faint opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <ArrowRight className="w-5 h-5 ml-auto text-primary-500 opacity-0 group-hover:opacity-100 transition-all duration-300" />
                       </div>
                     ))}
                   </div>

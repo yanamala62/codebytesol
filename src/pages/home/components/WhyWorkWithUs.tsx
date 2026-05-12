@@ -4,7 +4,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FadeIn } from '../../../components/animations/FadeIn';
 import { cn } from '../../../lib/cn';
-import whyBg from '../../../assets/bg/download (1).jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,24 +53,29 @@ export default function WhyWorkWithUs() {
   }, [whyUs]);
 
   return (
-    <section ref={containerRef} className="w-full bg-bg-secondary py-24 relative overflow-hidden">
-      {/* Background Image with Overlay */}
+    <section ref={containerRef} className="w-full bg-gray-900 py-32 relative overflow-hidden border-b border-white/5">
+      {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
-         <img src={whyBg} className="w-full h-full object-cover opacity-40" alt="Background" />
-         <div className="absolute inset-0 bg-bg-secondary/90" />
+        <img 
+          src="/source_images/company/com_careers.png" 
+          alt="Why Us Background" 
+          className="w-full h-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/60 to-gray-900" />
+        <div className="absolute inset-0 bg-gray-900/40" />
       </div>
-
+      
       <div className="container-2xl mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           
           {/* Left Side */}
           <div className="lg:w-5/12">
             <FadeIn direction="right">
-              <p className="text-xs font-mono uppercase tracking-[0.3em] text-primary-500 mb-6 font-bold">CodeByteSol Standards</p>
-              <h2 ref={leftTextRef} className="text-display-xl font-display font-bold text-white mb-8 leading-none min-h-[120px]">
+              <p className="text-sm font-bold uppercase tracking-[0.4em] text-primary-400 mb-8">CodeByteSol Standards</p>
+              <h2 ref={leftTextRef} className="text-5xl md:text-7xl font-black text-white mb-10 leading-[0.95] min-h-[140px] tracking-tighter">
                 The Advantage.
               </h2>
-              <p className="text-xl text-text-muted leading-relaxed max-w-md font-medium">
+              <p className="text-xl text-gray-300 leading-relaxed max-w-md font-medium border-l-2 border-primary-500/40 pl-8">
                 We combine AI-native thinking with elite engineering to solve the most 
                 complex digital challenges for global enterprises.
               </p>
@@ -79,18 +83,18 @@ export default function WhyWorkWithUs() {
           </div>
 
           {/* Right Scrolling Side - Independent Scroll */}
-          <div className="lg:w-7/12 max-h-[600px] overflow-y-auto custom-scrollbar pr-6">
+          <div className="lg:w-7/12 max-h-[600px] overflow-y-auto pr-6 scrollbar-hide">
             <div className="flex flex-col gap-20 lg:gap-24 pb-10">
               {whyUs.map((feature, i) => (
                 <div key={i} className={cn(`why-card-${i} flex flex-col gap-6`)}>
-                  <div className="font-display text-7xl md:text-[80px] font-black text-white/5 leading-none">
+                  <div className="text-7xl md:text-[80px] font-black text-gray-800 leading-none">
                     0{i + 1}
                   </div>
-                  <div className="flex flex-col gap-4 pl-6 border-l-2 border-primary-500/30">
-                    <h3 className="text-2xl md:text-3xl font-display font-bold text-white leading-tight">
+                  <div className="flex flex-col gap-4 pl-6 border-l-4 border-primary-500">
+                    <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight tracking-tight">
                       {feature.title}
                     </h3>
-                    <p className="text-lg text-text-muted leading-relaxed max-w-xl font-medium">
+                    <p className="text-lg text-gray-400 leading-relaxed max-w-xl font-medium">
                       {feature.description}
                     </p>
                   </div>

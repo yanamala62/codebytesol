@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 import { FadeIn, StaggerChildren } from '../../../components/animations/FadeIn';
-import wpHero from '../../../assets/bg/download (2).jpg';
 import { Download, CheckCircle2, Mail, ChevronDown, ChevronUp, Clock, BookOpen } from 'lucide-react';
+import { Button } from '../../../components/primitives/Button';
 
 const whitePapers = [
   {
@@ -22,7 +22,7 @@ const whitePapers = [
       'Risk Management & Governance',
       'Change Management Best Practices'
     ],
-    image: '/images/wp-ai-framework-001--a5720c5d4d05.jpg',
+    image: '/source_images/services/service_ai.png',
     downloadSize: '3.2 MB'
   },
   {
@@ -41,7 +41,7 @@ const whitePapers = [
       'Vendor Selection Criteria',
       'Migration Execution Framework'
     ],
-    image: '/images/wp-cloud-finance-002--20de9b0ff2a7.jpg',
+    image: '/source_images/services/service_cloud.png',
     downloadSize: '4.1 MB'
   },
   {
@@ -60,7 +60,7 @@ const whitePapers = [
       'Platform Architecture Patterns',
       'Migration from Monolithic Data Lakes'
     ],
-    image: '/images/wp-data-mesh-003--772b62d13474.jpg',
+    image: '/source_images/services/service_data.png',
     downloadSize: '5.8 MB'
   },
   {
@@ -79,7 +79,7 @@ const whitePapers = [
       'Model Governance & Compliance',
       'Automated Retraining Pipelines'
     ],
-    image: '/images/wp-mlops-maturity-004--1585aecbce4c.jpg',
+    image: '/source_images/services/service_ai.png',
     downloadSize: '4.5 MB'
   },
   {
@@ -98,7 +98,7 @@ const whitePapers = [
       'Security Monitoring & Analytics',
       'Implementation Roadmap'
     ],
-    image: '/images/wp-zero-trust-005--8135e6b2727e.jpg',
+    image: '/source_images/services/service_cloud.png',
     downloadSize: '3.9 MB'
   },
   {
@@ -117,7 +117,7 @@ const whitePapers = [
       'Industry Benchmarks',
       'Executive Reporting Templates'
     ],
-    image: '/images/wp-digital-roi-006--b8c1620553db.jpg',
+    image: '/source_images/home_hero.png',
     downloadSize: '2.8 MB'
   }
 ];
@@ -130,22 +130,24 @@ export default function WhitePapersPage() {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative pt-48 pb-24 px-6 overflow-hidden">
+      <section className="relative pt-48 pb-32 px-6 overflow-hidden bg-gray-900 min-h-[60vh] flex items-center">
         <div className="absolute inset-0 z-0">
-          <img
-            src={wpHero}
-            alt="White Papers Hero"
-            className="w-full h-full object-cover opacity-50"
+          <img 
+            src="/source_images/resources/res_whitepaper.png" 
+            alt="Whitepapers Background" 
+            className="w-full h-full object-cover opacity-80"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-gray-900/60" />
         </div>
 
-        <div className="container-xl mx-auto relative z-10 text-center">
+        <div className="container-xl mx-auto relative z-10">
           <FadeIn direction="up">
-            <h1 className="text-display-xl md:text-display-2xl font-display font-bold text-white mb-8 tracking-tighter leading-none">
-              Technical <span className="gradient-text">Research.</span>
+            <h1 className="text-6xl md:text-[120px] font-black text-white mb-10 leading-[0.85] tracking-tighter uppercase italic">
+              Technical <br />
+              <span className="text-primary-500">Research.</span>
             </h1>
-            <p className="text-2xl text-text-muted max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-xl md:text-3xl text-gray-200 max-w-3xl leading-relaxed font-medium drop-shadow-md">
               In-depth analysis, strategic frameworks, and comprehensive guides on AI, cloud computing, and digital transformation.
             </p>
           </FadeIn>
@@ -153,29 +155,29 @@ export default function WhitePapersPage() {
       </section>
 
       {/* White Papers Grid */}
-      <section className="py-24 bg-bg-primary">
+      <section className="py-24 bg-white border-t border-border">
         <div className="container-xl mx-auto px-6">
           <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {whitePapers.map((paper) => (
               <FadeIn key={paper.id} direction="up">
                 <div
-                  className="glass rounded-3xl overflow-hidden border-white/5 hover:border-primary-500/30 transition-all duration-500 group flex flex-col h-full"
+                  className="bg-white rounded-3xl overflow-hidden border border-border hover:border-primary-500 hover:shadow-soft transition-all duration-500 group flex flex-col h-full"
                 >
                   <div className="relative w-full h-64 overflow-hidden">
                     <img
                       src={paper.image}
                       alt={paper.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="px-4 py-1.5 bg-bg-primary/80 backdrop-blur-md text-primary-400 rounded-lg text-xs font-bold uppercase tracking-widest border border-white/10">
+                      <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-600 rounded-lg text-[10px] font-bold uppercase tracking-widest border border-border shadow-sm">
                         {paper.category}
                       </span>
                     </div>
                   </div>
                   
                   <div className="p-8 flex flex-col flex-1">
-                    <div className="flex items-center gap-4 mb-4 text-xs font-mono text-text-faint uppercase tracking-widest">
+                    <div className="flex items-center gap-4 mb-4 text-[10px] font-bold text-text-faint uppercase tracking-widest">
                       <div className="flex items-center gap-2">
                         <BookOpen className="w-4 h-4 text-primary-500" />
                         {paper.pages} Pages
@@ -186,21 +188,21 @@ export default function WhitePapersPage() {
                       </div>
                     </div>
                     
-                    <h3 className="text-2xl font-display font-bold text-white mb-2 tracking-tight group-hover:text-primary-400 transition-colors">
+                    <h3 className="text-xl font-bold text-text-primary mb-2 tracking-tight group-hover:text-primary-500 transition-colors">
                       {paper.title}
                     </h3>
-                    <p className="text-sm text-primary-500/80 font-bold mb-4 uppercase tracking-wider">
+                    <p className="text-xs text-primary-600 font-bold mb-4 uppercase tracking-wider">
                       {paper.subtitle}
                     </p>
-                    <p className="text-text-muted mb-8 line-clamp-3 font-medium leading-relaxed">
+                    <p className="text-sm text-text-muted mb-8 line-clamp-3 font-medium leading-relaxed">
                       {paper.description}
                     </p>
                     
-                    <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between">
-                      <span className="text-xs font-mono text-text-faint uppercase tracking-widest">{paper.downloadSize} PDF</span>
+                    <div className="mt-auto pt-6 border-t border-border flex items-center justify-between">
+                      <span className="text-[10px] font-bold text-text-faint uppercase tracking-widest">{paper.downloadSize} PDF</span>
                       <button
                         onClick={() => setSelectedPaper(selectedPaper === paper.id ? null : paper.id)}
-                        className="text-white font-bold text-sm hover:text-primary-400 flex items-center gap-2 transition-colors"
+                        className="text-primary-600 font-bold text-xs hover:text-primary-700 flex items-center gap-1 transition-colors"
                       >
                         {selectedPaper === paper.id ? 'Hide Details' : 'View Details'}
                         {selectedPaper === paper.id ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -209,12 +211,12 @@ export default function WhitePapersPage() {
 
                     {/* Expanded Details */}
                     {selectedPaper === paper.id && (
-                      <div className="mt-8 pt-8 border-t border-white/5 animate-in fade-in slide-in-from-top-4 duration-300">
-                        <h4 className="font-bold text-white mb-4 flex items-center gap-2">
+                      <div className="mt-6 pt-6 border-t border-border animate-in fade-in slide-in-from-top-4 duration-300">
+                        <h4 className="text-sm font-bold text-text-primary mb-4 flex items-center gap-2">
                           <CheckCircle2 className="w-4 h-4 text-primary-500" />
                           Key Topics Covered:
                         </h4>
-                        <ul className="space-y-3 mb-8">
+                        <ul className="space-y-2 mb-8">
                           {paper.keyTopics.map((topic, index) => (
                             <li key={index} className="flex items-start gap-3 text-sm text-text-muted font-medium">
                               <div className="w-1.5 h-1.5 rounded-full bg-primary-500 mt-1.5 flex-shrink-0" />
@@ -222,10 +224,10 @@ export default function WhitePapersPage() {
                             </li>
                           ))}
                         </ul>
-                        <button className="w-full h-14 bg-gradient-aurora text-white rounded-xl font-bold flex items-center justify-center gap-3 hover:scale-[1.02] transition-transform shadow-glow-sm">
-                          <Download className="w-5 h-5" />
+                        <Button className="w-full h-12 rounded-xl text-sm">
+                          <Download className="w-4 h-4 mr-2" />
                           Download Resource
-                        </button>
+                        </Button>
                       </div>
                     )}
                   </div>
@@ -237,24 +239,26 @@ export default function WhitePapersPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-bg-primary border-t border-white/5">
+      <section className="py-24 bg-gray-50 border-t border-border">
         <div className="container-xl mx-auto px-6">
           <FadeIn direction="up">
-            <div className="bg-gradient-to-br from-bg-primary to-accent-900/10 rounded-[3rem] p-12 md:p-20 text-center border border-white/5 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-accent-500/5 blur-[100px] -z-10" />
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 tracking-tight">
+            <div className="bg-white rounded-[3rem] p-12 md:p-20 text-center border border-border shadow-sm relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-1/3 h-full bg-primary-50/50 blur-[120px] rounded-full translate-x-1/2" />
+              
+              <h2 className="text-3xl md:text-5xl font-bold text-text-primary mb-6 tracking-tight relative z-10">
                 Need Custom Research?
               </h2>
-              <p className="text-xl text-text-muted mb-10 max-w-2xl mx-auto font-medium">
+              <p className="text-lg md:text-xl text-text-muted mb-10 max-w-2xl mx-auto font-medium relative z-10">
                 Our research team can develop custom technical reports and industry frameworks tailored to your specific enterprise challenges.
               </p>
-              <a
-                href="mailto:Assist@codebytesol.ai"
-                className="inline-flex items-center gap-4 px-10 py-5 bg-gradient-aurora text-white rounded-xl font-bold text-lg hover:scale-[1.02] transition-transform shadow-glow-md"
+              <Button
+                size="lg"
+                className="h-16 px-12 rounded-2xl relative z-10"
+                onClick={() => window.location.href = "mailto:codebytesolution.info@gmail.com"}
               >
-                <Mail className="w-6 h-6" />
+                <Mail className="w-6 h-6 mr-3" />
                 Request Custom Strategy
-              </a>
+              </Button>
             </div>
           </FadeIn>
         </div>

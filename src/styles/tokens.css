@@ -1,50 +1,56 @@
 :root {
-  /* Core Brand */
-  --color-primary-50:  #E6FFFA;
-  --color-primary-100: #B2F5EA;
-  --color-primary-300: #4FD1C5;
-  --color-primary-500: #14B8A6;  /* Signature teal */
-  --color-primary-700: #0F766E;
-  --color-primary-900: #134E4A;
+  /* Core Brand - Blue */
+  --color-primary-50:  #EFF6FF;
+  --color-primary-100: #DBEAFE;
+  --color-primary-300: #93C5FD;
+  --color-primary-500: #2563EB;
+  --color-primary-600: #2563EB; /* Added for consistency */
+  --color-primary-700: #1D4ED8;
+  --color-primary-900: #1E3A8A;
 
-  /* Accent — Electric Violet */
-  --color-accent-300:  #C4B5FD;
-  --color-accent-500:  #8B5CF6;
-  --color-accent-700:  #6D28D9;
+  /* Accent — Premium CTA (Coral) */
+  --color-accent-500:  #FF6F61;
+  --color-accent-600:  #E65B50; /* Darker coral for hover */
 
-  /* Accent — Plasma Pink */
-  --color-plasma-500:  #EC4899;
-  --color-plasma-700:  #BE185D;
-
-  /* Neutrals — Obsidian Scale */
-  --color-bg-primary:   #07090D;  /* Near-black, never pure black */
-  --color-bg-secondary: #0F1218;
-  --color-bg-tertiary:  #161A23;
-  --color-surface:      #1E222C;
-  --color-border:       #2A2F3A;
-  --color-text-primary: #F9FAFB;
-  --color-text-muted:   #D1D5DB;  /* Brighter for better visibility */
-  --color-text-faint:   #9CA3AF;
-
-  /* Semantic */
-  --color-success: #10B981;
-  --color-warning: #F59E0B;
-  --color-danger:  #EF4444;
-  --color-info:    #3B82F6;
-
-  /* Aurora Gradients */
-  --gradient-aurora: linear-gradient(135deg, #14B8A6 0%, #8B5CF6 50%, #EC4899 100%);
-  --gradient-nebula: radial-gradient(ellipse at top, #6D28D9 0%, #07090D 70%);
-  --gradient-glass:  linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
-}
-
-[data-theme="light"] {
-  --color-bg-primary:   #FAFBFC;
-  --color-bg-secondary: #F1F3F7;
-  --color-text-primary: #0A0E14;
-  /* Invert appropriately for light mode */
-  --color-text-muted:   #4B5563;
-  --color-text-faint:   #9CA3AF;
+  /* Neutrals — Modern SaaS Palette */
+  --color-bg-primary:   #F3F4F6;
+  --color-bg-secondary: #F9FAFB;
+  --color-bg-tertiary:  #FFFFFF;
   --color-surface:      #FFFFFF;
   --color-border:       #E5E7EB;
+  --color-text-primary: #111827;
+  --color-text-muted:   #6B7280;
+  --color-text-faint:   #9CA3AF;
+  --color-hover-bg:     #EFF6FF;
+
+  /* Semantic */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger:  #EF4444;
+  --color-info:    #2563EB;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-soft: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  --gradient-accent: linear-gradient(135deg, #FF6F61 0%, #E65B50 100%);
+  --gradient-glass:  linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%);
+  
+  /* Legacy/Compatibility - Mapping to new system */
+  --gradient-aurora: var(--gradient-primary);
+  --gradient-nebula: radial-gradient(circle at top, #DBEAFE 0%, #F3F4F6 100%);
+}
+
+/* Dark mode extension if needed in future */
+[data-theme="dark"] {
+  --color-bg-primary:   #0F172A;
+  --color-bg-secondary: #1E293B;
+  --color-text-primary: #F8FAFC;
+  --color-text-muted:   #94A3B8;
+  --color-surface:      #1E293B;
+  --color-border:       #334155;
 }

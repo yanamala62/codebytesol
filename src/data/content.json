@@ -17,7 +17,7 @@
       "title": "AI & Machine Learning",
       "navDesc": "Intelligent systems that learn and adapt",
       "cardDescription": "Build intelligent systems that adapt, learn, automate, and enhance business decision-making.",
-      "image": "/assets/services/AML.png",
+      "image": "/source_images/services/service_ai.png",
       "link": "/services/ai-machine-learning"
     },
     {
@@ -26,7 +26,7 @@
       "title": "Application Development",
       "navDesc": "Custom web, mobile, and cloud platforms",
       "cardDescription": "Design, engineer, and scale custom digital platforms across web, mobile, and cloud.",
-      "image": "/assets/services/App Dev.png",
+      "image": "/source_images/services/service_app_dev.png",
       "link": "/services/application-development"
     },
     {
@@ -35,7 +35,7 @@
       "title": "Software Testing & QA",
       "navDesc": "Comprehensive quality assurance",
       "cardDescription": "Strengthen product reliability through test automation, QA engineering, and quality governance.",
-      "image": "/assets/services/Software Testing.png",
+      "image": "/source_images/services/service_qa.png",
       "link": "/services/software-testing-qa"
     },
     {
@@ -44,7 +44,7 @@
       "title": "Cloud Engineering",
       "navDesc": "Scalable cloud-native solutions",
       "cardDescription": "Architect, migrate, and modernize infrastructure with secure and scalable cloud-native solutions.",
-      "image": "/assets/services/Cloud.png",
+      "image": "/source_images/services/service_cloud.png",
       "link": "/services/cloud-engineering"
     },
     {
@@ -53,7 +53,7 @@
       "title": "Data Services",
       "navDesc": "Analytics and business intelligence",
       "cardDescription": "Empower teams with unified data pipelines, analytics foundations, and business insights.",
-      "image": "/assets/services/Data.png",
+      "image": "/source_images/services/service_data.png",
       "link": "/services/data-services"
     },
     {
@@ -62,43 +62,43 @@
       "title": "ERP Services",
       "navDesc": "Enterprise resource planning systems",
       "cardDescription": "Implement and optimize enterprise resource planning systems to streamline operations and workflows.",
-      "image": "/assets/services/ERP.png",
+      "image": "/source_images/services/service_erp.png",
       "link": "/services/erp-services"
     }
   ],
   "industries": [
-    { "id": "healthcare", "icon": "ri-heart-pulse-line", "title": "Healthcare", "navDesc": "AI solutions for diagnostics and patient care", "link": "/industries/healthcare" },
-    { "id": "banking-finance", "icon": "ri-bank-line", "title": "Banking & Finance", "navDesc": "Modernizing risk and fraud operations", "link": "/industries/banking-finance" },
-    { "id": "insurance", "icon": "ri-shield-check-line", "title": "Insurance", "navDesc": "AI-powered claims and underwriting", "link": "/industries/insurance" },
-    { "id": "retail-ecommerce", "icon": "ri-shopping-cart-line", "title": "Retail & eCommerce", "navDesc": "Personalization and inventory optimization", "link": "/industries/retail-ecommerce" },
-    { "id": "energy-utilities", "icon": "ri-flashlight-line", "title": "Energy & Utilities", "navDesc": "Predictive maintenance and optimization", "link": "/industries/energy-utilities" },
-    { "id": "manufacturing", "icon": "ri-settings-3-line", "title": "Manufacturing", "navDesc": "Automation and defect detection", "link": "/industries/manufacturing" },
-    { "id": "travel-logistics", "icon": "ri-plane-line", "title": "Travel & Logistics", "navDesc": "AI for routing and pricing", "link": "/industries/travel-logistics" },
-    { "id": "isv-hitech", "icon": "ri-code-box-line", "title": "ISV & Hi-Tech", "navDesc": "Engineering acceleration with AI", "link": "/industries/isv-hitech" }
+    { "id": "healthcare", "icon": "ri-heart-pulse-line", "title": "Healthcare", "navDesc": "AI solutions for diagnostics and patient care", "image": "/source_images/industries/ind_healthcare.png", "link": "/industries/healthcare" },
+    { "id": "banking-finance", "icon": "ri-bank-line", "title": "Banking & Finance", "navDesc": "Modernizing risk and fraud operations", "image": "/source_images/industries/ind_banking.png", "link": "/industries/banking-finance" },
+    { "id": "insurance", "icon": "ri-shield-check-line", "title": "Insurance", "navDesc": "AI-powered claims and underwriting", "image": "/source_images/industries/ind_insurance.png", "link": "/industries/insurance" },
+    { "id": "retail-ecommerce", "icon": "ri-shopping-cart-line", "title": "Retail & eCommerce", "navDesc": "Personalization and inventory optimization", "image": "/source_images/industries/ind_retail.png", "link": "/industries/retail-ecommerce" },
+    { "id": "energy-utilities", "icon": "ri-flashlight-line", "title": "Energy & Utilities", "navDesc": "Predictive maintenance and optimization", "image": "/source_images/industries/ind_energy.png", "link": "/industries/energy-utilities" },
+    { "id": "manufacturing", "icon": "ri-settings-3-line", "title": "Manufacturing", "navDesc": "Automation and defect detection", "image": "/source_images/industries/ind_manufacturing.png", "link": "/industries/manufacturing" },
+    { "id": "travel-logistics", "icon": "ri-plane-line", "title": "Travel & Logistics", "navDesc": "AI for routing and pricing", "image": "/source_images/industries/ind_logistics.png", "link": "/industries/travel-logistics" },
+    { "id": "isv-hitech", "icon": "ri-code-box-line", "title": "ISV & Hi-Tech", "navDesc": "Engineering acceleration with AI", "image": "/source_images/industries/ind_hitech.png", "link": "/industries/isv-hitech" }
   ],
   "resources": [
-    { "icon": "ri-trophy-line", "title": "Success Stories", "desc": "Real-world case studies and client results", "link": "/resources/success-stories" },
-    { "icon": "ri-article-line", "title": "Blogs", "desc": "Expert insights and industry trends", "link": "/resources/blogs" },
-    { "icon": "ri-file-text-line", "title": "White Papers", "desc": "In-depth research and technical guides", "link": "/resources/white-papers" },
-    { "icon": "ri-video-line", "title": "Videos", "desc": "Educational content and tutorials", "link": "/resources/videos" }
+    { "icon": "ri-trophy-line", "title": "Success Stories", "desc": "Real-world case studies and client results", "link": "/resources/success-stories", "image": "/source_images/resources/res_success.png" },
+    { "icon": "ri-article-line", "title": "Blogs", "desc": "Expert insights and industry trends", "link": "/resources/blogs", "image": "/source_images/resources/res_blog.png" },
+    { "icon": "ri-file-text-line", "title": "White Papers", "desc": "In-depth research and technical guides", "link": "/resources/white-papers", "image": "/source_images/resources/res_whitepaper.png" },
+    { "icon": "ri-video-line", "title": "Videos", "desc": "Educational content and tutorials", "link": "/resources/videos", "image": "/source_images/resources/res_video.png" }
   ],
   "company": [
-    { "icon": "ri-building-line", "title": "About", "desc": "Our story, mission, and values", "link": "/about" },
-    { "icon": "ri-briefcase-line", "title": "Careers", "desc": "Join our growing team", "link": "/careers" },
-    { "icon": "ri-shake-hands-line", "title": "How We Help", "desc": "Our engagement models and process", "link": "/how-we-help" },
-    { "icon": "ri-newspaper-line", "title": "Press Contact", "desc": "Media inquiries and press releases", "link": "/press" },
-    { "icon": "ri-mail-line", "title": "Get in Touch", "desc": "Contact us and office locations", "link": "/contact" }
+    { "icon": "ri-building-line", "title": "About", "desc": "Our story, mission, and values", "link": "/about", "image": "/source_images/company/com_about.png" },
+    { "icon": "ri-briefcase-line", "title": "Careers", "desc": "Join our growing team", "link": "/careers", "image": "/source_images/company/com_careers.png" },
+    { "icon": "ri-shake-hands-line", "title": "How We Help", "desc": "Our engagement models and process", "link": "/how-we-help", "image": "/source_images/company/com_help.png" },
+    { "icon": "ri-newspaper-line", "title": "Press Contact", "desc": "Media inquiries and press releases", "link": "/press", "image": "/source_images/company/com_press.png" },
+    { "icon": "ri-mail-line", "title": "Get in Touch", "desc": "Contact us and office locations", "link": "/contact", "image": "/source_images/company/com_contact.png" }
   ],
   "useCases": [
-    { "industry": "Banking", "title": "Agentic AI (GPT Model)", "description": "Automating customer onboarding", "image": "/assets/banking-agentic-gpt-ai-model-fresh-v9--f1abd8069969.png", "link": "/resources/success-stories#finance" },
-    { "industry": "Manufacturing", "title": "AI GPT Model Predictive Maintenance", "description": "Reducing downtime with intelligent predictions", "image": "/assets/usecase-manufacturing-dark-unified-002--4867a750ba84.jpg", "link": "/resources/success-stories#manufacturing" },
-    { "industry": "Construction", "title": "AI Recommendation Engine", "description": "Design Validation OCR", "image": "/assets/usecase-construction-dark-unified-003--ed4b27dd8bad.jpg", "link": "/resources/success-stories#government" },
-    { "industry": "Retail", "title": "Agentic AI Vendor Invoice Automation", "description": "Streamlining invoice processing", "image": "/assets/usecase-retail-dark-unified-004--784b58a00f69.jpg", "link": "/resources/success-stories#retail" },
-    { "industry": "Transport", "title": "AI Predictive Analytics", "description": "Optimizing booking systems", "image": "/assets/usecase-transport-dark-unified-005--0705d5b0665e.jpg", "link": "/resources/success-stories" },
-    { "industry": "Healthcare", "title": "AI GPT Model Sales Forecasting", "description": "Data-driven healthcare insights", "image": "/assets/usecase-healthcare-dark-unified-006--f1cb9008172d.jpg", "link": "/resources/success-stories#healthcare" },
-    { "industry": "Insurance", "title": "Intelligent QA Test Automation", "description": "Ensuring quality and compliance", "image": "/assets/usecase-insurance-dark-unified-007--3d237036a472.jpg", "link": "/resources/success-stories" },
-    { "industry": "Financial", "title": "Book Keeping App Development", "description": "Automated financial management", "image": "/assets/usecase-financial-dark-unified-008--647c41bbad7e.jpg", "link": "/resources/success-stories#finance" },
-    { "industry": "FinTech", "title": "Microservices Migration", "description": "API-first architecture", "image": "/assets/usecase-fintech-dark-unified-009--a8f68f476435.jpg", "link": "/resources/success-stories#finance" }
+    { "industry": "Banking", "title": "Agentic AI (GPT Model)", "description": "Automating customer onboarding", "image": "/source_images/industries/ind_banking.png", "link": "/resources/success-stories#finance" },
+    { "industry": "Manufacturing", "title": "AI GPT Model Predictive Maintenance", "description": "Reducing downtime with intelligent predictions", "image": "/source_images/industries/ind_manufacturing.png", "link": "/resources/success-stories#manufacturing" },
+    { "industry": "Healthcare", "title": "AI GPT Model Sales Forecasting", "description": "Data-driven healthcare insights", "image": "/source_images/industries/ind_healthcare.png", "link": "/resources/success-stories#healthcare" },
+    { "industry": "Retail", "title": "Agentic AI Vendor Invoice Automation", "description": "Streamlining invoice processing", "image": "/source_images/industries/ind_retail.png", "link": "/resources/success-stories#retail" },
+    { "industry": "Insurance", "title": "Intelligent QA Test Automation", "description": "Ensuring quality and compliance", "image": "/source_images/industries/ind_insurance.png", "link": "/resources/success-stories" },
+    { "industry": "Transport", "title": "AI Predictive Analytics", "description": "Optimizing booking systems", "image": "/source_images/industries/ind_logistics.png", "link": "/resources/success-stories" },
+    { "industry": "Construction", "title": "AI Recommendation Engine", "description": "Design Validation OCR", "image": "/source_images/industries/ind_hitech.png", "link": "/resources/success-stories#government" },
+    { "industry": "Financial", "title": "Book Keeping App Development", "description": "Automated financial management", "image": "/source_images/industries/ind_banking.png", "link": "/resources/success-stories#finance" },
+    { "industry": "FinTech", "title": "Microservices Migration", "description": "API-first architecture", "image": "/source_images/services/service_cloud.png", "link": "/resources/success-stories#finance" }
   ],
   "techStack": [
     { "category": "AI/ML", "icon": "ri-brain-line", "tools": ["Scikit-learn", "XGBoost", "LightGBM", "CatBoost"] },
@@ -175,4 +175,3 @@
     "secondaryButton": { "label": "Explore Resources", "href": "/resources" }
   }
 }
-

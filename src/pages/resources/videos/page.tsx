@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
+import { FadeIn } from '../../../components/animations/FadeIn';
+import { Play, Eye, Video } from 'lucide-react';
+import { Button } from '../../../components/primitives/Button';
 
 const categories = ['All', 'Keynotes', 'Tutorials', 'Webinars', 'Case Studies', 'Product Demos'];
 
@@ -15,7 +18,7 @@ const videos = [
     views: '12.5K',
     date: 'March 15, 2024',
     description: 'Explore the future of enterprise AI and learn how leading organizations are leveraging AI to drive innovation and competitive advantage.',
-    thumbnail: '/images/video-keynote-001--4fc5595870ab.jpg',
+    thumbnail: '/source_images/services/service_ai.png',
     tags: ['AI Strategy', 'Digital Transformation', 'Innovation']
   },
   {
@@ -28,7 +31,7 @@ const videos = [
     views: '8.3K',
     date: 'March 12, 2024',
     description: 'Step-by-step tutorial on designing, implementing, and deploying scalable machine learning pipelines using modern MLOps practices.',
-    thumbnail: '/images/video-ml-tutorial-002--d8e9b0a6a3e0.jpg',
+    thumbnail: '/source_images/services/service_data.png',
     tags: ['MLOps', 'Tutorial', 'Machine Learning']
   },
   {
@@ -41,7 +44,7 @@ const videos = [
     views: '6.7K',
     date: 'March 10, 2024',
     description: 'Real-world case study of a major bank\'s cloud migration journey, including challenges faced, solutions implemented, and results achieved.',
-    thumbnail: '/images/video-case-cloud-003--44cc3bd987e1.jpg',
+    thumbnail: '/source_images/services/service_cloud.png',
     tags: ['Cloud Migration', 'Case Study', 'Financial Services']
   },
   {
@@ -54,7 +57,7 @@ const videos = [
     views: '9.1K',
     date: 'March 8, 2024',
     description: 'Comprehensive webinar covering real-time data processing architectures, stream processing patterns, and best practices for building scalable analytics systems.',
-    thumbnail: '/images/video-webinar-analytics-004--ea597f034139.jpg',
+    thumbnail: '/source_images/services/service_data.png',
     tags: ['Real-Time Analytics', 'Data Architecture', 'Webinar']
   },
   {
@@ -67,7 +70,7 @@ const videos = [
     views: '7.8K',
     date: 'March 5, 2024',
     description: 'Practical tutorial on implementing zero trust security principles in cloud environments, with hands-on demonstrations and configuration examples.',
-    thumbnail: '/images/video-security-tutorial-005--6657a95bb62d.jpg',
+    thumbnail: '/source_images/services/service_cloud.png',
     tags: ['Security', 'Zero Trust', 'Cloud Security']
   },
   {
@@ -80,7 +83,7 @@ const videos = [
     views: '11.2K',
     date: 'March 3, 2024',
     description: 'Live demonstration of our AI platform capabilities, showing how to ingest data, train models, and deploy AI solutions in production.',
-    thumbnail: '/images/video-product-demo-006--db81b1b71725.jpg',
+    thumbnail: '/source_images/services/service_ai.png',
     tags: ['Product Demo', 'AI Platform', 'Live Demo']
   },
   {
@@ -93,7 +96,7 @@ const videos = [
     views: '10.4K',
     date: 'March 1, 2024',
     description: 'Keynote presentation on how AI is revolutionizing healthcare delivery, from diagnostics to personalized treatment plans.',
-    thumbnail: '/images/video-healthcare-keynote-007--1d17c597daba.jpg',
+    thumbnail: '/source_images/industries/ind_healthcare.png',
     tags: ['Healthcare', 'AI Innovation', 'Patient Care']
   },
   {
@@ -106,7 +109,7 @@ const videos = [
     views: '5.9K',
     date: 'February 28, 2024',
     description: 'Expert webinar on establishing effective data governance frameworks that enable innovation while ensuring compliance and data quality.',
-    thumbnail: '/images/video-governance-webinar-008--0418763b4756.jpg',
+    thumbnail: '/source_images/services/service_data.png',
     tags: ['Data Governance', 'Compliance', 'Best Practices']
   },
   {
@@ -119,7 +122,7 @@ const videos = [
     views: '14.6K',
     date: 'February 25, 2024',
     description: 'Comprehensive tutorial series covering Kubernetes deployment strategies, from basic concepts to advanced production patterns.',
-    thumbnail: '/images/video-k8s-tutorial-009--b2436d69e6b1.jpg',
+    thumbnail: '/source_images/services/service_cloud.png',
     tags: ['Kubernetes', 'DevOps', 'Container Orchestration']
   },
   {
@@ -132,7 +135,7 @@ const videos = [
     views: '7.2K',
     date: 'February 22, 2024',
     description: 'Detailed case study of how computer vision and AI transformed quality control processes in automotive manufacturing.',
-    thumbnail: '/images/video-manufacturing-case-010--4ac469c9eff0.jpg',
+    thumbnail: '/source_images/industries/ind_manufacturing.png',
     tags: ['Manufacturing', 'Computer Vision', 'Quality Control']
   },
   {
@@ -145,7 +148,7 @@ const videos = [
     views: '13.8K',
     date: 'February 20, 2024',
     description: 'Explore practical applications of generative AI in enterprise settings, including use cases, implementation strategies, and ethical considerations.',
-    thumbnail: '/images/video-genai-webinar-011--a6c3a9038074.jpg',
+    thumbnail: '/source_images/services/service_ai.png',
     tags: ['Generative AI', 'Enterprise AI', 'Innovation']
   },
   {
@@ -158,59 +161,59 @@ const videos = [
     views: '8.9K',
     date: 'February 18, 2024',
     description: 'Live demonstration of modern data platform architecture, showcasing data ingestion, processing, storage, and analytics capabilities.',
-    thumbnail: '/images/video-data-platform-012--edd5bb640149.jpg',
+    thumbnail: '/source_images/services/service_data.png',
     tags: ['Data Platform', 'Architecture', 'Live Demo']
   }
 ];
 
 export default function VideosPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [playingVideo, setPlayingVideo] = useState<number | null>(null);
 
   const filteredVideos = selectedCategory === 'All' 
     ? videos 
     : videos.filter(video => video.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-bg-primary text-text-primary">
       <Header />
       
-      {/* Hero Section with Background Image */}
-      <section className="relative pt-32 pb-24 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 w-full h-full">
-          <img
-            src="/images/videos-hero-production-v1-321--c5edf4d53872.png"
-            alt="Videos Hero"
-            className="w-full h-full object-cover object-top"
+      {/* Hero Section */}
+      <section className="relative pt-48 pb-32 px-6 overflow-hidden bg-gray-900 min-h-[60vh] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/source_images/resources/res_video.png" 
+            alt="Videos Background" 
+            className="w-full h-full object-cover opacity-80"
           />
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-gray-900/60" />
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Educational <span className="bg-gradient-to-r from-[var(--color-primary-500)] to-[var(--color-accent-500)] bg-clip-text text-transparent">Videos</span>
-          </h1>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-            Learn from expert tutorials, webinars, and thought leadership sessions on AI, cloud technologies, and enterprise solutions
-          </p>
+        <div className="container-xl mx-auto relative z-10">
+          <FadeIn direction="up">
+            <h1 className="text-6xl md:text-[120px] font-black text-white mb-10 leading-[0.85] tracking-tighter uppercase italic">
+              Educational <br />
+              <span className="text-primary-500">Videos.</span>
+            </h1>
+            <p className="text-xl md:text-3xl text-gray-200 max-w-3xl leading-relaxed font-medium drop-shadow-md">
+              Learn from expert tutorials, webinars, and thought leadership sessions on AI, cloud technologies, and enterprise solutions.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
       {/* Category Filter */}
-      <section className="py-12 bg-gray-50 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-wrap gap-3 justify-center">
+      <section className="py-8 bg-white border-y border-border sticky top-[72px] z-20 backdrop-blur-md bg-white/80 overflow-x-auto">
+        <div className="container-xl mx-auto px-6">
+          <div className="flex flex-nowrap md:flex-wrap gap-3 justify-start md:justify-center min-w-max md:min-w-0">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
+                className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all whitespace-nowrap border ${
                   selectedCategory === category
-                    ? 'bg-teal-500 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                    ? 'bg-primary-500 border-primary-500 text-white shadow-sm'
+                    : 'bg-gray-50 border-border text-text-muted hover:bg-white hover:border-primary-500 hover:text-primary-500'
                 }`}
               >
                 {category}
@@ -221,92 +224,93 @@ export default function VideosPage() {
       </section>
 
       {/* Videos Grid */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-24 bg-white">
+        <div className="container-xl mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredVideos.map((video) => (
-              <div
-                key={video.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
-              >
-                <div className="relative w-full h-56 overflow-hidden bg-gray-900 cursor-pointer"
-                     onClick={() => setPlayingVideo(playingVideo === video.id ? null : video.id)}>
-                  <img
-                    src={video.thumbnail}
-                    alt={video.title}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
-                    <div className="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <i className="ri-play-fill text-white text-3xl ml-1"></i>
+              <FadeIn key={video.id} direction="up">
+                <div
+                  className="bg-white rounded-3xl overflow-hidden border border-border hover:border-primary-500 hover:shadow-soft transition-all duration-500 group flex flex-col h-full"
+                >
+                  <div className="relative w-full h-56 overflow-hidden bg-gray-100 cursor-pointer">
+                    <img
+                      src={video.thumbnail}
+                      alt={video.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 flex items-center justify-center transition-colors">
+                      <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                        <Play className="w-6 h-6 text-primary-500 fill-primary-500 ml-1" />
+                      </div>
+                    </div>
+                    <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/80 text-white text-[10px] font-bold rounded">
+                      {video.duration}
                     </div>
                   </div>
-                  <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/80 text-white text-xs rounded">
-                    {video.duration}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs font-medium">
-                      {video.category}
-                    </span>
-                    <span className="text-xs text-gray-500">{video.views} views</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">
-                    {video.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-4 line-clamp-2">
-                    {video.description}
-                  </p>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-semibold">
-                      {video.speaker.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-gray-900">{video.speaker}</p>
-                      <p className="text-xs text-gray-500">{video.role}</p>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-100">
-                    {video.tags.map((tag, index) => (
-                      <span
-                        key={index}
-                        className="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs"
-                      >
-                        {tag}
+                  
+                  <div className="p-8 flex flex-col flex-1">
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="px-3 py-1 bg-primary-50 text-primary-600 rounded-lg text-[10px] font-bold uppercase tracking-widest border border-primary-100">
+                        {video.category}
                       </span>
-                    ))}
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-text-primary mb-4 group-hover:text-primary-500 transition-colors leading-tight tracking-tight">
+                      {video.title}
+                    </h3>
+                    
+                    <p className="text-sm text-text-muted mb-6 line-clamp-2 leading-relaxed font-medium">
+                      {video.description}
+                    </p>
+                    
+                    <div className="mt-auto pt-6 border-t border-border flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-primary-50 flex items-center justify-center border border-primary-100 text-primary-500 font-bold text-sm">
+                          {video.speaker.charAt(0)}
+                        </div>
+                        <div>
+                          <p className="text-sm font-bold text-text-primary leading-tight">{video.speaker}</p>
+                          <p className="text-[10px] text-text-faint font-bold uppercase tracking-widest">{video.role}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3 text-[10px] font-bold text-text-faint uppercase tracking-widest">
+                         <div className="flex items-center gap-1">
+                           <Eye className="w-3.5 h-3.5" />
+                           {video.views}
+                         </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
       {/* Subscribe CTA */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-gray-50 border-t border-border">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="w-20 h-20 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6">
-            <i className="ri-youtube-line text-white text-4xl"></i>
-          </div>
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Subscribe to Our Channel
-          </h2>
-          <p className="text-lg text-gray-600 mb-8">
-            Get notified when we publish new videos, tutorials, and webinars. Join our growing community of technology professionals.
-          </p>
+          <FadeIn direction="up">
+            <div className="w-20 h-20 bg-primary-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-sm">
+              <Video className="w-10 h-10" />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-text-primary mb-6 tracking-tight">
+              Subscribe to Our Channel
+            </h2>
+            <p className="text-xl text-text-muted mb-10 font-medium">
+              Get notified when we publish new videos, tutorials, and webinars. Join our growing community of technology professionals.
+            </p>
 
-          <a
-           href="https://www.youtube.com/@ForgebyteSoftwareService"
-           rel="noopener noreferrer"
-           className="inline-block"
->
-          <button className="px-8 py-4 bg-teal-500 text-white rounded-lg font-semibold hover:bg-teal-600 transition-colors flex items-center gap-2 mx-auto whitespace-nowrap cursor-pointer">
-            <i className="ri-notification-line text-xl"></i>
-            Subscribe for Updates
-          </button>
-          </a>
+            <Button
+              size="lg"
+              className="h-16 px-12 rounded-2xl"
+              onClick={() => window.open("https://www.youtube.com/@ForgebyteSoftwareService", "_blank")}
+            >
+              <Video className="w-6 h-6 mr-3" />
+              Subscribe for Updates
+            </Button>
+          </FadeIn>
         </div>
       </section>
 

@@ -27,6 +27,7 @@ export interface Industry {
   icon: string;
   title: string;
   navDesc: string;
+  image: string;
   link: string;
 }
 
@@ -35,6 +36,7 @@ export interface Resource {
   title: string;
   desc: string;
   link: string;
+  image: string;
 }
 
 export interface CompanyItem {
@@ -42,6 +44,7 @@ export interface CompanyItem {
   title: string;
   desc: string;
   link: string;
+  image: string;
 }
 
 export interface UseCase {

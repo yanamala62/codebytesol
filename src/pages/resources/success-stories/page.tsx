@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 import { FadeIn } from '../../../components/animations/FadeIn';
-import successHero from '../../../assets/bg/download (1).jpg';
 import { CheckCircle2, Cpu, BarChart3, Mail, Layout, Zap } from 'lucide-react';
+import { Button } from '../../../components/primitives/Button';
 
 const successStories = [
   {
@@ -32,7 +32,7 @@ const successStories = [
       'Higher throughput for review teams'
     ],
     techStack: ['Python', 'Azure ML', 'OpenAI', 'Power BI', 'Microservices'],
-    image: '/images/gov-design-validation-001--c775a8e1da66.jpg'
+    image: '/source_images/industries/ind_hitech.png'
   },
   {
     id: 2,
@@ -60,7 +60,7 @@ const successStories = [
       'Higher retention & satisfaction'
     ],
     techStack: ['OpenAI GPT', 'Azure Functions', 'Python', 'Twilio', 'MongoDB'],
-    image: '/images/wellness-agentic-ai-007--cc92d1ad359f.jpg'
+    image: '/source_images/services/service_ai.png'
   },
   {
     id: 3,
@@ -88,7 +88,7 @@ const successStories = [
       'Enhanced technician productivity'
     ],
     techStack: ['Python', 'Azure IoT', 'GPT-based AI', 'Grafana', 'Postgres'],
-    image: '/images/utilities-anomaly-008--e275a219bdee.jpg'
+    image: '/source_images/industries/ind_energy.png'
   },
   {
     id: 4,
@@ -116,7 +116,7 @@ const successStories = [
       'Faster market decision-making'
     ],
     techStack: ['Python', 'Scrapy', 'Azure ML', 'Power BI', 'GPT Models'],
-    image: '/images/construction-sales-009--6ea3dff3b9b6.jpg'
+    image: '/source_images/industries/ind_manufacturing.png'
   },
   {
     id: 5,
@@ -144,7 +144,7 @@ const successStories = [
       'Increased workforce efficiency'
     ],
     techStack: ['GPT-4', 'Azure ML', 'Databricks', 'Power BI', 'Python'],
-    image: '/images/manufacturing-gpt-010--f2f724a69288.jpg'
+    image: '/source_images/services/service_ai.png'
   },
   {
     id: 6,
@@ -172,7 +172,7 @@ const successStories = [
       'Streamlined release readiness'
     ],
     techStack: ['Selenium', 'Postman', 'Jenkins', 'Veloquity Framework', 'TestNG'],
-    image: '/images/insurance-test-automation-011--a8079d8f5a1b.jpg'
+    image: '/source_images/services/service_qa.png'
   }
 ];
 
@@ -184,22 +184,24 @@ export default function SuccessStoriesPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-48 pb-24 px-6 overflow-hidden">
+      <section className="relative pt-48 pb-32 px-6 overflow-hidden bg-gray-900 min-h-[60vh] flex items-center">
         <div className="absolute inset-0 z-0">
-          <img
-            src={successHero}
-            alt="Success Stories"
-            className="w-full h-full object-cover opacity-50"
+          <img 
+            src="/source_images/resources/res_success.png" 
+            alt="Success Background" 
+            className="w-full h-full object-cover opacity-80"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-gray-900/60" />
         </div>
 
-        <div className="container-xl mx-auto relative z-10 text-center">
+        <div className="container-xl mx-auto relative z-10">
           <FadeIn direction="up">
-            <h1 className="text-display-xl md:text-display-2xl font-display font-bold text-white mb-8 tracking-tighter leading-none">
-              Client <span className="gradient-text">Success.</span>
+            <h1 className="text-6xl md:text-[120px] font-black text-white mb-10 leading-[0.85] tracking-tighter uppercase italic">
+              Client <br />
+              <span className="text-primary-500">Success.</span>
             </h1>
-            <p className="text-2xl text-text-muted max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-xl md:text-3xl text-gray-200 max-w-3xl leading-relaxed font-medium drop-shadow-md">
               Real-world transformations powered by AI and data analytics. Explore how we help organizations achieve measurable breakthroughs.
             </p>
           </FadeIn>
@@ -207,17 +209,17 @@ export default function SuccessStoriesPage() {
       </section>
 
       {/* Story Selector */}
-      <section className="py-12 bg-bg-primary border-y border-white/5 sticky top-[72px] z-20 backdrop-blur-xl bg-bg-primary/80 overflow-x-auto">
+      <section className="py-8 bg-white border-y border-border sticky top-[72px] z-20 backdrop-blur-md bg-white/80 overflow-x-auto">
         <div className="container-xl mx-auto px-6">
-          <div className="flex flex-nowrap md:flex-wrap gap-3 justify-start md:justify-center min-w-max md:min-w-0">
+          <div className="flex flex-nowrap md:flex-wrap gap-2 justify-start md:justify-center min-w-max md:min-w-0">
             {successStories.map((story) => (
               <button
                 key={story.id}
                 onClick={() => setSelectedStory(story)}
-                className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all whitespace-nowrap border ${
+                className={`px-5 py-2 rounded-xl text-sm font-bold transition-all whitespace-nowrap border ${
                   selectedStory.id === story.id
-                    ? 'bg-primary-500 border-primary-500 text-white shadow-glow-sm'
-                    : 'bg-white/5 border-white/10 text-text-muted hover:bg-white/10 hover:border-white/20'
+                    ? 'bg-primary-500 border-primary-500 text-white shadow-sm'
+                    : 'bg-gray-50 border-border text-text-muted hover:bg-white hover:border-primary-500 hover:text-primary-500'
                 }`}
               >
                 {story.industry}
@@ -228,7 +230,7 @@ export default function SuccessStoriesPage() {
       </section>
 
       {/* Selected Story Detail */}
-      <section className="py-24 bg-bg-primary">
+      <section className="py-24 bg-white">
         <div className="container-xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             
@@ -237,19 +239,19 @@ export default function SuccessStoriesPage() {
               <FadeIn direction="right">
                 <div className="mb-12">
                   <div className="flex items-center gap-3 mb-6">
-                    <span className="px-4 py-1.5 bg-primary-500/10 text-primary-400 rounded-lg text-xs font-bold uppercase tracking-widest border border-primary-500/20">
+                    <span className="px-3 py-1 bg-primary-50 text-primary-600 rounded-lg text-[10px] font-bold uppercase tracking-widest border border-primary-100">
                       {selectedStory.industry}
                     </span>
                   </div>
-                  <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight tracking-tight">
+                  <h2 className="text-3xl md:text-5xl font-bold text-text-primary mb-6 leading-tight tracking-tight">
                     {selectedStory.title}
                   </h2>
-                  <p className="text-xl text-text-muted font-medium italic border-l-2 border-primary-500 pl-6 py-2">
+                  <p className="text-lg md:text-xl text-text-muted font-medium italic border-l-4 border-primary-500 pl-6 py-2">
                     {selectedStory.designation}
                   </p>
                 </div>
 
-                <div className="glass rounded-[2.5rem] overflow-hidden border-white/5 mb-12">
+                <div className="rounded-[2rem] overflow-hidden border border-border mb-12 shadow-sm">
                    <img
                     src={selectedStory.image}
                     alt={selectedStory.title}
@@ -259,7 +261,7 @@ export default function SuccessStoriesPage() {
 
                 <div className="space-y-16">
                   <div>
-                    <h3 className="text-2xl font-display font-bold text-white mb-6 flex items-center gap-4">
+                    <h3 className="text-2xl font-bold text-text-primary mb-6 flex items-center gap-4 tracking-tight">
                       <Layout className="w-6 h-6 text-primary-500" />
                       The Scenario
                     </h3>
@@ -269,36 +271,36 @@ export default function SuccessStoriesPage() {
                   </div>
 
                   <div>
-                    <h3 className="text-2xl font-display font-bold text-white mb-8 flex items-center gap-4">
+                    <h3 className="text-2xl font-bold text-text-primary mb-8 flex items-center gap-4 tracking-tight">
                       <Zap className="w-6 h-6 text-primary-500" />
                       The Challenges
                     </h3>
                     <div className="grid sm:grid-cols-2 gap-4">
                       {selectedStory.challenges.map((challenge, index) => (
-                        <div key={index} className="glass p-6 rounded-2xl border-white/5 flex items-start gap-4">
-                          <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 mt-1">
-                            <span className="text-primary-500 text-xs font-bold">{index + 1}</span>
+                        <div key={index} className="bg-gray-50 p-6 rounded-2xl border border-border flex items-start gap-4 hover:border-primary-200 transition-colors">
+                          <div className="w-6 h-6 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0 mt-1">
+                            <span className="text-primary-700 text-[10px] font-bold">{index + 1}</span>
                           </div>
-                          <p className="text-text-muted font-medium">{challenge}</p>
+                          <p className="text-text-muted font-medium text-sm">{challenge}</p>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="text-2xl font-display font-bold text-white mb-6 flex items-center gap-4">
+                    <h3 className="text-2xl font-bold text-text-primary mb-6 flex items-center gap-4 tracking-tight">
                       <Cpu className="w-6 h-6 text-primary-500" />
                       The Engineering Solution
                     </h3>
-                    <div className="glass p-10 rounded-[2.5rem] border-white/5 bg-gradient-to-br from-bg-primary to-primary-900/10">
+                    <div className="bg-gray-50 p-10 rounded-[2rem] border border-border">
                       <p className="text-lg text-text-muted leading-relaxed mb-10 font-medium">
                         {selectedStory.solution}
                       </p>
-                      <div className="flex flex-wrap gap-3">
+                      <div className="flex flex-wrap gap-2">
                         {selectedStory.features.map((feature, index) => (
                           <div
                             key={index}
-                            className="px-5 py-3 glass rounded-xl border-white/10 text-white font-bold text-sm flex items-center gap-3"
+                            className="px-4 py-2 bg-white border border-border rounded-xl text-text-primary font-bold text-[11px] uppercase tracking-wider flex items-center gap-3 shadow-sm"
                           >
                             <CheckCircle2 className="w-4 h-4 text-primary-500" />
                             {feature}
@@ -315,18 +317,18 @@ export default function SuccessStoriesPage() {
             <div className="lg:col-span-5">
               <div className="sticky top-32 space-y-8">
                 <FadeIn direction="left">
-                  <div className="glass rounded-[2.5rem] p-10 border-white/5 bg-gradient-to-br from-bg-primary to-accent-900/10">
-                    <h3 className="text-2xl font-display font-bold text-white mb-8 flex items-center gap-4">
-                      <BarChart3 className="w-6 h-6 text-accent-500" />
+                  <div className="bg-gray-50 rounded-[2rem] p-10 border border-border">
+                    <h3 className="text-2xl font-bold text-text-primary mb-8 flex items-center gap-4 tracking-tight">
+                      <BarChart3 className="w-6 h-6 text-primary-500" />
                       Impact Metrics
                     </h3>
-                    <div className="grid gap-6">
+                    <div className="grid gap-4">
                       {selectedStory.impact.map((metric, index) => (
-                        <div key={index} className="glass p-6 rounded-2xl border-white/5 relative overflow-hidden group">
-                           <div className="absolute top-0 right-0 w-24 h-24 bg-primary-500/5 blur-2xl group-hover:bg-primary-500/20 transition-all" />
-                           <div className="flex items-center gap-4">
+                        <div key={index} className="bg-white p-6 rounded-2xl border border-border relative overflow-hidden group shadow-sm hover:border-primary-500 transition-all duration-300">
+                           <div className="absolute top-0 right-0 w-24 h-24 bg-primary-50/50 blur-2xl group-hover:bg-primary-50 transition-all" />
+                           <div className="flex items-center gap-4 relative z-10">
                               <CheckCircle2 className="w-6 h-6 text-primary-500" />
-                              <p className="text-xl font-bold text-white tracking-tight">{metric}</p>
+                              <p className="text-xl font-bold text-text-primary tracking-tight">{metric}</p>
                            </div>
                         </div>
                       ))}
@@ -335,13 +337,13 @@ export default function SuccessStoriesPage() {
                 </FadeIn>
 
                 <FadeIn direction="left" delay={0.2}>
-                  <div className="glass rounded-[2.5rem] p-10 border-white/5">
-                    <h3 className="text-2xl font-display font-bold text-white mb-8">Tech Stack</h3>
-                    <div className="flex flex-wrap gap-3">
+                  <div className="bg-white border border-border rounded-[2rem] p-10 shadow-sm">
+                    <h3 className="text-xl font-bold text-text-primary mb-8 tracking-tight">Tech Stack</h3>
+                    <div className="flex flex-wrap gap-2">
                       {selectedStory.techStack.map((tech, index) => (
                         <span
                           key={index}
-                          className="px-5 py-3 glass border-white/5 rounded-xl text-text-muted font-bold text-sm"
+                          className="px-4 py-2 bg-gray-50 border border-border rounded-lg text-text-muted font-bold text-[11px] uppercase tracking-wider"
                         >
                           {tech}
                         </span>
@@ -352,18 +354,21 @@ export default function SuccessStoriesPage() {
 
                 {/* Case Study CTA */}
                 <FadeIn direction="left" delay={0.4}>
-                  <div className="bg-gradient-to-br from-primary-600 to-accent-600 rounded-[2.5rem] p-10 text-white text-center shadow-glow-md">
-                    <h3 className="text-3xl font-display font-bold mb-4">Want the Full Story?</h3>
-                    <p className="text-white/80 mb-8 font-medium">
+                  <div className="bg-primary-500 rounded-[2rem] p-10 text-white text-center shadow-lg relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-1/2 h-full bg-white/10 blur-[80px] rounded-full translate-x-1/2 group-hover:scale-110 transition-transform duration-500" />
+                    
+                    <h3 className="text-2xl font-bold mb-4 tracking-tight relative z-10">Want the Full Story?</h3>
+                    <p className="text-white/80 mb-8 font-medium relative z-10">
                       Request the complete technical architecture and ROI analysis for this transformation.
                     </p>
-                    <a
-                      href="mailto:Assist@codebytesol.ai"
-                      className="inline-flex items-center gap-3 px-8 py-4 bg-white text-primary-600 rounded-xl font-bold hover:scale-[1.05] transition-transform shadow-lg"
+                    <Button
+                      variant="secondary"
+                      onClick={() => window.location.href = "mailto:codebytesolution.info@gmail.com"}
+                      className="w-full h-14 rounded-xl relative z-10 bg-white text-primary-600 hover:bg-gray-50 border-transparent"
                     >
-                      <Mail className="w-5 h-5" />
+                      <Mail className="w-5 h-5 mr-3" />
                       Request Full PDF
-                    </a>
+                    </Button>
                   </div>
                 </FadeIn>
               </div>

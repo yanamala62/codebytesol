@@ -1,8 +1,8 @@
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import { FadeIn } from '../../components/animations/FadeIn';
-import contactHero from '../../assets/bg/download (2).jpg';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Button } from '../../components/primitives/Button';
 
 export default function ContactPage() {
   return (
@@ -10,17 +10,23 @@ export default function ContactPage() {
       <Header />
 
       {/* Hero */}
-      <section className="relative pt-48 pb-24 px-6 overflow-hidden">
+      <section className="relative pt-48 pb-32 px-6 overflow-hidden bg-gray-900 min-h-[60vh] flex items-center">
         <div className="absolute inset-0 z-0">
-          <img src={contactHero} className="w-full h-full object-cover opacity-50" alt="Contact" />
-          <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/40 via-bg-primary/80 to-bg-primary" />
+          <img 
+            src="/source_images/company/com_contact.png" 
+            alt="Contact Background" 
+            className="w-full h-full object-cover opacity-80"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-gray-900/60" />
         </div>
-        <div className="container-xl mx-auto relative z-10 text-center">
+        <div className="container-xl mx-auto relative z-10">
           <FadeIn direction="up">
-            <h1 className="text-display-xl md:text-display-2xl font-display font-bold text-white mb-8 tracking-tighter leading-none">
-               Let's <span className="gradient-text">Connect.</span>
+            <h1 className="text-6xl md:text-[120px] font-black text-white mb-10 leading-[0.85] tracking-tighter uppercase">
+               Let's <br />
+               <span className="text-primary-500">Connect.</span>
             </h1>
-            <p className="text-2xl text-text-muted max-w-2xl mx-auto font-medium leading-relaxed">
+            <p className="text-xl md:text-3xl text-gray-200 max-w-2xl leading-relaxed font-medium drop-shadow-md">
               Ready to transform your enterprise with AI? Our team of experts is ready to discuss your next big breakthrough.
             </p>
           </FadeIn>
@@ -28,45 +34,44 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Content */}
-      <section className="py-24 bg-bg-primary">
+      <section className="py-24 bg-white border-t border-border">
         <div className="container-2xl mx-auto px-6">
            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
               
               {/* Info */}
               <div className="lg:col-span-5">
                  <FadeIn direction="right">
-                    <h2 className="text-4xl font-display font-bold text-white mb-12 tracking-tight">Direct Channels</h2>
+                    <h2 className="text-3xl font-bold text-text-primary mb-12 tracking-tight">Direct Channels</h2>
                     <div className="flex flex-col gap-10">
                        <div className="flex items-start gap-6 group">
-                          <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center border border-white/10 group-hover:border-primary-500/30 transition-all">
-                             <Mail className="w-6 h-6 text-primary-500" />
+                          <div className="w-14 h-14 rounded-2xl bg-primary-50 flex items-center justify-center border border-primary-100 group-hover:bg-primary-500 group-hover:text-white transition-all duration-300">
+                             <Mail className="w-6 h-6 text-primary-500 group-hover:text-white" />
                           </div>
                           <div>
-                             <p className="text-xs font-mono text-text-faint uppercase tracking-[0.2em] mb-2 font-bold">Email Advisory</p>
-                             <p className="text-xl font-bold text-white">Assist@codebytesol.ai</p>
+                             <p className="text-[10px] font-bold text-text-faint uppercase tracking-widest mb-2">Email Advisory</p>
+                             <p className="text-xl font-bold text-text-primary">codebytesolution.info@gmail.com</p>
                           </div>
                        </div>
 
                        <div className="flex items-start gap-6 group">
-                          <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center border border-white/10 group-hover:border-primary-500/30 transition-all">
-                             <Phone className="w-6 h-6 text-primary-500" />
+                          <div className="w-14 h-14 rounded-2xl bg-primary-50 flex items-center justify-center border border-primary-100 group-hover:bg-primary-500 group-hover:text-white transition-all duration-300">
+                             <Phone className="w-6 h-6 text-primary-500 group-hover:text-white" />
                           </div>
                           <div>
-                             <p className="text-xs font-mono text-text-faint uppercase tracking-[0.2em] mb-2 font-bold">Global Support</p>
+                             <p className="text-[10px] font-bold text-text-faint uppercase tracking-widest mb-2">Global Support</p>
                              <div className="flex flex-col gap-1">
-                                <p className="text-xl font-bold text-white">+1 952 200 1318</p>
-                                <p className="text-xl font-bold text-white">+91 87900 57975</p>
+                                <p className="text-xl font-bold text-text-primary">+91 90003 28387</p>
                              </div>
                           </div>
                        </div>
 
                        <div className="flex items-start gap-6 group">
-                          <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center border border-white/10 group-hover:border-primary-500/30 transition-all">
-                             <MapPin className="w-6 h-6 text-primary-500" />
+                          <div className="w-14 h-14 rounded-2xl bg-primary-50 flex items-center justify-center border border-primary-100 group-hover:bg-primary-500 group-hover:text-white transition-all duration-300">
+                             <MapPin className="w-6 h-6 text-primary-500 group-hover:text-white" />
                           </div>
                           <div>
-                             <p className="text-xs font-mono text-text-faint uppercase tracking-[0.2em] mb-2 font-bold">HQ Operations</p>
-                             <p className="text-xl font-bold text-white">Texas, USA | Hyderabad, India | UAE</p>
+                             <p className="text-[10px] font-bold text-text-faint uppercase tracking-widest mb-2">HQ Operations</p>
+                             <p className="text-xl font-bold text-text-primary">Texas, USA | Hyderabad, India | UAE</p>
                           </div>
                        </div>
                     </div>
@@ -76,30 +81,30 @@ export default function ContactPage() {
               {/* Form */}
               <div className="lg:col-span-7">
                  <FadeIn direction="left">
-                    <div className="glass p-12 border-white/5 relative overflow-hidden">
-                       <h2 className="text-3xl font-display font-bold text-white mb-8 tracking-tight">Send a Priority Message</h2>
-                       <form className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                          <div className="flex flex-col gap-3">
-                             <label className="text-xs font-mono text-text-faint uppercase tracking-widest font-bold">Full Name</label>
-                             <input type="text" className="bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-primary-500 transition-colors" placeholder="John Doe" />
+                    <div className="bg-gray-50 p-12 border border-border rounded-3xl relative overflow-hidden">
+                       <h2 className="text-2xl font-bold text-text-primary mb-8 tracking-tight">Send a Priority Message</h2>
+                       <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div className="flex flex-col gap-2">
+                             <label className="text-[10px] font-bold text-text-muted uppercase tracking-widest ml-1">Full Name</label>
+                             <input type="text" className="bg-white border border-border rounded-xl p-4 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all" placeholder="John Doe" />
                           </div>
-                          <div className="flex flex-col gap-3">
-                             <label className="text-xs font-mono text-text-faint uppercase tracking-widest font-bold">Email Address</label>
-                             <input type="email" className="bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-primary-500 transition-colors" placeholder="john@enterprise.com" />
+                          <div className="flex flex-col gap-2">
+                             <label className="text-[10px] font-bold text-text-muted uppercase tracking-widest ml-1">Email Address</label>
+                             <input type="email" className="bg-white border border-border rounded-xl p-4 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all" placeholder="john@enterprise.com" />
                           </div>
-                          <div className="md:col-span-2 flex flex-col gap-3">
-                             <label className="text-xs font-mono text-text-faint uppercase tracking-widest font-bold">Subject</label>
-                             <input type="text" className="bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-primary-500 transition-colors" placeholder="AI Transformation Inquiry" />
+                          <div className="md:col-span-2 flex flex-col gap-2">
+                             <label className="text-[10px] font-bold text-text-muted uppercase tracking-widest ml-1">Subject</label>
+                             <input type="text" className="bg-white border border-border rounded-xl p-4 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all" placeholder="AI Transformation Inquiry" />
                           </div>
-                          <div className="md:col-span-2 flex flex-col gap-3">
-                             <label className="text-xs font-mono text-text-faint uppercase tracking-widest font-bold">Message</label>
-                             <textarea rows={5} className="bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-primary-500 transition-colors resize-none" placeholder="Describe your challenge..." />
+                          <div className="md:col-span-2 flex flex-col gap-2">
+                             <label className="text-[10px] font-bold text-text-muted uppercase tracking-widest ml-1">Message</label>
+                             <textarea rows={5} className="bg-white border border-border rounded-xl p-4 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all resize-none" placeholder="Describe your challenge..." />
                           </div>
                           <div className="md:col-span-2 pt-4">
-                             <button className="w-full h-16 bg-gradient-aurora rounded-xl text-white font-bold text-lg flex items-center justify-center gap-4 hover:scale-[1.02] transition-transform shadow-glow-md">
+                             <Button className="w-full h-16 text-lg rounded-xl">
                                 Dispatch Message
-                                <Send className="w-5 h-5" />
-                             </button>
+                                <Send className="w-5 h-5 ml-4" />
+                             </Button>
                           </div>
                        </form>
                     </div>

@@ -4,21 +4,22 @@ import { cn } from '../../lib/cn';
 import { motion, type HTMLMotionProps } from 'framer-motion';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 disabled:pointer-events-none disabled:opacity-50 active:scale-95',
+  'inline-flex items-center justify-center rounded-xl text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 disabled:pointer-events-none disabled:opacity-50 active:scale-95',
   {
     variants: {
       variant: {
-        primary: 'bg-gradient-aurora text-white shadow-glow-sm hover:shadow-glow-md',
-        secondary: 'bg-surface text-text-primary border border-white/10 hover:bg-white/10',
-        glass: 'glass text-text-primary hover:bg-white/10',
-        ghost: 'bg-transparent text-text-primary hover:bg-white/5',
-        outline: 'bg-transparent border border-primary-500 text-primary-500 hover:bg-primary-500/10',
+        primary: 'bg-primary-500 text-white shadow-sm hover:bg-primary-700 hover:shadow-md',
+        secondary: 'bg-white text-text-primary border border-border hover:bg-gray-50 shadow-sm',
+        accent: 'bg-accent-500 text-white shadow-sm hover:bg-accent-600 hover:shadow-md',
+        glass: 'bg-white/70 backdrop-blur-md text-text-primary border border-border/50 hover:bg-white/90',
+        ghost: 'bg-transparent text-text-primary hover:bg-gray-100',
+        outline: 'bg-transparent border border-primary-500 text-primary-500 hover:bg-primary-500/5',
       },
       size: {
-        sm: 'h-9 px-4',
-        md: 'h-11 px-8 text-base',
+        sm: 'h-10 px-5',
+        md: 'h-12 px-8 text-base',
         lg: 'h-14 px-10 text-lg',
-        icon: 'h-10 w-10',
+        icon: 'h-11 w-11',
       },
     },
     defaultVariants: {
