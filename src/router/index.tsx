@@ -1,5 +1,5 @@
-import { lazy } from 'react';
-import type { RouteObject } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { useRoutes, type RouteObject } from 'react-router-dom';
 import HomePage from '../pages/home/page';
 import DynamicContentPage from '../components/feature/DynamicContentPage';
 
@@ -55,4 +55,18 @@ const routes: RouteObject[] = [
   { path: '*', element: <NotFound /> },
 ];
 
-export default routes;
+export function AppRoutes() {
+  const element = useRoutes(routes);
+  return (
+    <Suspense fallback={
+      <div className="h-screen w-full flex items-center justify-center bg-bg-primary">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-primary-500/20 border-t-primary-500 rounded-full animate-spin" />
+          <p className="text-sm font-bold text-text-muted uppercase tracking-[0.2em]">Loading CodeByteSol...</p>
+        </div>
+      </div>
+    }>
+      {element}
+    </Suspense>
+  );
+}

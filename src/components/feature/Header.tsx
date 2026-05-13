@@ -7,7 +7,7 @@ import {
 } from '../../store/slices/uiSlice';
 import MegaMenu from '../ui/MegaMenu';
 import { Button, MagneticButton } from '../primitives/Button';
-import { ChevronDown, Menu, X, PlayCircle, Sun, Moon } from 'lucide-react';
+import { ChevronDown, Menu, X, Sun, Moon, Mail } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
@@ -18,7 +18,7 @@ export default function Header() {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-  
+
   const { isMobileMenuOpen, activeDropdown } = useAppSelector((s) => s.ui);
   const content = useAppSelector((s) => s.content.data);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,7 +26,11 @@ export default function Header() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -181,73 +185,98 @@ export default function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed inset-0 z-40 lg:hidden bg-white p-8 pt-24 flex flex-col"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 lg:hidden bg-white overflow-y-auto"
           >
-            <div className="flex flex-col gap-6 flex-1 overflow-y-auto pb-10">
-              {navGroups.map(({ key, label }) => {
-                const links: Record<string, string> = {
-                  services: '/how-we-help',
-                  industries: '/industries',
-                  resources: '/resources',
-                  company: '/about'
-                };
-                return (
-                  <Link 
-                    key={key} 
-                    to={links[key] ?? '/'}
-                    onClick={() => dispatch(closeMobileMenu())}
-                    className="text-4xl font-bold text-left text-text-primary hover:text-primary-500 transition-colors"
-                  >
-                    {label}
-                  </Link>
-                );
-              })}
+            <div className="flex flex-col p-6 pt-24 min-h-full">
+              <div className="flex flex-col gap-2 flex-1">
+                {navGroups.map(({ key, label, items }) => {
+                  const isOpen = activeDropdown === key;
+                  return (
+                    <div key={key} className="border-b border-gray-100 last:border-0">
+                      <button 
+                        onClick={() => dispatch(setActiveDropdown(isOpen ? null : key))}
+                        className="w-full py-4 flex items-center justify-between text-2xl font-bold text-text-primary"
+                      >
+                        {label}
+                        <ChevronDown className={cn("w-6 h-6 transition-transform duration-300", isOpen && "rotate-180")} />
+                      </button>
+                      
+                      <AnimatePresence>
+                        {isOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="grid grid-cols-1 gap-2 pb-6">
+                              {items.map((item, idx) => (
+                                <Link
+                                  key={idx}
+                                  to={item.link}
+                                  onClick={() => {
+                                    dispatch(closeMobileMenu());
+                                    dispatch(setActiveDropdown(null));
+                                  }}
+                                  className="flex items-center gap-3 p-3 rounded-xl hover:bg-primary-50 transition-colors"
+                                >
+                                  <div className="w-10 h-10 flex items-center justify-center bg-primary-50 rounded-lg text-primary-500">
+                                    <i className={cn(item.icon, "text-xl")} />
+                                  </div>
+                                  <div>
+                                    <div className="font-bold text-sm text-text-primary">{item.title}</div>
+                                    <div className="text-xs text-text-muted line-clamp-1">{item.desc}</div>
+                                  </div>
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
+              </div>
               
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="flex flex-col gap-6 mt-4 pt-8 border-t border-border"
-              >
-                <Link to="/contact" onClick={() => dispatch(closeMobileMenu())} className="text-lg font-semibold text-text-muted hover:text-primary-500 flex items-center gap-3">
-                  <PlayCircle className="w-6 h-6" />
-                  Get in Touch
+              <div className="mt-8 pt-8 border-t border-border flex flex-col gap-6">
+                <Link 
+                  to="/contact" 
+                  onClick={() => dispatch(closeMobileMenu())} 
+                  className="text-lg font-bold text-text-primary flex items-center gap-3 hover:text-primary-500 transition-colors"
+                >
+                  <Mail className="w-5 h-5 text-primary-500" />
+                  Contact Us
                 </Link>
                 
                 <div className="flex items-center justify-between bg-gray-50 p-4 rounded-2xl border border-border">
-                   <span className="text-sm font-bold text-text-muted uppercase tracking-widest">Theme</span>
+                   <div className="flex items-center gap-3">
+                      {theme === 'dark' ? <Moon className="w-5 h-5 text-primary-500" /> : <Sun className="w-5 h-5 text-primary-500" />}
+                      <span className="text-sm font-bold text-text-muted uppercase tracking-widest">Theme</span>
+                   </div>
                    <button
                     onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                    className="w-12 h-12 flex items-center justify-center bg-white border border-border rounded-xl text-primary-500"
+                    className="w-12 h-12 flex items-center justify-center bg-white border border-border rounded-xl text-primary-500 shadow-sm"
                   >
-                    {mounted && (theme === 'dark' ? <Sun /> : <Moon />)}
+                    {mounted && (theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />)}
                   </button>
                 </div>
-              </motion.div>
-            </div>
 
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="mt-auto"
-            >
-              <Button 
-                variant="primary" 
-                size="lg" 
-                className="w-full h-14"
-                onClick={() => {
-                  window.location.href = "/contact";
-                  dispatch(closeMobileMenu());
-                }}
-              >
-                Start Transformation
-              </Button>
-            </motion.div>
+                <Button 
+                  variant="primary" 
+                  size="lg" 
+                  className="w-full h-14 rounded-2xl shadow-lg shadow-primary-500/20"
+                  onClick={() => {
+                    window.location.href = "/contact";
+                    dispatch(closeMobileMenu());
+                  }}
+                >
+                  Get Started Now
+                </Button>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

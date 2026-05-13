@@ -20,10 +20,10 @@ export default function TechStack() {
         <div className="text-center mb-24">
           <FadeIn direction="up">
             <p className="text-sm font-bold uppercase tracking-[0.4em] text-primary-400 mb-8">The Arsenal</p>
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-10 leading-[0.95] tracking-tighter">
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-10 leading-tight tracking-tight">
               Elite Technical Foundation.
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium leading-relaxed">
               We build on industry-leading frameworks and battle-tested architectures 
               to ensure high-performance production environments.
             </p>

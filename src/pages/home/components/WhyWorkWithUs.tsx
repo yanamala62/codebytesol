@@ -72,10 +72,10 @@ export default function WhyWorkWithUs() {
           <div className="lg:w-5/12">
             <FadeIn direction="right">
               <p className="text-sm font-bold uppercase tracking-[0.4em] text-primary-400 mb-8">CodeByteSol Standards</p>
-              <h2 ref={leftTextRef} className="text-5xl md:text-7xl font-black text-white mb-10 leading-[0.95] min-h-[140px] tracking-tighter">
+              <h2 ref={leftTextRef} className="text-4xl md:text-6xl font-black text-white mb-10 leading-tight min-h-[140px] tracking-tight">
                 The Advantage.
               </h2>
-              <p className="text-xl text-gray-300 leading-relaxed max-w-md font-medium border-l-2 border-primary-500/40 pl-8">
+              <p className="text-lg text-gray-300 leading-relaxed max-w-md font-medium border-l-2 border-primary-500/40 pl-8">
                 We combine AI-native thinking with elite engineering to solve the most 
                 complex digital challenges for global enterprises.
               </p>

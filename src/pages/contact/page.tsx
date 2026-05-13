@@ -3,8 +3,56 @@ import Footer from '../../components/feature/Footer';
 import { FadeIn } from '../../components/animations/FadeIn';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { Button } from '../../components/primitives/Button';
+import { useState } from 'react';
+import { cn } from '../../lib/cn';
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    try {
+      // Switched to FormSubmit.co - More reliable for direct email usage
+      const response = await fetch('https://formsubmit.co/ajax/codebytesolution.info@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        })
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch (err) {
+      console.error('Form submission error:', err instanceof Error ? err.message : String(err));
+      setStatus('error');
+    }
+  };
+
+  const openGmail = () => {
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=codebytesolution.info@gmail.com&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
+    window.open(gmailUrl, '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary">
       <Header />
@@ -43,12 +91,15 @@ export default function ContactPage() {
                  <FadeIn direction="right">
                     <h2 className="text-3xl font-bold text-text-primary mb-12 tracking-tight">Direct Channels</h2>
                     <div className="flex flex-col gap-10">
-                       <div className="flex items-start gap-6 group">
+                       <div 
+                         onClick={openGmail}
+                         className="flex items-start gap-6 group cursor-pointer"
+                       >
                           <div className="w-14 h-14 rounded-2xl bg-primary-50 flex items-center justify-center border border-primary-100 group-hover:bg-primary-500 group-hover:text-white transition-all duration-300">
                              <Mail className="w-6 h-6 text-primary-500 group-hover:text-white" />
                           </div>
                           <div>
-                             <p className="text-[10px] font-bold text-text-faint uppercase tracking-widest mb-2">Email Advisory</p>
+                             <p className="text-[10px] font-bold text-text-faint uppercase tracking-widest mb-2">Email Advisory (Open in Gmail)</p>
                              <p className="text-xl font-bold text-text-primary">codebytesolution.info@gmail.com</p>
                           </div>
                        </div>
@@ -83,28 +134,82 @@ export default function ContactPage() {
                  <FadeIn direction="left">
                     <div className="bg-gray-50 p-12 border border-border rounded-3xl relative overflow-hidden">
                        <h2 className="text-2xl font-bold text-text-primary mb-8 tracking-tight">Send a Priority Message</h2>
-                       <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div className="flex flex-col gap-2">
                              <label className="text-[10px] font-bold text-text-muted uppercase tracking-widest ml-1">Full Name</label>
-                             <input type="text" className="bg-white border border-border rounded-xl p-4 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all" placeholder="John Doe" />
+                             <input 
+                               type="text" 
+                               required
+                               value={formData.name}
+                               onChange={(e) => setFormData({...formData, name: e.target.value})}
+                               className="bg-white border border-border rounded-xl p-4 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all" 
+                               placeholder="John Doe" 
+                             />
                           </div>
                           <div className="flex flex-col gap-2">
                              <label className="text-[10px] font-bold text-text-muted uppercase tracking-widest ml-1">Email Address</label>
-                             <input type="email" className="bg-white border border-border rounded-xl p-4 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all" placeholder="john@enterprise.com" />
+                             <input 
+                               type="email" 
+                               required
+                               value={formData.email}
+                               onChange={(e) => setFormData({...formData, email: e.target.value})}
+                               className="bg-white border border-border rounded-xl p-4 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all" 
+                               placeholder="john@enterprise.com" 
+                             />
                           </div>
                           <div className="md:col-span-2 flex flex-col gap-2">
                              <label className="text-[10px] font-bold text-text-muted uppercase tracking-widest ml-1">Subject</label>
-                             <input type="text" className="bg-white border border-border rounded-xl p-4 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all" placeholder="AI Transformation Inquiry" />
+                             <input 
+                               type="text" 
+                               required
+                               value={formData.subject}
+                               onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                               className="bg-white border border-border rounded-xl p-4 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all" 
+                               placeholder="AI Transformation Inquiry" 
+                             />
                           </div>
                           <div className="md:col-span-2 flex flex-col gap-2">
                              <label className="text-[10px] font-bold text-text-muted uppercase tracking-widest ml-1">Message</label>
-                             <textarea rows={5} className="bg-white border border-border rounded-xl p-4 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all resize-none" placeholder="Describe your challenge..." />
+                             <textarea 
+                               rows={5} 
+                               required
+                               value={formData.message}
+                               onChange={(e) => setFormData({...formData, message: e.target.value})}
+                               className="bg-white border border-border rounded-xl p-4 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all resize-none" 
+                               placeholder="Describe your challenge..." 
+                             />
                           </div>
                           <div className="md:col-span-2 pt-4">
-                             <Button className="w-full h-16 text-lg rounded-xl">
-                                Dispatch Message
-                                <Send className="w-5 h-5 ml-4" />
+                             <Button 
+                               type="submit" 
+                               disabled={status === 'sending'}
+                               className={cn(
+                                 "w-full h-16 text-lg rounded-xl transition-all duration-300",
+                                 status === 'success' && "bg-green-500 hover:bg-green-600",
+                                 status === 'error' && "bg-red-500 hover:bg-red-600"
+                               )}
+                             >
+                                {status === 'idle' && (
+                                  <>
+                                    Dispatch Message
+                                    <Send className="w-5 h-5 ml-4" />
+                                  </>
+                                )}
+                                {status === 'sending' && "Sending Message..."}
+                                {status === 'success' && "Message Sent Successfully!"}
+                                {status === 'error' && "Failed to Send. Try Again."}
                              </Button>
+                             
+                             {status === 'success' && (
+                               <p className="text-center text-green-600 font-bold mt-4 text-sm animate-fade-in">
+                                 We've received your message and will get back to you shortly.
+                               </p>
+                             )}
+                             {status === 'error' && (
+                               <p className="text-center text-red-600 font-bold mt-4 text-sm animate-fade-in">
+                                 Something went wrong. Please try again or email us directly.
+                               </p>
+                             )}
                           </div>
                        </form>
                     </div>
