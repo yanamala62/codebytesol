@@ -1,5 +1,6 @@
 import { useAppSelector } from '../../store/hooks';
 import { Link } from 'react-router-dom';
+import { Mail } from 'lucide-react';
 import codeByteSolLogo from '../../assets/logo.jpg';
 
 interface FooterColumn {
@@ -88,9 +89,9 @@ export default function Footer() {
               ))}
               
               <div className="pt-6 border-t border-border mt-4">
-                 <a href="mailto:codebytesolution.info@gmail.com" className="text-text-muted hover:text-primary-500 text-xs font-mono transition-colors flex items-center gap-3">
-                    <i className="ri-mail-line text-primary-500" />
-                    codebytesolution.info@gmail.com
+                 <a href="mailto:codebytesol@gmail.com" className="text-text-muted hover:text-primary-500 text-xs font-mono transition-colors flex items-center gap-3">
+                   <Mail className="w-4 h-4" />
+                   codebytesol@gmail.com
                  </a>
               </div>
             </div>
