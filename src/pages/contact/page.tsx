@@ -20,20 +20,23 @@ export default function ContactPage() {
     e.preventDefault();
     setStatus('sending');
 
+    // Simulate successful submission in development mode
+    if (import.meta.env.DEV) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      console.log('Development mode: Simulating form submission', formData);
+      setStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      return;
+    }
+
     try {
-      // Switched to FormSubmit.co - More reliable for direct email usage
-      const response = await fetch('https://formsubmit.co/ajax/codebytesolution.info@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message
-        })
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          "form-name": "contact",
+          ...formData,
+        }).toString(),
       });
 
       if (response.ok) {
@@ -49,7 +52,7 @@ export default function ContactPage() {
   };
 
   const openGmail = () => {
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=codebytesolution.info@gmail.com&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=codebytesol@gmail.com&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
     window.open(gmailUrl, '_blank');
   };
 
@@ -100,7 +103,7 @@ export default function ContactPage() {
                           </div>
                           <div>
                              <p className="text-[10px] font-bold text-text-faint uppercase tracking-widest mb-2">Email Advisory (Open in Gmail)</p>
-                             <p className="text-xl font-bold text-text-primary">codebytesolution.info@gmail.com</p>
+                             <p className="text-xl font-bold text-text-primary">codebytesol@gmail.com</p>
                           </div>
                        </div>
 
@@ -134,7 +137,14 @@ export default function ContactPage() {
                  <FadeIn direction="left">
                     <div className="bg-gray-50 p-12 border border-border rounded-3xl relative overflow-hidden">
                        <h2 className="text-2xl font-bold text-text-primary mb-8 tracking-tight">Send a Priority Message</h2>
-                       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                       <form 
+                         onSubmit={handleSubmit} 
+                         name="contact"
+                         data-netlify="true"
+                         data-netlify-honeypot="bot-field"
+                         className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                       >
+                          <input type="hidden" name="form-name" value="contact" />
                           <div className="flex flex-col gap-2">
                              <label className="text-[10px] font-bold text-text-muted uppercase tracking-widest ml-1">Full Name</label>
                              <input 

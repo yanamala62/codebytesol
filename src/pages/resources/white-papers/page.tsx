@@ -254,7 +254,7 @@ export default function WhitePapersPage() {
               <Button
                 size="lg"
                 className="h-16 px-12 rounded-2xl relative z-10"
-                onClick={() => window.location.href = "mailto:codebytesolution.info@gmail.com"}
+                onClick={() => window.location.href = "mailto:codebytesol@gmail.com"}
               >
                 <Mail className="w-6 h-6 mr-3" />
                 Request Custom Strategy
