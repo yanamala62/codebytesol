@@ -20,7 +20,7 @@ export default function Hero() {
   }, [phrases.length]);
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gray-900 pt-20">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gray-900 pt-20 pb-40">
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -51,22 +51,22 @@ export default function Hero() {
 
           {/* Headline */}
           <FadeIn direction="up" delay={0.2}>
-            <h1 className="text-6xl md:text-[120px] font-black leading-[0.85] mb-12 tracking-tighter text-white uppercase italic">
-              Innovation <br />
+            <h1 className="text-4xl md:text-7xl lg:text-8xl font-black leading-[1.1] mb-8 tracking-tight text-white uppercase italic">
+              Innovation Meets <br />
               <span className="text-primary-500">Intelligence</span>
             </h1>
           </FadeIn>
 
           {/* Description */}
           <FadeIn direction="up" delay={0.3}>
-            <p className="text-xl md:text-2xl text-gray-200 mb-16 max-w-3xl mx-auto leading-relaxed font-medium drop-shadow-lg">
+            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed font-medium drop-shadow-lg">
               {hero?.description ?? 'We engineer elite digital solutions that combine cutting-edge AI with production-grade stability.'}
             </p>
           </FadeIn>
 
           {/* Rotating Phrases */}
           <FadeIn direction="up" delay={0.4}>
-            <div className="h-10 relative flex items-center justify-center mb-12">
+            <div className="h-10 relative flex items-center justify-center mb-6">
                <AnimatePresence mode="wait">
                   <motion.p
                     key={currentPhrase}

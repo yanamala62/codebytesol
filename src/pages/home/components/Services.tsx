@@ -5,8 +5,9 @@ import { Card, CardContent, CardTitle, CardDescription } from '../../../componen
 import { FadeIn } from '../../../components/animations/FadeIn';
 import { ArrowUpRight } from 'lucide-react';
 import { cn } from '../../../lib/cn';
+import { type Service } from '../../../types';
 
-function SpotlightCard({ service, className }: { service: any; className?: string }) {
+function SpotlightCard({ service, className }: { service: Service; className?: string }) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -15,6 +16,8 @@ function SpotlightCard({ service, className }: { service: any; className?: strin
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
   }
+
+  const background = useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(37, 99, 235, 0.05), transparent 80%)`;
 
   return (
     <motion.div
@@ -27,10 +30,8 @@ function SpotlightCard({ service, className }: { service: any; className?: strin
              <img src={service.image} alt="" className="w-full h-full object-cover" />
           </div>
           
-          <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
-               style={{
-                 background: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(37, 99, 235, 0.05), transparent 80%)` as any
-               }}
+          <motion.div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+               style={{ background }}
           />
           
           <CardContent className="h-full flex flex-col p-8 relative z-10">
@@ -84,13 +85,13 @@ export default function Services() {
       <div className="container-2xl mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-20">
           <FadeIn direction="right" className="lg:w-1/2">
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-6 leading-[0.95] tracking-tighter">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight tracking-tight">
               Elite Engineering.<br />
               <span className="text-primary-500">Production Grade.</span>
             </h2>
           </FadeIn>
           <FadeIn direction="left" className="lg:w-1/2">
-            <p className="text-xl text-gray-400 leading-relaxed border-l-4 border-primary-500/40 pl-8 max-w-xl font-medium">
+            <p className="text-lg text-gray-400 leading-relaxed border-l-4 border-primary-500/40 pl-8 max-w-xl font-medium">
               From mission-critical AI to scalable enterprise platforms, we deliver 
               solutions engineered for 100% reliability and performance.
             </p>

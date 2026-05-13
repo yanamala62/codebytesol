@@ -77,7 +77,7 @@ const MagneticButton = React.forwardRef<HTMLButtonElement, MagneticButtonProps>(
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         className={cn(buttonVariants({ variant, size }), className)}
-        {...(props as any)}
+        {...props}
       >
         <span className="relative z-10">{children as React.ReactNode}</span>
       </motion.button>
@@ -86,4 +86,4 @@ const MagneticButton = React.forwardRef<HTMLButtonElement, MagneticButtonProps>(
 );
 MagneticButton.displayName = 'MagneticButton';
 
-export { Button, MagneticButton, buttonVariants };
+export { Button, MagneticButton };
