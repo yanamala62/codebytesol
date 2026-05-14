@@ -46,7 +46,7 @@ function AppContent() {
   }, [dispatch]);
 
   return (
-    <div className="bg-bg-primary min-h-screen text-text-primary relative overflow-hidden">
+    <div className="bg-bg-primary min-h-screen text-text-primary relative">
       {/* Global Background Image - High impact */}
       <div className="fixed inset-0 z-[-1] opacity-20 pointer-events-none">
         <img 

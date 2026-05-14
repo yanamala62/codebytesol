@@ -61,7 +61,7 @@ export default function Header() {
   return (
     <header 
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-[100] transition-all duration-300',
         !isTransparent 
           ? 'bg-white/95 backdrop-blur-md border-b border-border py-3 shadow-md' 
           : 'bg-transparent py-5'
@@ -126,7 +126,7 @@ export default function Header() {
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                       className={cn(
-                        "absolute top-full pt-4",
+                        "absolute top-full pt-4 z-[110]",
                         index >= navGroups.length - 2 ? "right-0" : "left-1/2 -translate-x-1/2"
                       )}
                     >
@@ -170,7 +170,7 @@ export default function Header() {
           <button
             onClick={() => dispatch(toggleMobileMenu())}
             className={cn(
-              "lg:hidden w-10 h-10 flex items-center justify-center rounded-xl border transition-colors relative z-50",
+              "lg:hidden w-10 h-10 flex items-center justify-center rounded-xl border transition-colors relative z-[110]",
               (isTransparent && !isMobileMenuOpen)
                 ? "bg-white/10 border-white/20 text-white"
                 : "bg-gray-50 border-border text-text-primary"
@@ -188,7 +188,7 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 lg:hidden bg-white overflow-y-auto"
+            className="fixed inset-0 z-[100] lg:hidden bg-white overflow-y-auto"
           >
             <div className="flex flex-col p-6 pt-24 min-h-full">
               <div className="flex flex-col gap-2 flex-1">
