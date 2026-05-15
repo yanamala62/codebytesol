@@ -108,7 +108,7 @@ export default function PressPage() {
                     <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center group-hover:bg-primary-50">
                       <Mail className="w-5 h-5" />
                     </div>
-                    <span className="text-lg font-bold">codebytesol@gmail.com</span>
+                    <span className="text-lg font-bold">codebytesol.info@gmail.com</span>
                   </a>
                   <a href="tel:+919000328387" className="flex items-center gap-4 text-text-muted hover:text-primary-500 transition-colors group">
                     <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center group-hover:bg-primary-50">
@@ -135,7 +135,7 @@ export default function PressPage() {
                     <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center group-hover:bg-primary-50">
                       <Mail className="w-5 h-5" />
                     </div>
-                    <span className="text-lg font-bold">codebytesol@gmail.com</span>
+                    <span className="text-lg font-bold">codebytesol.info@gmail.com</span>
                   </a>
                   <a href="tel:+919000328387" className="flex items-center gap-4 text-text-muted hover:text-primary-500 transition-colors group">
                     <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center group-hover:bg-primary-50">

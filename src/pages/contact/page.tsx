@@ -103,7 +103,7 @@ export default function ContactPage() {
                           </div>
                           <div>
                              <p className="text-[10px] font-bold text-text-faint uppercase tracking-widest mb-2">Email Advisory (Open in Gmail)</p>
-                             <p className="text-xl font-bold text-text-primary">codebytesol@gmail.com</p>
+                             <p className="text-xl font-bold text-text-primary">codebytesol.info@gmail.com</p>
                           </div>
                        </div>
 
