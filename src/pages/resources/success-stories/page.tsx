@@ -363,7 +363,7 @@ export default function SuccessStoriesPage() {
                     </p>
                     <Button
                       variant="secondary"
-                      onClick={() => window.location.href = "mailto:codebytesol@gmail.com"}
+                      onClick={() => window.location.href = "mailto:codebytesolution.info@gmail.com"}
                       className="w-full h-14 rounded-xl relative z-10 bg-white text-primary-600 hover:bg-gray-50 border-transparent"
                     >
                       <Mail className="w-5 h-5 mr-3" />
