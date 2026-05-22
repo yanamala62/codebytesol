@@ -52,7 +52,7 @@ export default function ContactPage() {
   };
 
   const openGmail = () => {
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=codebytesol@gmail.com&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=codebytesolution.info@gmail.com&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
     window.open(gmailUrl, '_blank');
   };
 
@@ -103,7 +103,7 @@ export default function ContactPage() {
                           </div>
                           <div>
                              <p className="text-[10px] font-bold text-text-faint uppercase tracking-widest mb-2">Email Advisory (Open in Gmail)</p>
-                             <p className="text-xl font-bold text-text-primary">codebytesol.info@gmail.com</p>
+                             <p className="text-xl font-bold text-text-primary">codebytesolution.info@gmail.com</p>
                           </div>
                        </div>
 

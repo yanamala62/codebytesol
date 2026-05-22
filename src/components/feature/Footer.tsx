@@ -89,9 +89,9 @@ export default function Footer() {
               ))}
               
               <div className="pt-6 border-t border-border mt-4">
-                 <a href="mailto:codebytesol@gmail.com" className="text-text-muted hover:text-primary-500 text-xs font-mono transition-colors flex items-center gap-3">
+                 <a href="mailto:codebytesolution.info@gmail.com" className="text-text-muted hover:text-primary-500 text-xs font-mono transition-colors flex items-center gap-3">
                    <Mail className="w-4 h-4" />
-                   codebytesol.info@gmail.com
+                   codebytesolution.info@gmail.com
                  </a>
               </div>
             </div>
